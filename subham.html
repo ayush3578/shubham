@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cement, Ply, Hardware & Electrical | 60 Min Delivery | Subham</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #CC1111;
+    --red-dark: #9B0A0A;
+    --red-light: #E52222;
+    --red-ultra: #FF2222;
+    --white: #ffffff;
+    --off-white: #FFF8F8;
+    --light-gray: #F5F0F0;
+    --mid-gray: #E0D8D8;
+    --text-dark: #1A0505;
+    --text-mid: #5A3A3A;
+    --text-light: #9A7070;
+    --accent: #FFD700;
+    --green: #1A9E3F;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Nunito', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: var(--font-body); background: var(--off-white); color: var(--text-dark); }
+  a { text-decoration:none; color:inherit; }
+
+  /* ═══ MARQUEE TOP BAR ═══ */
+  .top-bar {
+    background: var(--red);
+    color: #fff;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 7px 0;
+    position: relative;
+  }
+  .top-bar-inner {
+    display: inline-block;
+    animation: marquee 28s linear infinite;
+    padding-left: 100%;
+  }
+  .top-bar-inner span { margin: 0 40px; }
+  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-100%)} }
+
+  /* ═══ HEADER ═══ */
+  header {
+    background: #fff;
+    border-bottom: 2px solid var(--red);
+    position: sticky; top:0; z-index:999;
+    box-shadow: 0 2px 16px rgba(204,17,17,0.10);
+  }
+  .header-inner {
+    max-width: 1280px; margin:0 auto;
+    display: flex; align-items: center; gap: 18px;
+    padding: 12px 20px;
+  }
+  .logo-wrap { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+  .logo-icon {
+    width:42px; height:42px; background:var(--red);
+    border-radius:8px; display:flex; align-items:center; justify-content:center;
+  }
+  .logo-icon svg { width:24px; height:24px; fill:#FFD700; }
+  .logo-text { font-family:var(--font-display); font-size:28px; color:var(--red); letter-spacing:1px; line-height:1; }
+  .logo-sub { font-size:9px; font-weight:700; color:var(--text-light); letter-spacing:2px; text-transform:uppercase; }
+
+  /* ── Search Bar ── */
+  .search-bar {
+    flex:1; display:flex; align-items:center;
+    border:2px solid var(--red); border-radius:8px; overflow:hidden;
+    max-width:520px;
+  }
+  .search-bar input {
+    flex:1; border:none; outline:none; padding:9px 14px;
+    font-family:var(--font-body); font-size:14px; background:#fff; color:var(--text-dark);
+  }
+  .search-bar button {
+    background:var(--red); border:none; padding:9px 16px; cursor:pointer;
+    display:flex; align-items:center; gap:6px; color:#fff; font-weight:700; font-size:13px;
+  }
+  .search-bar button svg { width:16px; height:16px; fill:#fff; }
+
+  /* ── Pincode ── */
+  .pin-btn {
+    display:flex; align-items:center; gap:6px; background:#FFF0F0;
+    border:1.5px solid var(--red); border-radius:8px; padding:8px 12px;
+    cursor:pointer; font-size:13px; font-weight:700; color:var(--red); white-space:nowrap;
+    transition:background .2s;
+  }
+  .pin-btn:hover { background:var(--red); color:#fff; }
+  .pin-btn svg { width:14px; height:14px; }
+
+  .header-icons { display:flex; gap:14px; align-items:center; }
+  .icon-btn {
+    display:flex; flex-direction:column; align-items:center; gap:2px;
+    cursor:pointer; color:var(--text-mid); font-size:10px; font-weight:700;
+    position:relative; background:none; border:none; padding:4px;
+    transition:color .2s;
+  }
+  .icon-btn:hover { color:var(--red); }
+  .icon-btn svg { width:22px; height:22px; }
+  .cart-count {
+    position:absolute; top:-4px; right:-4px; background:var(--red);
+    color:#fff; font-size:9px; font-weight:900; width:17px; height:17px;
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+  }
+
+  /* ═══ NAV ═══ */
+  nav { background:var(--red); }
+  .nav-inner {
+    max-width:1280px; margin:0 auto;
+    display:flex; align-items:center; padding:0 20px;
+  }
+  .nav-item {
+    position:relative; padding:12px 16px;
+    color:#fff; font-size:13.5px; font-weight:700; cursor:pointer;
+    display:flex; align-items:center; gap:5px;
+    transition:background .2s;
+  }
+  .nav-item:hover { background:rgba(0,0,0,0.18); }
+  .nav-item.active { background:rgba(0,0,0,0.25); }
+  .nav-item svg { width:12px; height:12px; fill:#fff; opacity:.8; }
+  .dropdown {
+    display:none; position:absolute; top:100%; left:0;
+    background:#fff; min-width:240px; border-radius:0 0 10px 10px;
+    box-shadow:0 8px 32px rgba(204,17,17,0.18); z-index:500;
+    border-top:3px solid var(--red);
+  }
+  .nav-item:hover .dropdown { display:block; }
+  .dropdown a {
+    display:block; padding:11px 18px; font-size:13px; font-weight:600;
+    color:var(--text-dark); border-bottom:1px solid var(--light-gray);
+    transition:background .15s, color .15s;
+  }
+  .dropdown a:last-child { border-bottom:none; }
+  .dropdown a:hover { background:var(--red); color:#fff; padding-left:24px; }
+
+  /* ═══ HERO BANNER ═══ */
+  .hero {
+    background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 40%, #FF4444 100%);
+    min-height:380px; display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  .hero-bg-pattern {
+    position:absolute; inset:0; opacity:.08;
+    background-image: repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%);
+    background-size:20px 20px;
+  }
+  .hero-content { text-align:center; z-index:2; padding:40px 20px; }
+  .hero-badge {
+    display:inline-block; background:var(--accent); color:#1A0505;
+    font-size:11px; font-weight:900; letter-spacing:2px; text-transform:uppercase;
+    padding:5px 14px; border-radius:20px; margin-bottom:16px;
+  }
+  .hero h1 { font-family:var(--font-display); font-size:clamp(36px,7vw,80px); color:#fff; line-height:.95; }
+  .hero h1 span { color:var(--accent); }
+  .hero p { color:rgba(255,255,255,0.85); font-size:16px; font-weight:600; margin:14px 0 24px; }
+  .hero-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .btn-primary {
+    background:#fff; color:var(--red); padding:12px 28px; border-radius:8px;
+    font-weight:800; font-size:14px; border:none; cursor:pointer;
+    transition:transform .2s, box-shadow .2s;
+    box-shadow:0 4px 18px rgba(0,0,0,0.15);
+  }
+  .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+  .btn-secondary {
+    background:transparent; color:#fff; padding:12px 28px; border-radius:8px;
+    font-weight:800; font-size:14px; border:2px solid rgba(255,255,255,0.6); cursor:pointer;
+    transition:background .2s;
+  }
+  .btn-secondary:hover { background:rgba(255,255,255,0.15); }
+  .hero-stats {
+    position:absolute; bottom:0; left:0; right:0;
+    background:rgba(0,0,0,0.25); backdrop-filter:blur(6px);
+    display:flex; justify-content:center; flex-wrap:wrap;
+  }
+  .stat-item { padding:10px 28px; text-align:center; border-right:1px solid rgba(255,255,255,0.15); }
+  .stat-item:last-child { border-right:none; }
+  .stat-num { font-family:var(--font-display); font-size:26px; color:var(--accent); }
+  .stat-lbl { font-size:11px; color:rgba(255,255,255,0.8); font-weight:600; letter-spacing:.5px; }
+
+  /* ═══ SECTIONS ═══ */
+  .section { max-width:1280px; margin:0 auto; padding:40px 20px; }
+  .section-header {
+    display:flex; align-items:flex-end; justify-content:space-between;
+    margin-bottom:24px;
+  }
+  .section-title { font-family:var(--font-display); font-size:32px; color:var(--text-dark); line-height:1; }
+  .section-sub { font-size:13px; color:var(--text-light); font-weight:600; margin-top:4px; }
+  .view-all {
+    background:var(--red); color:#fff; padding:8px 18px; border-radius:6px;
+    font-size:12px; font-weight:800; cursor:pointer; border:none; letter-spacing:.5px;
+    text-transform:uppercase; transition:background .2s;
+  }
+  .view-all:hover { background:var(--red-dark); }
+
+  /* ─── Category Grid ─── */
+  .cat-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
+    gap:14px;
+  }
+  .cat-card {
+    background:#fff; border-radius:12px; padding:18px 10px;
+    text-align:center; cursor:pointer; border:1.5px solid var(--mid-gray);
+    transition:border-color .2s, transform .2s, box-shadow .2s;
+  }
+  .cat-card:hover { border-color:var(--red); transform:translateY(-3px); box-shadow:0 6px 22px rgba(204,17,17,0.12); }
+  .cat-icon { font-size:34px; margin-bottom:10px; }
+  .cat-name { font-size:12px; font-weight:700; color:var(--text-dark); line-height:1.3; }
+
+  /* ─── Product Cards ─── */
+  .product-carousel { position:relative; }
+  .product-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px,1fr));
+    gap:16px;
+  }
+  .product-card {
+    background:#fff; border-radius:14px; border:1.5px solid var(--mid-gray);
+    overflow:hidden; position:relative; transition:box-shadow .2s, transform .2s;
+    cursor:pointer;
+  }
+  .product-card:hover { box-shadow:0 8px 28px rgba(204,17,17,0.14); transform:translateY(-3px); border-color:var(--red); }
+  .product-img {
+    width:100%; height:180px; display:flex; align-items:center; justify-content:center;
+    background:var(--light-gray); font-size:56px; position:relative; overflow:hidden;
+  }
+  .product-img img { width:100%; height:100%; object-fit:cover; }
+  .badge {
+    position:absolute; top:10px; left:10px; background:var(--red);
+    color:#fff; font-size:10px; font-weight:900; padding:3px 8px; border-radius:4px;
+    letter-spacing:.5px;
+  }
+  .product-body { padding:12px 14px 14px; }
+  .product-brand { font-size:10px; font-weight:700; color:var(--red); text-transform:uppercase; letter-spacing:.8px; }
+  .product-name { font-size:13px; font-weight:700; color:var(--text-dark); line-height:1.35; margin:4px 0 8px; }
+  .product-price { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .price-current { font-size:17px; font-weight:800; color:var(--red); }
+  .price-old { font-size:12px; color:var(--text-light); text-decoration:line-through; }
+  .add-to-cart {
+    width:100%; margin-top:10px; background:var(--red); color:#fff; border:none;
+    border-radius:8px; padding:9px; font-size:13px; font-weight:800;
+    cursor:pointer; transition:background .2s;
+    display:flex; align-items:center; justify-content:center; gap:6px;
+  }
+  .add-to-cart:hover { background:var(--red-dark); }
+  .qty-controls {
+    display:none; align-items:center; justify-content:space-between;
+    margin-top:10px; background:var(--red); border-radius:8px; overflow:hidden;
+  }
+  .qty-controls.show { display:flex; }
+  .qty-btn {
+    background:none; border:none; color:#fff; font-size:20px; font-weight:700;
+    padding:5px 14px; cursor:pointer;
+  }
+  .qty-num { color:#fff; font-weight:800; font-size:15px; }
+
+  /* ─── Deal / Flash Section ─── */
+  .sale-section { background:#fff; border-radius:16px; overflow:hidden; margin:0 0 20px; }
+  .sale-section-header {
+    background:var(--red); color:#fff; padding:18px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .sale-title { font-family:var(--font-display); font-size:28px; color:#fff; }
+  .sale-sub { font-size:12px; color:rgba(255,255,255,0.8); font-weight:600; margin-top:2px; }
+  .sale-timer { display:flex; gap:8px; align-items:center; }
+  .timer-box { background:rgba(255,255,255,0.2); padding:6px 10px; border-radius:6px; text-align:center; }
+  .timer-num { font-family:var(--font-display); font-size:24px; color:var(--accent); display:block; }
+  .timer-lbl { font-size:9px; color:rgba(255,255,255,0.7); font-weight:700; }
+  .timer-sep { color:var(--accent); font-size:20px; font-weight:900; }
+  .sale-products { padding:20px; }
+
+  /* ─── Brands Ticker ─── */
+  .brands-bar { background:#fff; padding:20px 0; border-top:2px solid var(--light-gray); border-bottom:2px solid var(--light-gray); overflow:hidden; }
+  .brands-ticker { display:flex; gap:50px; animation:marquee 20s linear infinite; white-space:nowrap; }
+  .brand-item { font-size:16px; font-weight:800; color:var(--text-light); letter-spacing:1px; text-transform:uppercase; flex-shrink:0; }
+  .brand-item span { color:var(--red); }
+
+  /* ─── Promo Banners ─── */
+  .promo-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:20px 0; }
+  .promo-card {
+    border-radius:14px; padding:28px 24px; display:flex; flex-direction:column;
+    justify-content:space-between; min-height:160px; position:relative; overflow:hidden;
+  }
+  .promo-card.red { background:linear-gradient(135deg, var(--red-dark), var(--red-light)); }
+  .promo-card.dark { background:linear-gradient(135deg, #1A0505, #3D1010); }
+  .promo-card h3 { font-family:var(--font-display); font-size:26px; color:#fff; }
+  .promo-card p { color:rgba(255,255,255,0.75); font-size:13px; font-weight:600; margin-top:6px; }
+  .promo-card .promo-emoji { position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:60px; opacity:.4; }
+  .promo-btn { display:inline-block; background:#fff; color:var(--red); padding:8px 18px; border-radius:6px; font-size:12px; font-weight:800; margin-top:14px; width:max-content; }
+
+  /* ─── Trust Badges ─── */
+  .trust-row {
+    display:flex; gap:0; background:#fff;
+    border-radius:14px; overflow:hidden; border:1.5px solid var(--mid-gray);
+    margin:30px 0;
+  }
+  .trust-item {
+    flex:1; padding:20px 14px; text-align:center;
+    border-right:1px solid var(--mid-gray);
+  }
+  .trust-item:last-child { border-right:none; }
+  .trust-item .ti { font-size:28px; margin-bottom:8px; }
+  .trust-item h4 { font-size:13px; font-weight:800; color:var(--text-dark); }
+  .trust-item p { font-size:11px; color:var(--text-light); font-weight:600; margin-top:3px; }
+
+  /* ─── Testimonials ─── */
+  .testimonials-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:18px; }
+  .test-card {
+    background:#fff; border-radius:14px; padding:20px; border:1.5px solid var(--mid-gray);
+    position:relative;
+  }
+  .test-card::before { content:'"'; font-size:60px; color:var(--red); opacity:.15; position:absolute; top:10px; left:16px; font-family:serif; line-height:1; }
+  .test-stars { color:var(--accent); font-size:14px; margin-bottom:10px; }
+  .test-text { font-size:13.5px; color:var(--text-mid); font-weight:600; line-height:1.6; }
+  .test-author { display:flex; align-items:center; gap:10px; margin-top:14px; }
+  .test-avatar { width:38px; height:38px; border-radius:50%; background:var(--red); color:#fff; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:800; }
+  .test-name { font-weight:800; font-size:13px; color:var(--text-dark); }
+  .test-role { font-size:11px; color:var(--text-light); }
+
+  /* ─── App Download Banner ─── */
+  .app-banner {
+    background:linear-gradient(135deg, var(--red-dark) 0%, var(--red-light) 100%);
+    border-radius:16px; padding:40px; display:flex; align-items:center;
+    gap:40px; justify-content:space-between; margin:30px 0; position:relative; overflow:hidden;
+  }
+  .app-banner::before {
+    content:''; position:absolute; right:-40px; top:-40px;
+    width:200px; height:200px; background:rgba(255,255,255,0.06); border-radius:50%;
+  }
+  .app-banner-text h2 { font-family:var(--font-display); font-size:38px; color:#fff; }
+  .app-banner-text p { color:rgba(255,255,255,0.8); font-size:14px; font-weight:600; margin:8px 0 20px; }
+  .app-btns { display:flex; gap:12px; flex-wrap:wrap; }
+  .app-btn {
+    background:rgba(255,255,255,0.15); border:1.5px solid rgba(255,255,255,0.4);
+    color:#fff; padding:10px 20px; border-radius:10px; font-size:13px; font-weight:700;
+    cursor:pointer; display:flex; align-items:center; gap:8px; transition:background .2s;
+  }
+  .app-btn:hover { background:rgba(255,255,255,0.25); }
+  .app-rating { display:flex; gap:8px; margin-top:10px; align-items:center; }
+  .app-rating-num { font-size:28px; font-weight:900; color:#fff; }
+  .app-rating-stars { color:var(--accent); font-size:16px; }
+  .app-phone { font-size:80px; flex-shrink:0; }
+
+  /* ─── Newsletter ─── */
+  .newsletter {
+    background:var(--red); border-radius:14px; padding:32px; text-align:center; margin:20px 0;
+  }
+  .newsletter h3 { font-family:var(--font-display); font-size:28px; color:#fff; margin-bottom:6px; }
+  .newsletter p { color:rgba(255,255,255,0.8); font-size:13px; font-weight:600; margin-bottom:20px; }
+  .newsletter-form { display:flex; gap:10px; max-width:440px; margin:0 auto; }
+  .newsletter-form input {
+    flex:1; border:none; border-radius:8px; padding:11px 16px;
+    font-family:var(--font-body); font-size:14px; outline:none;
+  }
+  .newsletter-form button {
+    background:#fff; color:var(--red); border:none; border-radius:8px; padding:11px 20px;
+    font-weight:800; font-size:13px; cursor:pointer; white-space:nowrap;
+  }
+
+  /* ═══ FOOTER ═══ */
+  footer { background:var(--text-dark); color:rgba(255,255,255,0.8); margin-top:40px; }
+  .footer-top {
+    max-width:1280px; margin:0 auto;
+    display:grid; grid-template-columns:2fr 1fr 1fr 1.5fr; gap:40px;
+    padding:50px 20px 30px;
+  }
+  .footer-brand .logo-text { color:#fff; font-size:36px; }
+  .footer-brand p { font-size:13px; margin:14px 0 18px; color:rgba(255,255,255,0.6); line-height:1.7; }
+  .social-row { display:flex; gap:12px; }
+  .social-btn {
+    width:36px; height:36px; border-radius:8px; background:rgba(255,255,255,0.1);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px;
+    transition:background .2s;
+  }
+  .social-btn:hover { background:var(--red); }
+  .footer-col h4 { color:#fff; font-size:13px; font-weight:800; letter-spacing:1px; text-transform:uppercase; margin-bottom:14px; }
+  .footer-col a { display:block; font-size:13px; color:rgba(255,255,255,0.6); margin-bottom:9px; transition:color .2s; }
+  .footer-col a:hover { color:var(--red); }
+  .footer-contact p { font-size:13px; color:rgba(255,255,255,0.6); margin-bottom:8px; line-height:1.6; }
+  .footer-contact p strong { color:#fff; }
+  .footer-bottom {
+    border-top:1px solid rgba(255,255,255,0.1);
+    padding:16px 20px; max-width:1280px; margin:0 auto;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+    font-size:12px; color:rgba(255,255,255,0.4);
+  }
+  .footer-links { display:flex; gap:18px; flex-wrap:wrap; }
+  .footer-links a { color:rgba(255,255,255,0.4); }
+  .footer-links a:hover { color:var(--red); }
+
+  /* ═══ CART SIDEBAR ═══ */
+  .cart-overlay {
+    position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1100;
+    display:none; align-items:stretch; justify-content:flex-end;
+  }
+  .cart-overlay.open { display:flex; }
+  .cart-panel {
+    background:#fff; width:100%; max-width:400px; display:flex; flex-direction:column;
+    animation:slideIn .3s ease;
+  }
+  @keyframes slideIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+  .cart-header {
+    background:var(--red); color:#fff; padding:18px 20px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .cart-header h3 { font-family:var(--font-display); font-size:24px; }
+  .cart-close { background:none; border:none; color:#fff; font-size:24px; cursor:pointer; }
+  .cart-items { flex:1; overflow-y:auto; padding:16px; }
+  .cart-item {
+    display:flex; gap:12px; padding:14px 0; border-bottom:1px solid var(--light-gray);
+    align-items:center;
+  }
+  .cart-item-img { font-size:32px; width:56px; height:56px; background:var(--light-gray); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .cart-item-name { font-size:13px; font-weight:700; flex:1; }
+  .cart-item-price { font-size:14px; font-weight:800; color:var(--red); }
+  .cart-footer { padding:16px 20px; border-top:2px solid var(--light-gray); }
+  .cart-total { display:flex; justify-content:space-between; font-size:16px; font-weight:800; margin-bottom:14px; }
+  .checkout-btn {
+    width:100%; background:var(--red); color:#fff; border:none; border-radius:10px;
+    padding:14px; font-size:15px; font-weight:800; cursor:pointer;
+    transition:background .2s;
+  }
+  .checkout-btn:hover { background:var(--red-dark); }
+  .empty-cart { text-align:center; padding:50px 20px; color:var(--text-light); }
+  .empty-cart .ec-icon { font-size:50px; margin-bottom:14px; }
+
+  /* ═══ PINCODE MODAL ═══ */
+  .modal-overlay {
+    position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1200;
+    display:none; align-items:center; justify-content:center;
+  }
+  .modal-overlay.open { display:flex; }
+  .modal-box {
+    background:#fff; border-radius:16px; padding:30px; max-width:360px; width:100%;
+    animation:fadeUp .3s ease;
+  }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .modal-box h3 { font-family:var(--font-display); font-size:26px; color:var(--text-dark); margin-bottom:6px; }
+  .modal-box p { font-size:13px; color:var(--text-light); margin-bottom:18px; }
+  .pin-input-row { display:flex; gap:10px; }
+  .pin-input-row input {
+    flex:1; border:2px solid var(--mid-gray); border-radius:8px; padding:11px 14px;
+    font-size:15px; font-weight:700; outline:none; font-family:var(--font-body);
+    transition:border-color .2s;
+  }
+  .pin-input-row input:focus { border-color:var(--red); }
+  .pin-input-row button {
+    background:var(--red); color:#fff; border:none; border-radius:8px; padding:11px 18px;
+    font-size:13px; font-weight:800; cursor:pointer;
+  }
+  .pin-result { font-size:13px; font-weight:700; margin-top:12px; padding:10px 14px; border-radius:8px; }
+  .pin-result.ok { background:#E8F5E9; color:var(--green); }
+  .pin-result.err { background:#FFEBEE; color:var(--red); }
+  .modal-close-btn { position:absolute; top:14px; right:14px; background:none; border:none; font-size:20px; cursor:pointer; color:var(--text-light); }
+
+  /* ═══ TOAST ═══ */
+  .toast {
+    position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
+    background:var(--text-dark); color:#fff; padding:12px 24px; border-radius:30px;
+    font-size:13px; font-weight:700; z-index:2000;
+    opacity:0; transition:opacity .3s; pointer-events:none;
+    display:flex; align-items:center; gap:8px;
+  }
+  .toast.show { opacity:1; }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media(max-width:900px) {
+    .promo-grid { grid-template-columns:1fr; }
+    .footer-top { grid-template-columns:1fr 1fr; }
+    .trust-row { flex-wrap:wrap; }
+    .trust-item { min-width:50%; }
+    .app-phone { display:none; }
+    .app-banner { flex-direction:column; }
+  }
+  @media(max-width:640px) {
+    .header-inner { flex-wrap:wrap; gap:10px; }
+    .search-bar { order:3; flex:0 0 100%; max-width:100%; }
+    nav .nav-item span { display:none; }
+    .nav-item { padding:12px 10px; font-size:11px; }
+    .product-grid { grid-template-columns:repeat(2,1fr); }
+    .footer-top { grid-template-columns:1fr; }
+    .footer-bottom { flex-direction:column; text-align:center; }
+    .trust-item { min-width:100%; }
+  }
+
+  /* ── Divider ── */
+  .section-divider { height:4px; background:linear-gradient(90deg,var(--red),var(--accent),var(--red)); margin:10px 0; border-radius:2px; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <span>⚡ Open 8am to 8pm — All Days</span>
+    <span>🚀 FREE delivery for orders above ₹10,000</span>
+    <span>❤️ Serving Lucknow with Love</span>
+    <span>⏱ Superfast Delivery in 60 Minutes</span>
+    <span>📦 No Minimum Order Quantity</span>
+    <span>🌟 Rated 4.9 on Google</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      <div>
+        <div class="logo-text">SUBHAM</div>
+        <div class="logo-sub">Building Materials</div>
+      </div>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search cement, wires, switches, plywood…" oninput="handleSearch(this.value)">
+      <button onclick="triggerSearch()">
+        <svg viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+        Search
+      </button>
+    </div>
+
+    <div class="pin-btn" onclick="openPinModal()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      <span id="pinDisplay">Check Delivery</span>
+    </div>
+
+    <div class="header-icons">
+      <button class="icon-btn" onclick="openCart()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Cart
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="icon-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Account
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-item active" onclick="scrollToSection('categories')">
+      🏠 <span>All Categories</span>
+    </div>
+    <div class="nav-item">
+      <span>Civil & Interiors</span>
+      <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      <div class="dropdown">
+        <a href="#">🏗 Cement</a>
+        <a href="#">🟫 Tiling</a>
+        <a href="#">🌲 Plywood</a>
+        <a href="#">🔵 Fevicol</a>
+        <a href="#">💧 Waterproofing</a>
+        <a href="#">🎨 Painting</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <span>Furniture & Hardware</span>
+      <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      <div class="dropdown">
+        <a href="#">🔩 Hinges, Channels & Handles</a>
+        <a href="#">🍳 Kitchen Systems & Accessories</a>
+        <a href="#">🛏 Wardrobe & Bed Fittings</a>
+        <a href="#">🔐 Door Locks & Hardware</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <span>Electrical</span>
+      <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      <div class="dropdown">
+        <a href="#">🔌 Wires</a>
+        <a href="#">🔲 Switches & Sockets</a>
+        <a href="#">⚡ Conduits & GI Boxes</a>
+        <a href="#">💡 Lighting</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <span>Plumbing & Sanitary</span>
+      <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      <div class="dropdown">
+        <a href="#">🚿 CPVC Pipes & Overhead Tanks</a>
+        <a href="#">🛁 Sanitary & Bath Fittings</a>
+        <a href="#">💧 Overhead Tanks</a>
+      </div>
+    </div>
+    <div class="nav-item" onclick="scrollToSection('deals')">
+      🔥 <span>Deals</span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-badge">⚡ Lucknow's #1 Building Material Store</div>
+    <h1>BUILDING<br><span>MATERIALS</span><br>DELIVERED FAST</h1>
+    <p>Cement · Wires · Plywood · Paints · Hardware — All in 60 Minutes</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="scrollToSection('categories')">Shop Now</button>
+      <button class="btn-secondary" onclick="openPinModal()">Check Delivery</button>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item"><div class="stat-num">60</div><div class="stat-lbl">Min Delivery</div></div>
+    <div class="stat-item"><div class="stat-num">500+</div><div class="stat-lbl">Products</div></div>
+    <div class="stat-item"><div class="stat-num">10K+</div><div class="stat-lbl">Happy Customers</div></div>
+    <div class="stat-item"><div class="stat-num">4.9★</div><div class="stat-lbl">Google Rating</div></div>
+    <div class="stat-item"><div class="stat-num">0</div><div class="stat-lbl">Min Order</div></div>
+  </div>
+</div>
+
+<!-- BRANDS TICKER -->
+<div class="brands-bar">
+  <div class="brands-ticker">
+    <div class="brand-item">Ultra<span>tech</span></div>
+    <div class="brand-item">ACC</div>
+    <div class="brand-item">Asian<span>Paints</span></div>
+    <div class="brand-item">Polycab</div>
+    <div class="brand-item">Hettich</div>
+    <div class="brand-item">Ebco</div>
+    <div class="brand-item">Fevicol</div>
+    <div class="brand-item">Finolex</div>
+    <div class="brand-item">Birla<span>White</span></div>
+    <div class="brand-item">Dr.<span>Fixit</span></div>
+    <div class="brand-item">Schneider</div>
+    <div class="brand-item">Astral</div>
+    <div class="brand-item">Havells</div>
+    <div class="brand-item">Greenpanel</div>
+    <!-- duplicate for seamless loop -->
+    <div class="brand-item">Ultra<span>tech</span></div>
+    <div class="brand-item">ACC</div>
+    <div class="brand-item">Asian<span>Paints</span></div>
+    <div class="brand-item">Polycab</div>
+    <div class="brand-item">Hettich</div>
+    <div class="brand-item">Ebco</div>
+  </div>
+</div>
+
+<!-- TRUST BADGES -->
+<div class="section">
+  <div class="trust-row">
+    <div class="trust-item"><div class="ti">⚡</div><h4>60-Min Delivery</h4><p>Superfast door delivery</p></div>
+    <div class="trust-item"><div class="ti">🚫</div><h4>No Min Order</h4><p>Order what you need</p></div>
+    <div class="trust-item"><div class="ti">✅</div><h4>Quality Assured</h4><p>Genuine branded products</p></div>
+    <div class="trust-item"><div class="ti">💰</div><h4>Best Prices</h4><p>Wholesale rates for all</p></div>
+    <div class="trust-item"><div class="ti">🚚</div><h4>Free Delivery ₹10K+</h4><p>On orders above ₹10,000</p></div>
+    <div class="trust-item"><div class="ti">📱</div><h4>Pay on Delivery</h4><p>Cash & UPI accepted</p></div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<div class="section" id="categories">
+  <div class="section-header">
+    <div><div class="section-title">Shop by Category</div><div class="section-sub">Everything you need, one place</div></div>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card" onclick="filterCategory('cement')"><div class="cat-icon">🏗</div><div class="cat-name">Cement</div></div>
+    <div class="cat-card" onclick="filterCategory('tiling')"><div class="cat-icon">🟫</div><div class="cat-name">Tiling</div></div>
+    <div class="cat-card" onclick="filterCategory('painting')"><div class="cat-icon">🎨</div><div class="cat-name">Painting</div></div>
+    <div class="cat-card" onclick="filterCategory('waterproofing')"><div class="cat-icon">💧</div><div class="cat-name">Water Proofing</div></div>
+    <div class="cat-card" onclick="filterCategory('plywood')"><div class="cat-icon">🌲</div><div class="cat-name">Plywood, MDF & HDHMR</div></div>
+    <div class="cat-card" onclick="filterCategory('fevicol')"><div class="cat-icon">🔵</div><div class="cat-name">Fevicol</div></div>
+    <div class="cat-card" onclick="filterCategory('wires')"><div class="cat-icon">🔌</div><div class="cat-name">Wires</div></div>
+    <div class="cat-card" onclick="filterCategory('switches')"><div class="cat-icon">🔲</div><div class="cat-name">Switches & Sockets</div></div>
+    <div class="cat-card" onclick="filterCategory('hinges')"><div class="cat-icon">🔩</div><div class="cat-name">Hinges, Channels & Handles</div></div>
+    <div class="cat-card" onclick="filterCategory('kitchen')"><div class="cat-icon">🍳</div><div class="cat-name">Kitchen Systems & Accessories</div></div>
+    <div class="cat-card" onclick="filterCategory('wardrobe')"><div class="cat-icon">🛏</div><div class="cat-name">Wardrobe & Bed Fittings</div></div>
+    <div class="cat-card" onclick="filterCategory('locks')"><div class="cat-icon">🔐</div><div class="cat-name">Door Locks & Hardware</div></div>
+    <div class="cat-card" onclick="filterCategory('conduits')"><div class="cat-icon">⚡</div><div class="cat-name">Conduits & GI Boxes</div></div>
+    <div class="cat-card" onclick="filterCategory('sanitary')"><div class="cat-icon">🛁</div><div class="cat-name">Sanitary & Bath Fittings</div></div>
+    <div class="cat-card" onclick="filterCategory('lighting')"><div class="cat-icon">💡</div><div class="cat-name">Lighting</div></div>
+    <div class="cat-card" onclick="filterCategory('plumbing')"><div class="cat-icon">🚿</div><div class="cat-name">CPVC Pipes & Overhead Tanks</div></div>
+    <div class="cat-card" onclick="filterCategory('appliances')"><div class="cat-icon">🏠</div><div class="cat-name">Kitchen & Home Appliances</div></div>
+    <div class="cat-card" onclick="filterCategory('tools')"><div class="cat-icon">🔧</div><div class="cat-name">General Hardware & Tools</div></div>
+  </div>
+</div>
+
+<!-- DEALS OF THE WEEK -->
+<div class="section" id="deals">
+  <div class="sale-section">
+    <div class="sale-section-header">
+      <div>
+        <div class="sale-title">🔥 Deals of the Week</div>
+        <div class="sale-sub">5 products at our lowest ever price</div>
+      </div>
+      <div class="sale-timer">
+        <div class="timer-box"><span class="timer-num" id="th">02</span><span class="timer-lbl">HRS</span></div>
+        <span class="timer-sep">:</span>
+        <div class="timer-box"><span class="timer-num" id="tm">47</span><span class="timer-lbl">MIN</span></div>
+        <span class="timer-sep">:</span>
+        <div class="timer-box"><span class="timer-num" id="ts">30</span><span class="timer-lbl">SEC</span></div>
+      </div>
+    </div>
+    <div class="sale-products">
+      <div class="product-grid" id="dealsGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROMO BANNERS -->
+<div class="section">
+  <div class="promo-grid">
+    <div class="promo-card red">
+      <div>
+        <h3>Hardware Price Drop</h3>
+        <p>Premium hardware at massive discounts. Hettich, Ebco & more.</p>
+        <span class="promo-btn" onclick="scrollToSection('hardware')">Shop Hardware →</span>
+      </div>
+      <div class="promo-emoji">🔩</div>
+    </div>
+    <div class="promo-card dark">
+      <div>
+        <h3>Wires Flash Drop</h3>
+        <p>Genuine brands. Better prices. Polycab, Finolex, Havells.</p>
+        <span class="promo-btn" onclick="scrollToSection('wires')">Shop Wires →</span>
+      </div>
+      <div class="promo-emoji">🔌</div>
+    </div>
+  </div>
+</div>
+
+<!-- HARDWARE PRICE DROP -->
+<div class="section" id="hardware">
+  <div class="section-header">
+    <div>
+      <div class="section-title">Hardware Price Drop</div>
+      <div class="section-sub">Premium hardware. Massive price cuts.</div>
+    </div>
+    <button class="view-all" onclick="filterCategory('hinges')">View All</button>
+  </div>
+  <div class="product-grid" id="hardwareGrid"></div>
+</div>
+
+<!-- WIRES FLASH DROP -->
+<div class="section" id="wires">
+  <div class="section-header">
+    <div>
+      <div class="section-title">⚡ Wires Flash Drop</div>
+      <div class="section-sub">Genuine brands. Better prices. Zero compromise.</div>
+    </div>
+    <button class="view-all" onclick="filterCategory('wires')">View All</button>
+  </div>
+  <div class="product-grid" id="wiresGrid"></div>
+</div>
+
+<!-- ALL PRODUCTS -->
+<div class="section" id="allProducts">
+  <div class="section-header">
+    <div>
+      <div class="section-title" id="productsTitle">All Products</div>
+      <div class="section-sub" id="productsCount"></div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <select id="sortSelect" onchange="sortProducts()" style="border:2px solid var(--mid-gray);border-radius:8px;padding:8px 12px;font-family:var(--font-body);font-size:13px;font-weight:600;outline:none;cursor:pointer;">
+        <option value="default">Sort: Default</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="discount">Biggest Discount</option>
+      </select>
+    </div>
+  </div>
+  <div class="product-grid" id="allProductsGrid"></div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="section">
+  <div class="section-header">
+    <div><div class="section-title">Customers Love Subham</div><div class="section-sub">Join thousands of happy customers</div></div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">Ordered cement and waterproofing materials at 9am — delivery was at my site by 10am. Incredible service! Prices are better than the local dealer too.</div>
+      <div class="test-author"><div class="test-avatar">P</div><div><div class="test-name">Pavan Sharma</div><div class="test-role">Civil Contractor, Lucknow</div></div></div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">Bought Hettich hinges and Ebco channels. Got genuine products at almost 40% less than market price. Will always order from Subham.</div>
+      <div class="test-author"><div class="test-avatar">V</div><div><div class="test-name">Vishal Gupta</div><div class="test-role">Interior Designer</div></div></div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">The Polycab wires arrived within an hour. Great packaging and quality verified on spot. This is the future of construction material buying!</div>
+      <div class="test-author"><div class="test-avatar">G</div><div><div class="test-name">Gopal Mishra</div><div class="test-role">Electrician, Gorakhpur</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- APP DOWNLOAD BANNER -->
+<div class="section">
+  <div class="app-banner">
+    <div class="app-banner-text">
+      <h2>GET THE SUBHAM APP</h2>
+      <p>Order building materials in minutes. Track delivery live. Exclusive app-only deals.</p>
+      <div class="app-btns">
+        <button class="app-btn">📱 Google Play</button>
+        <button class="app-btn">🍎 App Store</button>
+      </div>
+      <div class="app-rating">
+        <div class="app-rating-num">4.9</div>
+        <div>
+          <div class="app-rating-stars">★★★★★</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.7);font-weight:600;">10,000+ Reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="app-phone">📱</div>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="section">
+  <div class="newsletter">
+    <h3>GET FIRST PEEK AT NEW PRODUCTS & OFFERS</h3>
+    <p>Subscribe for exclusive deals, new arrivals, and construction tips.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Enter your email address…" id="newsletterEmail">
+      <button onclick="subscribeNewsletter()">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo-text" style="font-family:var(--font-display);font-size:36px;color:#fff;">SUBHAM</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase;margin-top:2px;">Building Materials</div>
+      <p>Subham™ is your one-stop destination for all construction and interior materials. Superfast 60-minute delivery across Lucknow, Gorakhpur & UP.</p>
+      <div class="social-row">
+        <div class="social-btn">📘</div>
+        <div class="social-btn">📸</div>
+        <div class="social-btn">▶️</div>
+        <div class="social-btn">🐦</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
+      <a href="#">Careers</a>
+      <a href="#">Knowledge Hub</a>
+      <a href="#">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4>Policy</h4>
+      <a href="#">Refund Policy</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Shipping Policy</a>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>Contact</h4>
+      <p><strong>Email:</strong> hello@subham.co</p>
+      <p><strong>WhatsApp:</strong> +91 98765 43210</p>
+      <p><strong>Address:</strong> Subham HQ, Hazratganj, Lucknow, Uttar Pradesh 226001</p>
+      <p style="margin-top:12px;"><strong>Hours:</strong> 8:00 AM – 8:00 PM, All Days</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Subham Retail Pvt. Ltd. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="#">Refund Policy</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+      <a href="#">Shipping</a>
+    </div>
+  </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCartOutside(event)">
+  <div class="cart-panel">
+    <div class="cart-header">
+      <h3>🛒 YOUR CART</h3>
+      <button class="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="empty-cart"><div class="ec-icon">🛒</div><p>Your cart is empty</p></div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+      <div class="cart-total"><span>Total</span><span id="cartTotal">₹0</span></div>
+      <button class="checkout-btn" onclick="checkout()">Proceed to Checkout →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PINCODE MODAL -->
+<div class="modal-overlay" id="pinModal" onclick="closePinOutside(event)">
+  <div class="modal-box" style="position:relative;">
+    <button class="modal-close-btn" onclick="closePinModal()">✕</button>
+    <h3>📍 Check Delivery</h3>
+    <p>Enter your pincode to check delivery time and availability</p>
+    <div class="pin-input-row">
+      <input type="text" id="pinInput" placeholder="e.g. 226001" maxlength="6" oninput="this.value=this.value.replace(/\D/g,'')">
+      <button onclick="checkPin()">Apply</button>
+    </div>
+    <div id="pinResult"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Added to cart!</div>
+
+<script>
+// ══════════════════════════════════════════
+// PRODUCT DATA
+// ══════════════════════════════════════════
+const products = [
+  // DEALS OF THE WEEK
+  { id:1, name:'Birla White WallCare Putty, 30 Kg Bag', brand:'Birla White', price:615, oldPrice:680, discount:10, icon:'🪣', cat:'painting', tag:'deal' },
+  { id:2, name:'Birla White TX1 Tile Adhesive, White, 20 kg Bag', brand:'Birla White', price:285, oldPrice:570, discount:50, icon:'🟫', cat:'tiling', tag:'deal' },
+  { id:3, name:'Birla White TX2 Tile Adhesive, White, 20 Kg Bag', brand:'Birla White', price:480, oldPrice:550, discount:13, icon:'🟨', cat:'tiling', tag:'deal' },
+  { id:4, name:'Asian Paints TruCare Economy Putty Mixer M02, 800W', brand:'Asian Paints', price:2499, oldPrice:4000, discount:38, icon:'🎨', cat:'painting', tag:'deal' },
+  { id:5, name:'Bathla Arize 5-Step Foldable Aluminium Ladder, 3.6 ft', brand:'Bathla', price:3450, oldPrice:7999, discount:57, icon:'🪜', cat:'tools', tag:'deal' },
+
+  // HARDWARE
+  { id:6, name:'Ebco Soft Close Hinges, 1 Set (2 Nos)', brand:'Ebco', price:129, oldPrice:205, discount:37, icon:'🔩', cat:'hinges', tag:'hardware' },
+  { id:7, name:'Ebco Pro Motion Tandem Box, S3 Series, 50Kg, Anthracite', brand:'Ebco', price:2259, oldPrice:3251, discount:31, icon:'📦', cat:'kitchen', tag:'hardware' },
+  { id:8, name:'Ebco Sleek Telescopic Drawer Channel, 35 kg Capacity', brand:'Ebco', price:178, oldPrice:289, discount:38, icon:'🔧', cat:'kitchen', tag:'hardware' },
+  { id:9, name:'Hettich InnoTech Tandem Box, Silver, 470mm, 30Kg', brand:'Hettich', price:3065, oldPrice:5904, discount:48, icon:'🗄', cat:'kitchen', tag:'hardware' },
+  { id:10, name:'Ebco Slip On Hinge EURO Regular Close Hinges, 1 Set', brand:'Ebco', price:61, oldPrice:98, discount:38, icon:'🔩', cat:'hinges', tag:'hardware' },
+  { id:11, name:'Hettich Quadro-V6 Drawer Runners, Full Extension, 30Kg', brand:'Hettich', price:1498, oldPrice:2952, discount:49, icon:'🔧', cat:'kitchen', tag:'hardware' },
+  { id:12, name:'Hettich Sensys 8657i Corner 165° Soft Close Hinges', brand:'Hettich', price:1145, oldPrice:1645, discount:30, icon:'🔩', cat:'hinges', tag:'hardware' },
+
+  // WIRES
+  { id:13, name:'Polycab FRLS-H Single Core Wire, 300m Coil', brand:'Polycab', price:5327, oldPrice:11285, discount:53, icon:'🔌', cat:'wires', tag:'wires' },
+  { id:14, name:'Polycab Maxima+ Green Wire HR FR-LSH LF, 90m', brand:'Polycab', price:1929, oldPrice:2980, discount:35, icon:'🟢', cat:'wires', tag:'wires' },
+  { id:15, name:'Finolex Flamegard FR-LSH Wire, 90m Coil', brand:'Finolex', price:1729, oldPrice:2285, discount:24, icon:'🔴', cat:'wires', tag:'wires' },
+  { id:16, name:'Finolex Speaker Cable, 100m Coil', brand:'Finolex', price:3416, oldPrice:4595, discount:26, icon:'🔊', cat:'wires', tag:'wires' },
+  { id:17, name:'Schneider Acti9 RCCB, 2 Pole 25A 30mA', brand:'Schneider', price:1639, oldPrice:5158, discount:68, icon:'⚡', cat:'switches', tag:'wires' },
+
+  // EXTRA PRODUCTS
+  { id:18, name:'UltraTech Cement, 50 Kg Bag', brand:'UltraTech', price:385, oldPrice:420, discount:8, icon:'🏗', cat:'cement', tag:'all' },
+  { id:19, name:'ACC Gold Cement, 50 Kg Bag', brand:'ACC', price:375, oldPrice:410, discount:9, icon:'🏗', cat:'cement', tag:'all' },
+  { id:20, name:'Asian Paints Apex Exterior Emulsion, 20 Ltr', brand:'Asian Paints', price:4800, oldPrice:5600, discount:14, icon:'🎨', cat:'painting', tag:'all' },
+  { id:21, name:'Dr. Fixit Newcoat Flex Waterproofing, 20 Kg', brand:'Dr. Fixit', price:3200, oldPrice:4200, discount:24, icon:'💧', cat:'waterproofing', tag:'all' },
+  { id:22, name:'Fevicol SH Synthetic Resin Adhesive, 5 Kg', brand:'Pidilite', price:880, oldPrice:1050, discount:16, icon:'🔵', cat:'fevicol', tag:'all' },
+  { id:23, name:'Greenply Gold MR Plywood, 19mm, 8x4 ft', brand:'Greenply', price:2800, oldPrice:3500, discount:20, icon:'🌲', cat:'plywood', tag:'all' },
+  { id:24, name:'Anchor Roma Modular Switch, 6A', brand:'Anchor', price:120, oldPrice:180, discount:33, icon:'🔲', cat:'switches', tag:'all' },
+  { id:25, name:'Havells Ceramic LED Bulb 9W B22, Pack of 4', brand:'Havells', price:340, oldPrice:480, discount:29, icon:'💡', cat:'lighting', tag:'all' },
+  { id:26, name:'Astral CPVC Pipe 1 Inch, 3m Length', brand:'Astral', price:480, oldPrice:620, discount:23, icon:'🚿', cat:'plumbing', tag:'all' },
+  { id:27, name:'Cera Wall Hung Water Closet with Soft Close Seat', brand:'Cera', price:8500, oldPrice:12000, discount:29, icon:'🛁', cat:'sanitary', tag:'all' },
+  { id:28, name:'Stanley 25mm Combination Plier, Bi-Material Handle', brand:'Stanley', price:480, oldPrice:650, discount:26, icon:'🔧', cat:'tools', tag:'all' },
+  { id:29, name:'Orient Kaze Supreme Ceiling Fan 1200mm, White', brand:'Orient', price:2200, oldPrice:2800, discount:21, icon:'🌀', cat:'appliances', tag:'all' },
+  { id:30, name:'Anchor 25A ISI Piano Switch, White, 5 Pack', brand:'Anchor', price:350, oldPrice:500, discount:30, icon:'🔲', cat:'switches', tag:'all' },
+  { id:31, name:'Hafele Stainless Steel Door Handle, Set of 2', brand:'Hafele', price:1200, oldPrice:1800, discount:33, icon:'🔐', cat:'locks', tag:'all' },
+  { id:32, name:'Hager 40A MCB Single Pole Type B Curve', brand:'Hager', price:320, oldPrice:480, discount:33, icon:'⚡', cat:'conduits', tag:'all' },
+];
+
+// ══════════════════════════════════════════
+// CART
+// ══════════════════════════════════════════
+let cart = {};
+
+function addToCart(id) {
+  if (cart[id]) cart[id].qty++;
+  else { const p = products.find(x=>x.id===id); cart[id] = {...p, qty:1}; }
+  updateCartUI();
+  showToast('✅ Added to cart!');
+  renderQtyBtn(id);
+}
+function removeFromCart(id) {
+  if (!cart[id]) return;
+  if (cart[id].qty > 1) cart[id].qty--;
+  else delete cart[id];
+  updateCartUI();
+  renderQtyBtn(id);
+}
+
+function updateCartUI() {
+  const total = Object.values(cart).reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cartCount').textContent = total;
+  const cartItemsEl = document.getElementById('cartItems');
+  const cartFooter = document.getElementById('cartFooter');
+  if (total === 0) {
+    cartItemsEl.innerHTML = '<div class="empty-cart"><div class="ec-icon">🛒</div><p>Your cart is empty</p></div>';
+    cartFooter.style.display='none';
+    return;
+  }
+  cartFooter.style.display='block';
+  let html=''; let grandTotal=0;
+  Object.values(cart).forEach(item=>{
+    const sub = item.price*item.qty; grandTotal+=sub;
+    html+=`<div class="cart-item">
+      <div class="cart-item-img">${item.icon}</div>
+      <div style="flex:1">
+        <div class="cart-item-name">${item.name}</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:6px;">
+          <button onclick="removeFromCart(${item.id})" style="background:var(--red);color:#fff;border:none;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">−</button>
+          <span style="font-weight:800;font-size:14px;">${item.qty}</span>
+          <button onclick="addToCart(${item.id})" style="background:var(--red);color:#fff;border:none;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">+</button>
+        </div>
+      </div>
+      <div class="cart-item-price">₹${sub.toLocaleString('en-IN')}</div>
+    </div>`;
+  });
+  cartItemsEl.innerHTML = html;
+  document.getElementById('cartTotal').textContent = '₹'+grandTotal.toLocaleString('en-IN');
+}
+
+function renderQtyBtn(id) {
+  const btn = document.querySelector(`[data-add="${id}"]`);
+  const ctrl = document.querySelector(`[data-qty="${id}"]`);
+  if (!btn || !ctrl) return;
+  const qty = cart[id]?.qty || 0;
+  if (qty>0) {
+    btn.style.display='none'; ctrl.classList.add('show');
+    ctrl.querySelector('.qty-num').textContent = qty;
+  } else {
+    btn.style.display='flex'; ctrl.classList.remove('show');
+  }
+}
+
+function openCart() { document.getElementById('cartOverlay').classList.add('open'); }
+function closeCart() { document.getElementById('cartOverlay').classList.remove('open'); }
+function closeCartOutside(e) { if(e.target===document.getElementById('cartOverlay')) closeCart(); }
+function checkout() { showToast('🚀 Proceeding to checkout…'); closeCart(); }
+
+// ══════════════════════════════════════════
+// PRODUCT CARD RENDERER
+// ══════════════════════════════════════════
+function productCard(p) {
+  return `<div class="product-card">
+    <div class="product-img">${p.icon}<div class="badge">${p.discount}% OFF</div></div>
+    <div class="product-body">
+      <div class="product-brand">${p.brand}</div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-price">
+        <span class="price-current">₹${p.price.toLocaleString('en-IN')}</span>
+        <span class="price-old">₹${p.oldPrice.toLocaleString('en-IN')}</span>
+      </div>
+      <button class="add-to-cart" data-add="${p.id}" onclick="addToCart(${p.id})">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Add to Cart
+      </button>
+      <div class="qty-controls" data-qty="${p.id}">
+        <button class="qty-btn" onclick="removeFromCart(${p.id})">−</button>
+        <span class="qty-num">1</span>
+        <button class="qty-btn" onclick="addToCart(${p.id})">+</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ══════════════════════════════════════════
+// RENDER SECTIONS
+// ══════════════════════════════════════════
+function renderDeals() {
+  const deals = products.filter(p=>p.tag==='deal');
+  document.getElementById('dealsGrid').innerHTML = deals.map(productCard).join('');
+}
+function renderHardware() {
+  const hw = products.filter(p=>p.tag==='hardware');
+  document.getElementById('hardwareGrid').innerHTML = hw.map(productCard).join('');
+}
+function renderWires() {
+  const ws = products.filter(p=>p.tag==='wires');
+  document.getElementById('wiresGrid').innerHTML = ws.map(productCard).join('');
+}
+
+let currentFilter = 'all';
+let currentSort = 'default';
+
+function renderAllProducts(filter='all') {
+  currentFilter = filter;
+  let list = [...products];
+  if (filter !== 'all') list = list.filter(p=>p.cat===filter);
+  list = sortList(list);
+  document.getElementById('productsCount').textContent = list.length + ' products';
+  const title = filter==='all' ? 'All Products' : filter.charAt(0).toUpperCase()+filter.slice(1);
+  document.getElementById('productsTitle').textContent = title;
+  document.getElementById('allProductsGrid').innerHTML = list.map(productCard).join('');
+}
+
+function sortList(list) {
+  const s = document.getElementById('sortSelect').value;
+  if (s==='price-asc') return list.sort((a,b)=>a.price-b.price);
+  if (s==='price-desc') return list.sort((a,b)=>b.price-a.price);
+  if (s==='discount') return list.sort((a,b)=>b.discount-a.discount);
+  return list;
+}
+function sortProducts() { renderAllProducts(currentFilter); }
+
+function filterCategory(cat) {
+  scrollToSection('allProducts');
+  renderAllProducts(cat);
+}
+
+function init() {
+  renderDeals(); renderHardware(); renderWires(); renderAllProducts();
+}
+
+// ══════════════════════════════════════════
+// SEARCH
+// ══════════════════════════════════════════
+function handleSearch(q) {
+  if (!q.trim()) { renderAllProducts(currentFilter); return; }
+  const low = q.toLowerCase();
+  const results = products.filter(p=>p.name.toLowerCase().includes(low)||p.brand.toLowerCase().includes(low)||p.cat.toLowerCase().includes(low));
+  document.getElementById('productsTitle').textContent = `Search: "${q}"`;
+  document.getElementById('productsCount').textContent = results.length + ' results';
+  document.getElementById('allProductsGrid').innerHTML = results.length ? results.map(productCard).join('') : '<div style="padding:40px;text-align:center;color:var(--text-light);font-size:16px;font-weight:700;">No products found. Try a different search.</div>';
+  scrollToSection('allProducts');
+}
+function triggerSearch() { handleSearch(document.getElementById('searchInput').value); }
+
+// ══════════════════════════════════════════
+// PINCODE
+// ══════════════════════════════════════════
+const serviceablePins = ['226001','226002','226003','226004','226005','226010','226012','226015','226016','226017','226018','226019','226020','226021','226022','226023','273001','273002','273003','273004','273005','273006','273007','273008','273009','273010'];
+
+function openPinModal() { document.getElementById('pinModal').classList.add('open'); }
+function closePinModal() { document.getElementById('pinModal').classList.remove('open'); document.getElementById('pinResult').innerHTML=''; }
+function closePinOutside(e) { if(e.target===document.getElementById('pinModal')) closePinModal(); }
+
+function checkPin() {
+  const pin = document.getElementById('pinInput').value.trim();
+  const resultEl = document.getElementById('pinResult');
+  if (pin.length !== 6) { resultEl.innerHTML='<div class="pin-result err">⚠️ Please enter a valid 6-digit pincode.</div>'; return; }
+  if (serviceablePins.includes(pin)) {
+    resultEl.innerHTML='<div class="pin-result ok">✅ Great! We deliver to <strong>'+pin+'</strong> in 60 minutes!</div>';
+    document.getElementById('pinDisplay').textContent = pin;
+    setTimeout(closePinModal, 1800);
+  } else {
+    resultEl.innerHTML='<div class="pin-result err">😔 Sorry, we don\'t deliver to '+pin+' yet. We\'re expanding soon!</div>';
+  }
+}
+
+// ══════════════════════════════════════════
+// TIMER
+// ══════════════════════════════════════════
+let secs = 2*3600 + 47*60 + 30;
+function tickTimer() {
+  if (secs<=0) secs=24*3600;
+  secs--;
+  const h=Math.floor(secs/3600), m=Math.floor((secs%3600)/60), s=secs%60;
+  const pad=n=>String(n).padStart(2,'0');
+  document.getElementById('th').textContent=pad(h);
+  document.getElementById('tm').textContent=pad(m);
+  document.getElementById('ts').textContent=pad(s);
+}
+setInterval(tickTimer,1000);
+
+// ══════════════════════════════════════════
+// TOAST
+// ══════════════════════════════════════════
+let toastTimer;
+function showToast(msg) {
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+// ══════════════════════════════════════════
+// NEWSLETTER
+// ══════════════════════════════════════════
+function subscribeNewsletter() {
+  const em = document.getElementById('newsletterEmail').value.trim();
+  if (!em || !em.includes('@')) { showToast('⚠️ Please enter a valid email'); return; }
+  showToast('🎉 Subscribed! Welcome to Subham!');
+  document.getElementById('newsletterEmail').value='';
+}
+
+// ══════════════════════════════════════════
+// SCROLL HELPER
+// ══════════════════════════════════════════
+function scrollToSection(id) {
+  const el=document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// INIT
+init();
+</script>
+</body>
+</html>
