@@ -1,1190 +1,1176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cement, Ply, Hardware & Electrical | 60 Min Delivery | Subham</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Biltizo - Construction Delivery Lucknow</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --red: #CC1111;
-    --red-dark: #9B0A0A;
-    --red-light: #E52222;
-    --red-ultra: #FF2222;
-    --white: #ffffff;
-    --off-white: #FFF8F8;
-    --light-gray: #F5F0F0;
-    --mid-gray: #E0D8D8;
-    --text-dark: #1A0505;
-    --text-mid: #5A3A3A;
-    --text-light: #9A7070;
-    --accent: #FFD700;
-    --green: #1A9E3F;
-    --font-display: 'Bebas Neue', sans-serif;
-    --font-body: 'Nunito', sans-serif;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: var(--font-body); background: var(--off-white); color: var(--text-dark); }
-  a { text-decoration:none; color:inherit; }
-
-  /* ═══ MARQUEE TOP BAR ═══ */
-  .top-bar {
-    background: var(--red);
-    color: #fff;
-    font-size: 12.5px;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 7px 0;
-    position: relative;
-  }
-  .top-bar-inner {
-    display: inline-block;
-    animation: marquee 28s linear infinite;
-    padding-left: 100%;
-  }
-  .top-bar-inner span { margin: 0 40px; }
-  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-100%)} }
-
-  /* ═══ HEADER ═══ */
-  header {
-    background: #fff;
-    border-bottom: 2px solid var(--red);
-    position: sticky; top:0; z-index:999;
-    box-shadow: 0 2px 16px rgba(204,17,17,0.10);
-  }
-  .header-inner {
-    max-width: 1280px; margin:0 auto;
-    display: flex; align-items: center; gap: 18px;
-    padding: 12px 20px;
-  }
-  .logo-wrap { display:flex; align-items:center; gap:10px; flex-shrink:0; }
-  .logo-icon {
-    width:42px; height:42px; background:var(--red);
-    border-radius:8px; display:flex; align-items:center; justify-content:center;
-  }
-  .logo-icon svg { width:24px; height:24px; fill:#FFD700; }
-  .logo-text { font-family:var(--font-display); font-size:28px; color:var(--red); letter-spacing:1px; line-height:1; }
-  .logo-sub { font-size:9px; font-weight:700; color:var(--text-light); letter-spacing:2px; text-transform:uppercase; }
-
-  /* ── Search Bar ── */
-  .search-bar {
-    flex:1; display:flex; align-items:center;
-    border:2px solid var(--red); border-radius:8px; overflow:hidden;
-    max-width:520px;
-  }
-  .search-bar input {
-    flex:1; border:none; outline:none; padding:9px 14px;
-    font-family:var(--font-body); font-size:14px; background:#fff; color:var(--text-dark);
-  }
-  .search-bar button {
-    background:var(--red); border:none; padding:9px 16px; cursor:pointer;
-    display:flex; align-items:center; gap:6px; color:#fff; font-weight:700; font-size:13px;
-  }
-  .search-bar button svg { width:16px; height:16px; fill:#fff; }
-
-  /* ── Pincode ── */
-  .pin-btn {
-    display:flex; align-items:center; gap:6px; background:#FFF0F0;
-    border:1.5px solid var(--red); border-radius:8px; padding:8px 12px;
-    cursor:pointer; font-size:13px; font-weight:700; color:var(--red); white-space:nowrap;
-    transition:background .2s;
-  }
-  .pin-btn:hover { background:var(--red); color:#fff; }
-  .pin-btn svg { width:14px; height:14px; }
-
-  .header-icons { display:flex; gap:14px; align-items:center; }
-  .icon-btn {
-    display:flex; flex-direction:column; align-items:center; gap:2px;
-    cursor:pointer; color:var(--text-mid); font-size:10px; font-weight:700;
-    position:relative; background:none; border:none; padding:4px;
-    transition:color .2s;
-  }
-  .icon-btn:hover { color:var(--red); }
-  .icon-btn svg { width:22px; height:22px; }
-  .cart-count {
-    position:absolute; top:-4px; right:-4px; background:var(--red);
-    color:#fff; font-size:9px; font-weight:900; width:17px; height:17px;
-    border-radius:50%; display:flex; align-items:center; justify-content:center;
-  }
-
-  /* ═══ NAV ═══ */
-  nav { background:var(--red); }
-  .nav-inner {
-    max-width:1280px; margin:0 auto;
-    display:flex; align-items:center; padding:0 20px;
-  }
-  .nav-item {
-    position:relative; padding:12px 16px;
-    color:#fff; font-size:13.5px; font-weight:700; cursor:pointer;
-    display:flex; align-items:center; gap:5px;
-    transition:background .2s;
-  }
-  .nav-item:hover { background:rgba(0,0,0,0.18); }
-  .nav-item.active { background:rgba(0,0,0,0.25); }
-  .nav-item svg { width:12px; height:12px; fill:#fff; opacity:.8; }
-  .dropdown {
-    display:none; position:absolute; top:100%; left:0;
-    background:#fff; min-width:240px; border-radius:0 0 10px 10px;
-    box-shadow:0 8px 32px rgba(204,17,17,0.18); z-index:500;
-    border-top:3px solid var(--red);
-  }
-  .nav-item:hover .dropdown { display:block; }
-  .dropdown a {
-    display:block; padding:11px 18px; font-size:13px; font-weight:600;
-    color:var(--text-dark); border-bottom:1px solid var(--light-gray);
-    transition:background .15s, color .15s;
-  }
-  .dropdown a:last-child { border-bottom:none; }
-  .dropdown a:hover { background:var(--red); color:#fff; padding-left:24px; }
-
-  /* ═══ HERO BANNER ═══ */
-  .hero {
-    background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 40%, #FF4444 100%);
-    min-height:380px; display:flex; align-items:center; justify-content:center;
-    position:relative; overflow:hidden;
-  }
-  .hero-bg-pattern {
-    position:absolute; inset:0; opacity:.08;
-    background-image: repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%);
-    background-size:20px 20px;
-  }
-  .hero-content { text-align:center; z-index:2; padding:40px 20px; }
-  .hero-badge {
-    display:inline-block; background:var(--accent); color:#1A0505;
-    font-size:11px; font-weight:900; letter-spacing:2px; text-transform:uppercase;
-    padding:5px 14px; border-radius:20px; margin-bottom:16px;
-  }
-  .hero h1 { font-family:var(--font-display); font-size:clamp(36px,7vw,80px); color:#fff; line-height:.95; }
-  .hero h1 span { color:var(--accent); }
-  .hero p { color:rgba(255,255,255,0.85); font-size:16px; font-weight:600; margin:14px 0 24px; }
-  .hero-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
-  .btn-primary {
-    background:#fff; color:var(--red); padding:12px 28px; border-radius:8px;
-    font-weight:800; font-size:14px; border:none; cursor:pointer;
-    transition:transform .2s, box-shadow .2s;
-    box-shadow:0 4px 18px rgba(0,0,0,0.15);
-  }
-  .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.2); }
-  .btn-secondary {
-    background:transparent; color:#fff; padding:12px 28px; border-radius:8px;
-    font-weight:800; font-size:14px; border:2px solid rgba(255,255,255,0.6); cursor:pointer;
-    transition:background .2s;
-  }
-  .btn-secondary:hover { background:rgba(255,255,255,0.15); }
-  .hero-stats {
-    position:absolute; bottom:0; left:0; right:0;
-    background:rgba(0,0,0,0.25); backdrop-filter:blur(6px);
-    display:flex; justify-content:center; flex-wrap:wrap;
-  }
-  .stat-item { padding:10px 28px; text-align:center; border-right:1px solid rgba(255,255,255,0.15); }
-  .stat-item:last-child { border-right:none; }
-  .stat-num { font-family:var(--font-display); font-size:26px; color:var(--accent); }
-  .stat-lbl { font-size:11px; color:rgba(255,255,255,0.8); font-weight:600; letter-spacing:.5px; }
-
-  /* ═══ SECTIONS ═══ */
-  .section { max-width:1280px; margin:0 auto; padding:40px 20px; }
-  .section-header {
-    display:flex; align-items:flex-end; justify-content:space-between;
-    margin-bottom:24px;
-  }
-  .section-title { font-family:var(--font-display); font-size:32px; color:var(--text-dark); line-height:1; }
-  .section-sub { font-size:13px; color:var(--text-light); font-weight:600; margin-top:4px; }
-  .view-all {
-    background:var(--red); color:#fff; padding:8px 18px; border-radius:6px;
-    font-size:12px; font-weight:800; cursor:pointer; border:none; letter-spacing:.5px;
-    text-transform:uppercase; transition:background .2s;
-  }
-  .view-all:hover { background:var(--red-dark); }
-
-  /* ─── Category Grid ─── */
-  .cat-grid {
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
-    gap:14px;
-  }
-  .cat-card {
-    background:#fff; border-radius:12px; padding:18px 10px;
-    text-align:center; cursor:pointer; border:1.5px solid var(--mid-gray);
-    transition:border-color .2s, transform .2s, box-shadow .2s;
-  }
-  .cat-card:hover { border-color:var(--red); transform:translateY(-3px); box-shadow:0 6px 22px rgba(204,17,17,0.12); }
-  .cat-icon { font-size:34px; margin-bottom:10px; }
-  .cat-name { font-size:12px; font-weight:700; color:var(--text-dark); line-height:1.3; }
-
-  /* ─── Product Cards ─── */
-  .product-carousel { position:relative; }
-  .product-grid {
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px,1fr));
-    gap:16px;
-  }
-  .product-card {
-    background:#fff; border-radius:14px; border:1.5px solid var(--mid-gray);
-    overflow:hidden; position:relative; transition:box-shadow .2s, transform .2s;
-    cursor:pointer;
-  }
-  .product-card:hover { box-shadow:0 8px 28px rgba(204,17,17,0.14); transform:translateY(-3px); border-color:var(--red); }
-  .product-img {
-    width:100%; height:180px; display:flex; align-items:center; justify-content:center;
-    background:var(--light-gray); font-size:56px; position:relative; overflow:hidden;
-  }
-  .product-img img { width:100%; height:100%; object-fit:cover; }
-  .badge {
-    position:absolute; top:10px; left:10px; background:var(--red);
-    color:#fff; font-size:10px; font-weight:900; padding:3px 8px; border-radius:4px;
-    letter-spacing:.5px;
-  }
-  .product-body { padding:12px 14px 14px; }
-  .product-brand { font-size:10px; font-weight:700; color:var(--red); text-transform:uppercase; letter-spacing:.8px; }
-  .product-name { font-size:13px; font-weight:700; color:var(--text-dark); line-height:1.35; margin:4px 0 8px; }
-  .product-price { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-  .price-current { font-size:17px; font-weight:800; color:var(--red); }
-  .price-old { font-size:12px; color:var(--text-light); text-decoration:line-through; }
-  .add-to-cart {
-    width:100%; margin-top:10px; background:var(--red); color:#fff; border:none;
-    border-radius:8px; padding:9px; font-size:13px; font-weight:800;
-    cursor:pointer; transition:background .2s;
-    display:flex; align-items:center; justify-content:center; gap:6px;
-  }
-  .add-to-cart:hover { background:var(--red-dark); }
-  .qty-controls {
-    display:none; align-items:center; justify-content:space-between;
-    margin-top:10px; background:var(--red); border-radius:8px; overflow:hidden;
-  }
-  .qty-controls.show { display:flex; }
-  .qty-btn {
-    background:none; border:none; color:#fff; font-size:20px; font-weight:700;
-    padding:5px 14px; cursor:pointer;
-  }
-  .qty-num { color:#fff; font-weight:800; font-size:15px; }
-
-  /* ─── Deal / Flash Section ─── */
-  .sale-section { background:#fff; border-radius:16px; overflow:hidden; margin:0 0 20px; }
-  .sale-section-header {
-    background:var(--red); color:#fff; padding:18px 24px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .sale-title { font-family:var(--font-display); font-size:28px; color:#fff; }
-  .sale-sub { font-size:12px; color:rgba(255,255,255,0.8); font-weight:600; margin-top:2px; }
-  .sale-timer { display:flex; gap:8px; align-items:center; }
-  .timer-box { background:rgba(255,255,255,0.2); padding:6px 10px; border-radius:6px; text-align:center; }
-  .timer-num { font-family:var(--font-display); font-size:24px; color:var(--accent); display:block; }
-  .timer-lbl { font-size:9px; color:rgba(255,255,255,0.7); font-weight:700; }
-  .timer-sep { color:var(--accent); font-size:20px; font-weight:900; }
-  .sale-products { padding:20px; }
-
-  /* ─── Brands Ticker ─── */
-  .brands-bar { background:#fff; padding:20px 0; border-top:2px solid var(--light-gray); border-bottom:2px solid var(--light-gray); overflow:hidden; }
-  .brands-ticker { display:flex; gap:50px; animation:marquee 20s linear infinite; white-space:nowrap; }
-  .brand-item { font-size:16px; font-weight:800; color:var(--text-light); letter-spacing:1px; text-transform:uppercase; flex-shrink:0; }
-  .brand-item span { color:var(--red); }
-
-  /* ─── Promo Banners ─── */
-  .promo-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:20px 0; }
-  .promo-card {
-    border-radius:14px; padding:28px 24px; display:flex; flex-direction:column;
-    justify-content:space-between; min-height:160px; position:relative; overflow:hidden;
-  }
-  .promo-card.red { background:linear-gradient(135deg, var(--red-dark), var(--red-light)); }
-  .promo-card.dark { background:linear-gradient(135deg, #1A0505, #3D1010); }
-  .promo-card h3 { font-family:var(--font-display); font-size:26px; color:#fff; }
-  .promo-card p { color:rgba(255,255,255,0.75); font-size:13px; font-weight:600; margin-top:6px; }
-  .promo-card .promo-emoji { position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:60px; opacity:.4; }
-  .promo-btn { display:inline-block; background:#fff; color:var(--red); padding:8px 18px; border-radius:6px; font-size:12px; font-weight:800; margin-top:14px; width:max-content; }
-
-  /* ─── Trust Badges ─── */
-  .trust-row {
-    display:flex; gap:0; background:#fff;
-    border-radius:14px; overflow:hidden; border:1.5px solid var(--mid-gray);
-    margin:30px 0;
-  }
-  .trust-item {
-    flex:1; padding:20px 14px; text-align:center;
-    border-right:1px solid var(--mid-gray);
-  }
-  .trust-item:last-child { border-right:none; }
-  .trust-item .ti { font-size:28px; margin-bottom:8px; }
-  .trust-item h4 { font-size:13px; font-weight:800; color:var(--text-dark); }
-  .trust-item p { font-size:11px; color:var(--text-light); font-weight:600; margin-top:3px; }
-
-  /* ─── Testimonials ─── */
-  .testimonials-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:18px; }
-  .test-card {
-    background:#fff; border-radius:14px; padding:20px; border:1.5px solid var(--mid-gray);
-    position:relative;
-  }
-  .test-card::before { content:'"'; font-size:60px; color:var(--red); opacity:.15; position:absolute; top:10px; left:16px; font-family:serif; line-height:1; }
-  .test-stars { color:var(--accent); font-size:14px; margin-bottom:10px; }
-  .test-text { font-size:13.5px; color:var(--text-mid); font-weight:600; line-height:1.6; }
-  .test-author { display:flex; align-items:center; gap:10px; margin-top:14px; }
-  .test-avatar { width:38px; height:38px; border-radius:50%; background:var(--red); color:#fff; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:800; }
-  .test-name { font-weight:800; font-size:13px; color:var(--text-dark); }
-  .test-role { font-size:11px; color:var(--text-light); }
-
-  /* ─── App Download Banner ─── */
-  .app-banner {
-    background:linear-gradient(135deg, var(--red-dark) 0%, var(--red-light) 100%);
-    border-radius:16px; padding:40px; display:flex; align-items:center;
-    gap:40px; justify-content:space-between; margin:30px 0; position:relative; overflow:hidden;
-  }
-  .app-banner::before {
-    content:''; position:absolute; right:-40px; top:-40px;
-    width:200px; height:200px; background:rgba(255,255,255,0.06); border-radius:50%;
-  }
-  .app-banner-text h2 { font-family:var(--font-display); font-size:38px; color:#fff; }
-  .app-banner-text p { color:rgba(255,255,255,0.8); font-size:14px; font-weight:600; margin:8px 0 20px; }
-  .app-btns { display:flex; gap:12px; flex-wrap:wrap; }
-  .app-btn {
-    background:rgba(255,255,255,0.15); border:1.5px solid rgba(255,255,255,0.4);
-    color:#fff; padding:10px 20px; border-radius:10px; font-size:13px; font-weight:700;
-    cursor:pointer; display:flex; align-items:center; gap:8px; transition:background .2s;
-  }
-  .app-btn:hover { background:rgba(255,255,255,0.25); }
-  .app-rating { display:flex; gap:8px; margin-top:10px; align-items:center; }
-  .app-rating-num { font-size:28px; font-weight:900; color:#fff; }
-  .app-rating-stars { color:var(--accent); font-size:16px; }
-  .app-phone { font-size:80px; flex-shrink:0; }
-
-  /* ─── Newsletter ─── */
-  .newsletter {
-    background:var(--red); border-radius:14px; padding:32px; text-align:center; margin:20px 0;
-  }
-  .newsletter h3 { font-family:var(--font-display); font-size:28px; color:#fff; margin-bottom:6px; }
-  .newsletter p { color:rgba(255,255,255,0.8); font-size:13px; font-weight:600; margin-bottom:20px; }
-  .newsletter-form { display:flex; gap:10px; max-width:440px; margin:0 auto; }
-  .newsletter-form input {
-    flex:1; border:none; border-radius:8px; padding:11px 16px;
-    font-family:var(--font-body); font-size:14px; outline:none;
-  }
-  .newsletter-form button {
-    background:#fff; color:var(--red); border:none; border-radius:8px; padding:11px 20px;
-    font-weight:800; font-size:13px; cursor:pointer; white-space:nowrap;
-  }
-
-  /* ═══ FOOTER ═══ */
-  footer { background:var(--text-dark); color:rgba(255,255,255,0.8); margin-top:40px; }
-  .footer-top {
-    max-width:1280px; margin:0 auto;
-    display:grid; grid-template-columns:2fr 1fr 1fr 1.5fr; gap:40px;
-    padding:50px 20px 30px;
-  }
-  .footer-brand .logo-text { color:#fff; font-size:36px; }
-  .footer-brand p { font-size:13px; margin:14px 0 18px; color:rgba(255,255,255,0.6); line-height:1.7; }
-  .social-row { display:flex; gap:12px; }
-  .social-btn {
-    width:36px; height:36px; border-radius:8px; background:rgba(255,255,255,0.1);
-    display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px;
-    transition:background .2s;
-  }
-  .social-btn:hover { background:var(--red); }
-  .footer-col h4 { color:#fff; font-size:13px; font-weight:800; letter-spacing:1px; text-transform:uppercase; margin-bottom:14px; }
-  .footer-col a { display:block; font-size:13px; color:rgba(255,255,255,0.6); margin-bottom:9px; transition:color .2s; }
-  .footer-col a:hover { color:var(--red); }
-  .footer-contact p { font-size:13px; color:rgba(255,255,255,0.6); margin-bottom:8px; line-height:1.6; }
-  .footer-contact p strong { color:#fff; }
-  .footer-bottom {
-    border-top:1px solid rgba(255,255,255,0.1);
-    padding:16px 20px; max-width:1280px; margin:0 auto;
-    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
-    font-size:12px; color:rgba(255,255,255,0.4);
-  }
-  .footer-links { display:flex; gap:18px; flex-wrap:wrap; }
-  .footer-links a { color:rgba(255,255,255,0.4); }
-  .footer-links a:hover { color:var(--red); }
-
-  /* ═══ CART SIDEBAR ═══ */
-  .cart-overlay {
-    position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1100;
-    display:none; align-items:stretch; justify-content:flex-end;
-  }
-  .cart-overlay.open { display:flex; }
-  .cart-panel {
-    background:#fff; width:100%; max-width:400px; display:flex; flex-direction:column;
-    animation:slideIn .3s ease;
-  }
-  @keyframes slideIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
-  .cart-header {
-    background:var(--red); color:#fff; padding:18px 20px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .cart-header h3 { font-family:var(--font-display); font-size:24px; }
-  .cart-close { background:none; border:none; color:#fff; font-size:24px; cursor:pointer; }
-  .cart-items { flex:1; overflow-y:auto; padding:16px; }
-  .cart-item {
-    display:flex; gap:12px; padding:14px 0; border-bottom:1px solid var(--light-gray);
-    align-items:center;
-  }
-  .cart-item-img { font-size:32px; width:56px; height:56px; background:var(--light-gray); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-  .cart-item-name { font-size:13px; font-weight:700; flex:1; }
-  .cart-item-price { font-size:14px; font-weight:800; color:var(--red); }
-  .cart-footer { padding:16px 20px; border-top:2px solid var(--light-gray); }
-  .cart-total { display:flex; justify-content:space-between; font-size:16px; font-weight:800; margin-bottom:14px; }
-  .checkout-btn {
-    width:100%; background:var(--red); color:#fff; border:none; border-radius:10px;
-    padding:14px; font-size:15px; font-weight:800; cursor:pointer;
-    transition:background .2s;
-  }
-  .checkout-btn:hover { background:var(--red-dark); }
-  .empty-cart { text-align:center; padding:50px 20px; color:var(--text-light); }
-  .empty-cart .ec-icon { font-size:50px; margin-bottom:14px; }
-
-  /* ═══ PINCODE MODAL ═══ */
-  .modal-overlay {
-    position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1200;
-    display:none; align-items:center; justify-content:center;
-  }
-  .modal-overlay.open { display:flex; }
-  .modal-box {
-    background:#fff; border-radius:16px; padding:30px; max-width:360px; width:100%;
-    animation:fadeUp .3s ease;
-  }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-  .modal-box h3 { font-family:var(--font-display); font-size:26px; color:var(--text-dark); margin-bottom:6px; }
-  .modal-box p { font-size:13px; color:var(--text-light); margin-bottom:18px; }
-  .pin-input-row { display:flex; gap:10px; }
-  .pin-input-row input {
-    flex:1; border:2px solid var(--mid-gray); border-radius:8px; padding:11px 14px;
-    font-size:15px; font-weight:700; outline:none; font-family:var(--font-body);
-    transition:border-color .2s;
-  }
-  .pin-input-row input:focus { border-color:var(--red); }
-  .pin-input-row button {
-    background:var(--red); color:#fff; border:none; border-radius:8px; padding:11px 18px;
-    font-size:13px; font-weight:800; cursor:pointer;
-  }
-  .pin-result { font-size:13px; font-weight:700; margin-top:12px; padding:10px 14px; border-radius:8px; }
-  .pin-result.ok { background:#E8F5E9; color:var(--green); }
-  .pin-result.err { background:#FFEBEE; color:var(--red); }
-  .modal-close-btn { position:absolute; top:14px; right:14px; background:none; border:none; font-size:20px; cursor:pointer; color:var(--text-light); }
-
-  /* ═══ TOAST ═══ */
-  .toast {
-    position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
-    background:var(--text-dark); color:#fff; padding:12px 24px; border-radius:30px;
-    font-size:13px; font-weight:700; z-index:2000;
-    opacity:0; transition:opacity .3s; pointer-events:none;
-    display:flex; align-items:center; gap:8px;
-  }
-  .toast.show { opacity:1; }
-
-  /* ═══ RESPONSIVE ═══ */
-  @media(max-width:900px) {
-    .promo-grid { grid-template-columns:1fr; }
-    .footer-top { grid-template-columns:1fr 1fr; }
-    .trust-row { flex-wrap:wrap; }
-    .trust-item { min-width:50%; }
-    .app-phone { display:none; }
-    .app-banner { flex-direction:column; }
-  }
-  @media(max-width:640px) {
-    .header-inner { flex-wrap:wrap; gap:10px; }
-    .search-bar { order:3; flex:0 0 100%; max-width:100%; }
-    nav .nav-item span { display:none; }
-    .nav-item { padding:12px 10px; font-size:11px; }
-    .product-grid { grid-template-columns:repeat(2,1fr); }
-    .footer-top { grid-template-columns:1fr; }
-    .footer-bottom { flex-direction:column; text-align:center; }
-    .trust-item { min-width:100%; }
-  }
-
-  /* ── Divider ── */
-  .section-divider { height:4px; background:linear-gradient(90deg,var(--red),var(--accent),var(--red)); margin:10px 0; border-radius:2px; }
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#f0fdf9;overflow-x:hidden}
+input,select,button,a{font-family:inherit}
+/* Prevent iOS zoom on input focus - must be 16px+ */
+@media(max-width:767px){
+  input,select,textarea{font-size:16px!important}
+  /* Active state instead of hover for touch */
+  .ch:active{transform:translateY(-2px);box-shadow:0 8px 24px rgba(13,149,136,.18)!important}
+  /* Better tap feedback */
+  button,a{-webkit-tap-highlight-color:rgba(13,149,136,.12)}
+}
+/* Remove tap highlight globally */
+*{-webkit-tap-highlight-color:transparent}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-thumb{background:#5eead4;border-radius:10px}
+.hs{scrollbar-width:none}.hs::-webkit-scrollbar{display:none}
+.ch{transition:transform .15s,box-shadow .15s}
+.ch:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(13,149,136,.18)!important}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.su{animation:slideUp .3s ease}
+.fi{animation:fadeIn .25s ease}
+.sync-dot{animation:pulse 1.2s ease infinite}
+.leaflet-popup-content-wrapper{border-radius:12px!important;box-shadow:0 4px 20px rgba(0,0,0,.15)!important}
+/* Safe area variables */
+:root{--sab:env(safe-area-inset-bottom,0px);--sat:env(safe-area-inset-top,0px)}
+/* Bottom nav safe area */
+.mob-nav{padding-bottom:env(safe-area-inset-bottom,0px)!important}
+/* Ensure full-width inputs on mobile */
+@media(max-width:767px){
+  .mob-full-grid{grid-template-columns:1fr!important}
+}
 </style>
 </head>
 <body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script type="text/babel">
+const {useState,useEffect,useRef,useCallback}=React;
 
-<!-- TOP BAR -->
-<div class="top-bar">
-  <div class="top-bar-inner">
-    <span>⚡ Open 8am to 8pm — All Days</span>
-    <span>🚀 FREE delivery for orders above ₹10,000</span>
-    <span>❤️ Serving Lucknow with Love</span>
-    <span>⏱ Superfast Delivery in 60 Minutes</span>
-    <span>📦 No Minimum Order Quantity</span>
-    <span>🌟 Rated 4.9 on Google</span>
-  </div>
-</div>
+/* ══════════════════════════════════════════════════════
+   CROSS-TAB SYNC ENGINE
+   Uses BroadcastChannel (real-time) + localStorage (persistence)
+   Any tab that changes orders/drivers/inventory will instantly
+   push the update to all other open tabs.
+══════════════════════════════════════════════════════ */
+function useSharedState(key, initial) {
+  const lsKey = "biltizo_" + key;
+  const bcRef = useRef(null);
+  const selfUpdate = useRef(false);
 
-<!-- HEADER -->
-<header>
-  <div class="header-inner">
-    <div class="logo-wrap">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-      </div>
-      <div>
-        <div class="logo-text">SUBHAM</div>
-        <div class="logo-sub">Building Materials</div>
-      </div>
-    </div>
+  const load = () => {
+    try {
+      const raw = localStorage.getItem(lsKey);
+      return raw ? JSON.parse(raw) : null;
+    } catch(e) { return null; }
+  };
 
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search cement, wires, switches, plywood…" oninput="handleSearch(this.value)">
-      <button onclick="triggerSearch()">
-        <svg viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
-        Search
-      </button>
-    </div>
+  const [state, setStateRaw] = useState(() => load() ?? initial);
 
-    <div class="pin-btn" onclick="openPinModal()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-      <span id="pinDisplay">Check Delivery</span>
-    </div>
+  useEffect(() => {
+    // BroadcastChannel: receive updates from other tabs
+    const bc = new BroadcastChannel("biltizo_sync_" + key);
+    bcRef.current = bc;
+    bc.onmessage = (e) => {
+      if (e.data && e.data.type === "sync") {
+        selfUpdate.current = true;
+        setStateRaw(e.data.value);
+        selfUpdate.current = false;
+      }
+    };
+    // Also listen to storage events (fallback for older browsers)
+    const onStorage = (e) => {
+      if (e.key === lsKey && e.newValue) {
+        try {
+          const v = JSON.parse(e.newValue);
+          selfUpdate.current = true;
+          setStateRaw(v);
+          selfUpdate.current = false;
+        } catch(err) {}
+      }
+    };
+    window.addEventListener("storage", onStorage);
+    return () => { bc.close(); window.removeEventListener("storage", onStorage); };
+  }, [key]);
 
-    <div class="header-icons">
-      <button class="icon-btn" onclick="openCart()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        Cart
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
-      <button class="icon-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        Account
-      </button>
-    </div>
-  </div>
-</header>
+  const setState = useCallback((updater) => {
+    setStateRaw(prev => {
+      const next = typeof updater === "function" ? updater(prev) : updater;
+      // Save to localStorage
+      try { localStorage.setItem(lsKey, JSON.stringify(next)); } catch(e) {}
+      // Broadcast to other tabs
+      if (bcRef.current) {
+        try { bcRef.current.postMessage({ type: "sync", value: next }); } catch(e) {}
+      }
+      return next;
+    });
+  }, [key]);
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <div class="nav-item active" onclick="scrollToSection('categories')">
-      🏠 <span>All Categories</span>
-    </div>
-    <div class="nav-item">
-      <span>Civil & Interiors</span>
-      <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-      <div class="dropdown">
-        <a href="#">🏗 Cement</a>
-        <a href="#">🟫 Tiling</a>
-        <a href="#">🌲 Plywood</a>
-        <a href="#">🔵 Fevicol</a>
-        <a href="#">💧 Waterproofing</a>
-        <a href="#">🎨 Painting</a>
-      </div>
-    </div>
-    <div class="nav-item">
-      <span>Furniture & Hardware</span>
-      <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-      <div class="dropdown">
-        <a href="#">🔩 Hinges, Channels & Handles</a>
-        <a href="#">🍳 Kitchen Systems & Accessories</a>
-        <a href="#">🛏 Wardrobe & Bed Fittings</a>
-        <a href="#">🔐 Door Locks & Hardware</a>
-      </div>
-    </div>
-    <div class="nav-item">
-      <span>Electrical</span>
-      <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-      <div class="dropdown">
-        <a href="#">🔌 Wires</a>
-        <a href="#">🔲 Switches & Sockets</a>
-        <a href="#">⚡ Conduits & GI Boxes</a>
-        <a href="#">💡 Lighting</a>
-      </div>
-    </div>
-    <div class="nav-item">
-      <span>Plumbing & Sanitary</span>
-      <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-      <div class="dropdown">
-        <a href="#">🚿 CPVC Pipes & Overhead Tanks</a>
-        <a href="#">🛁 Sanitary & Bath Fittings</a>
-        <a href="#">💧 Overhead Tanks</a>
-      </div>
-    </div>
-    <div class="nav-item" onclick="scrollToSection('deals')">
-      🔥 <span>Deals</span>
-    </div>
-  </div>
-</nav>
+  return [state, setState];
+}
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-bg-pattern"></div>
-  <div class="hero-content">
-    <div class="hero-badge">⚡ Lucknow's #1 Building Material Store</div>
-    <h1>BUILDING<br><span>MATERIALS</span><br>DELIVERED FAST</h1>
-    <p>Cement · Wires · Plywood · Paints · Hardware — All in 60 Minutes</p>
-    <div class="hero-btns">
-      <button class="btn-primary" onclick="scrollToSection('categories')">Shop Now</button>
-      <button class="btn-secondary" onclick="openPinModal()">Check Delivery</button>
-    </div>
-  </div>
-  <div class="hero-stats">
-    <div class="stat-item"><div class="stat-num">60</div><div class="stat-lbl">Min Delivery</div></div>
-    <div class="stat-item"><div class="stat-num">500+</div><div class="stat-lbl">Products</div></div>
-    <div class="stat-item"><div class="stat-num">10K+</div><div class="stat-lbl">Happy Customers</div></div>
-    <div class="stat-item"><div class="stat-num">4.9★</div><div class="stat-lbl">Google Rating</div></div>
-    <div class="stat-item"><div class="stat-num">0</div><div class="stat-lbl">Min Order</div></div>
-  </div>
-</div>
+// Sync indicator: shows a pulsing dot when a sync event was received
+function useSyncFlash() {
+  const [flash, setFlash] = useState(false);
+  const trigger = () => { setFlash(true); setTimeout(() => setFlash(false), 1500); };
+  return [flash, trigger];
+}
 
-<!-- BRANDS TICKER -->
-<div class="brands-bar">
-  <div class="brands-ticker">
-    <div class="brand-item">Ultra<span>tech</span></div>
-    <div class="brand-item">ACC</div>
-    <div class="brand-item">Asian<span>Paints</span></div>
-    <div class="brand-item">Polycab</div>
-    <div class="brand-item">Hettich</div>
-    <div class="brand-item">Ebco</div>
-    <div class="brand-item">Fevicol</div>
-    <div class="brand-item">Finolex</div>
-    <div class="brand-item">Birla<span>White</span></div>
-    <div class="brand-item">Dr.<span>Fixit</span></div>
-    <div class="brand-item">Schneider</div>
-    <div class="brand-item">Astral</div>
-    <div class="brand-item">Havells</div>
-    <div class="brand-item">Greenpanel</div>
-    <!-- duplicate for seamless loop -->
-    <div class="brand-item">Ultra<span>tech</span></div>
-    <div class="brand-item">ACC</div>
-    <div class="brand-item">Asian<span>Paints</span></div>
-    <div class="brand-item">Polycab</div>
-    <div class="brand-item">Hettich</div>
-    <div class="brand-item">Ebco</div>
-  </div>
-</div>
+/* ══ THEME ══ */
+const C={teal:"#0d9488",tealD:"#0f766e",tealL:"#ccfbf1",tealM:"#2dd4bf",
+  amber:"#f59e0b",amberD:"#b45309",bg:"#f0fdf9",card:"#fff",border:"#d1fae5",
+  text:"#0d2926",muted:"#5f7a75",light:"#99c4be",
+  wh:"#060f0e",whCard:"#0d1f1c",whBorder:"#1a3330",whMuted:"#3d6b65",
+  green:"#22c55e",red:"#ef4444",blue:"#3b82f6",orange:"#f97316"};
 
-<!-- TRUST BADGES -->
-<div class="section">
-  <div class="trust-row">
-    <div class="trust-item"><div class="ti">⚡</div><h4>60-Min Delivery</h4><p>Superfast door delivery</p></div>
-    <div class="trust-item"><div class="ti">🚫</div><h4>No Min Order</h4><p>Order what you need</p></div>
-    <div class="trust-item"><div class="ti">✅</div><h4>Quality Assured</h4><p>Genuine branded products</p></div>
-    <div class="trust-item"><div class="ti">💰</div><h4>Best Prices</h4><p>Wholesale rates for all</p></div>
-    <div class="trust-item"><div class="ti">🚚</div><h4>Free Delivery ₹10K+</h4><p>On orders above ₹10,000</p></div>
-    <div class="trust-item"><div class="ti">📱</div><h4>Pay on Delivery</h4><p>Cash & UPI accepted</p></div>
-  </div>
-</div>
+const SLIST=["Pending","Confirmed","Loading","Dispatched","Out for Delivery","Delivered"];
+const SCOL={Pending:"#f59e0b",Confirmed:"#3b82f6",Loading:"#8b5cf6",Dispatched:"#06b6d4","Out for Delivery":"#f97316",Delivered:"#22c55e"};
 
-<!-- CATEGORIES -->
-<div class="section" id="categories">
-  <div class="section-header">
-    <div><div class="section-title">Shop by Category</div><div class="section-sub">Everything you need, one place</div></div>
-  </div>
-  <div class="cat-grid">
-    <div class="cat-card" onclick="filterCategory('cement')"><div class="cat-icon">🏗</div><div class="cat-name">Cement</div></div>
-    <div class="cat-card" onclick="filterCategory('tiling')"><div class="cat-icon">🟫</div><div class="cat-name">Tiling</div></div>
-    <div class="cat-card" onclick="filterCategory('painting')"><div class="cat-icon">🎨</div><div class="cat-name">Painting</div></div>
-    <div class="cat-card" onclick="filterCategory('waterproofing')"><div class="cat-icon">💧</div><div class="cat-name">Water Proofing</div></div>
-    <div class="cat-card" onclick="filterCategory('plywood')"><div class="cat-icon">🌲</div><div class="cat-name">Plywood, MDF & HDHMR</div></div>
-    <div class="cat-card" onclick="filterCategory('fevicol')"><div class="cat-icon">🔵</div><div class="cat-name">Fevicol</div></div>
-    <div class="cat-card" onclick="filterCategory('wires')"><div class="cat-icon">🔌</div><div class="cat-name">Wires</div></div>
-    <div class="cat-card" onclick="filterCategory('switches')"><div class="cat-icon">🔲</div><div class="cat-name">Switches & Sockets</div></div>
-    <div class="cat-card" onclick="filterCategory('hinges')"><div class="cat-icon">🔩</div><div class="cat-name">Hinges, Channels & Handles</div></div>
-    <div class="cat-card" onclick="filterCategory('kitchen')"><div class="cat-icon">🍳</div><div class="cat-name">Kitchen Systems & Accessories</div></div>
-    <div class="cat-card" onclick="filterCategory('wardrobe')"><div class="cat-icon">🛏</div><div class="cat-name">Wardrobe & Bed Fittings</div></div>
-    <div class="cat-card" onclick="filterCategory('locks')"><div class="cat-icon">🔐</div><div class="cat-name">Door Locks & Hardware</div></div>
-    <div class="cat-card" onclick="filterCategory('conduits')"><div class="cat-icon">⚡</div><div class="cat-name">Conduits & GI Boxes</div></div>
-    <div class="cat-card" onclick="filterCategory('sanitary')"><div class="cat-icon">🛁</div><div class="cat-name">Sanitary & Bath Fittings</div></div>
-    <div class="cat-card" onclick="filterCategory('lighting')"><div class="cat-icon">💡</div><div class="cat-name">Lighting</div></div>
-    <div class="cat-card" onclick="filterCategory('plumbing')"><div class="cat-icon">🚿</div><div class="cat-name">CPVC Pipes & Overhead Tanks</div></div>
-    <div class="cat-card" onclick="filterCategory('appliances')"><div class="cat-icon">🏠</div><div class="cat-name">Kitchen & Home Appliances</div></div>
-    <div class="cat-card" onclick="filterCategory('tools')"><div class="cat-icon">🔧</div><div class="cat-name">General Hardware & Tools</div></div>
-  </div>
-</div>
+const AREAS=[
+  {name:"Hazratganj",pin:"226001",lat:26.8467,lng:80.9462},
+  {name:"Aminabad",pin:"226001",lat:26.8492,lng:80.9313},
+  {name:"Gomti Nagar",pin:"226010",lat:26.8571,lng:80.9903},
+  {name:"Indira Nagar",pin:"226016",lat:26.8815,lng:80.9972},
+  {name:"Aliganj",pin:"226020",lat:26.8741,lng:80.9591},
+  {name:"Charbagh",pin:"226003",lat:26.8344,lng:80.9203},
+  {name:"Alambagh",pin:"226006",lat:26.8092,lng:80.9106},
+  {name:"Mahanagar",pin:"226006",lat:26.8624,lng:80.9421},
+  {name:"Rajajipuram",pin:"226017",lat:26.8458,lng:80.8918},
+  {name:"Vibhuti Khand",pin:"226010",lat:26.8623,lng:80.9943}
+];
+const VPINS=new Set(AREAS.map(a=>a.pin));
 
-<!-- DEALS OF THE WEEK -->
-<div class="section" id="deals">
-  <div class="sale-section">
-    <div class="sale-section-header">
-      <div>
-        <div class="sale-title">🔥 Deals of the Week</div>
-        <div class="sale-sub">5 products at our lowest ever price</div>
-      </div>
-      <div class="sale-timer">
-        <div class="timer-box"><span class="timer-num" id="th">02</span><span class="timer-lbl">HRS</span></div>
-        <span class="timer-sep">:</span>
-        <div class="timer-box"><span class="timer-num" id="tm">47</span><span class="timer-lbl">MIN</span></div>
-        <span class="timer-sep">:</span>
-        <div class="timer-box"><span class="timer-num" id="ts">30</span><span class="timer-lbl">SEC</span></div>
-      </div>
-    </div>
-    <div class="sale-products">
-      <div class="product-grid" id="dealsGrid"></div>
-    </div>
-  </div>
-</div>
-
-<!-- PROMO BANNERS -->
-<div class="section">
-  <div class="promo-grid">
-    <div class="promo-card red">
-      <div>
-        <h3>Hardware Price Drop</h3>
-        <p>Premium hardware at massive discounts. Hettich, Ebco & more.</p>
-        <span class="promo-btn" onclick="scrollToSection('hardware')">Shop Hardware →</span>
-      </div>
-      <div class="promo-emoji">🔩</div>
-    </div>
-    <div class="promo-card dark">
-      <div>
-        <h3>Wires Flash Drop</h3>
-        <p>Genuine brands. Better prices. Polycab, Finolex, Havells.</p>
-        <span class="promo-btn" onclick="scrollToSection('wires')">Shop Wires →</span>
-      </div>
-      <div class="promo-emoji">🔌</div>
-    </div>
-  </div>
-</div>
-
-<!-- HARDWARE PRICE DROP -->
-<div class="section" id="hardware">
-  <div class="section-header">
-    <div>
-      <div class="section-title">Hardware Price Drop</div>
-      <div class="section-sub">Premium hardware. Massive price cuts.</div>
-    </div>
-    <button class="view-all" onclick="filterCategory('hinges')">View All</button>
-  </div>
-  <div class="product-grid" id="hardwareGrid"></div>
-</div>
-
-<!-- WIRES FLASH DROP -->
-<div class="section" id="wires">
-  <div class="section-header">
-    <div>
-      <div class="section-title">⚡ Wires Flash Drop</div>
-      <div class="section-sub">Genuine brands. Better prices. Zero compromise.</div>
-    </div>
-    <button class="view-all" onclick="filterCategory('wires')">View All</button>
-  </div>
-  <div class="product-grid" id="wiresGrid"></div>
-</div>
-
-<!-- ALL PRODUCTS -->
-<div class="section" id="allProducts">
-  <div class="section-header">
-    <div>
-      <div class="section-title" id="productsTitle">All Products</div>
-      <div class="section-sub" id="productsCount"></div>
-    </div>
-    <div style="display:flex;gap:10px;align-items:center;">
-      <select id="sortSelect" onchange="sortProducts()" style="border:2px solid var(--mid-gray);border-radius:8px;padding:8px 12px;font-family:var(--font-body);font-size:13px;font-weight:600;outline:none;cursor:pointer;">
-        <option value="default">Sort: Default</option>
-        <option value="price-asc">Price: Low to High</option>
-        <option value="price-desc">Price: High to Low</option>
-        <option value="discount">Biggest Discount</option>
-      </select>
-    </div>
-  </div>
-  <div class="product-grid" id="allProductsGrid"></div>
-</div>
-
-<!-- TESTIMONIALS -->
-<div class="section">
-  <div class="section-header">
-    <div><div class="section-title">Customers Love Subham</div><div class="section-sub">Join thousands of happy customers</div></div>
-  </div>
-  <div class="testimonials-grid">
-    <div class="test-card">
-      <div class="test-stars">★★★★★</div>
-      <div class="test-text">Ordered cement and waterproofing materials at 9am — delivery was at my site by 10am. Incredible service! Prices are better than the local dealer too.</div>
-      <div class="test-author"><div class="test-avatar">P</div><div><div class="test-name">Pavan Sharma</div><div class="test-role">Civil Contractor, Lucknow</div></div></div>
-    </div>
-    <div class="test-card">
-      <div class="test-stars">★★★★★</div>
-      <div class="test-text">Bought Hettich hinges and Ebco channels. Got genuine products at almost 40% less than market price. Will always order from Subham.</div>
-      <div class="test-author"><div class="test-avatar">V</div><div><div class="test-name">Vishal Gupta</div><div class="test-role">Interior Designer</div></div></div>
-    </div>
-    <div class="test-card">
-      <div class="test-stars">★★★★★</div>
-      <div class="test-text">The Polycab wires arrived within an hour. Great packaging and quality verified on spot. This is the future of construction material buying!</div>
-      <div class="test-author"><div class="test-avatar">G</div><div><div class="test-name">Gopal Mishra</div><div class="test-role">Electrician, Gorakhpur</div></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- APP DOWNLOAD BANNER -->
-<div class="section">
-  <div class="app-banner">
-    <div class="app-banner-text">
-      <h2>GET THE SUBHAM APP</h2>
-      <p>Order building materials in minutes. Track delivery live. Exclusive app-only deals.</p>
-      <div class="app-btns">
-        <button class="app-btn">📱 Google Play</button>
-        <button class="app-btn">🍎 App Store</button>
-      </div>
-      <div class="app-rating">
-        <div class="app-rating-num">4.9</div>
-        <div>
-          <div class="app-rating-stars">★★★★★</div>
-          <div style="font-size:11px;color:rgba(255,255,255,0.7);font-weight:600;">10,000+ Reviews</div>
-        </div>
-      </div>
-    </div>
-    <div class="app-phone">📱</div>
-  </div>
-</div>
-
-<!-- NEWSLETTER -->
-<div class="section">
-  <div class="newsletter">
-    <h3>GET FIRST PEEK AT NEW PRODUCTS & OFFERS</h3>
-    <p>Subscribe for exclusive deals, new arrivals, and construction tips.</p>
-    <div class="newsletter-form">
-      <input type="email" placeholder="Enter your email address…" id="newsletterEmail">
-      <button onclick="subscribeNewsletter()">Subscribe</button>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="logo-text" style="font-family:var(--font-display);font-size:36px;color:#fff;">SUBHAM</div>
-      <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase;margin-top:2px;">Building Materials</div>
-      <p>Subham™ is your one-stop destination for all construction and interior materials. Superfast 60-minute delivery across Lucknow, Gorakhpur & UP.</p>
-      <div class="social-row">
-        <div class="social-btn">📘</div>
-        <div class="social-btn">📸</div>
-        <div class="social-btn">▶️</div>
-        <div class="social-btn">🐦</div>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="#">About Us</a>
-      <a href="#">Contact</a>
-      <a href="#">Careers</a>
-      <a href="#">Knowledge Hub</a>
-      <a href="#">FAQ</a>
-    </div>
-    <div class="footer-col">
-      <h4>Policy</h4>
-      <a href="#">Refund Policy</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">Shipping Policy</a>
-    </div>
-    <div class="footer-col footer-contact">
-      <h4>Contact</h4>
-      <p><strong>Email:</strong> hello@subham.co</p>
-      <p><strong>WhatsApp:</strong> +91 98765 43210</p>
-      <p><strong>Address:</strong> Subham HQ, Hazratganj, Lucknow, Uttar Pradesh 226001</p>
-      <p style="margin-top:12px;"><strong>Hours:</strong> 8:00 AM – 8:00 PM, All Days</p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 Subham Retail Pvt. Ltd. All rights reserved.</span>
-    <div class="footer-links">
-      <a href="#">Refund Policy</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms</a>
-      <a href="#">Shipping</a>
-    </div>
-  </div>
-</footer>
-
-<!-- CART SIDEBAR -->
-<div class="cart-overlay" id="cartOverlay" onclick="closeCartOutside(event)">
-  <div class="cart-panel">
-    <div class="cart-header">
-      <h3>🛒 YOUR CART</h3>
-      <button class="cart-close" onclick="closeCart()">✕</button>
-    </div>
-    <div class="cart-items" id="cartItems">
-      <div class="empty-cart"><div class="ec-icon">🛒</div><p>Your cart is empty</p></div>
-    </div>
-    <div class="cart-footer" id="cartFooter" style="display:none;">
-      <div class="cart-total"><span>Total</span><span id="cartTotal">₹0</span></div>
-      <button class="checkout-btn" onclick="checkout()">Proceed to Checkout →</button>
-    </div>
-  </div>
-</div>
-
-<!-- PINCODE MODAL -->
-<div class="modal-overlay" id="pinModal" onclick="closePinOutside(event)">
-  <div class="modal-box" style="position:relative;">
-    <button class="modal-close-btn" onclick="closePinModal()">✕</button>
-    <h3>📍 Check Delivery</h3>
-    <p>Enter your pincode to check delivery time and availability</p>
-    <div class="pin-input-row">
-      <input type="text" id="pinInput" placeholder="e.g. 226001" maxlength="6" oninput="this.value=this.value.replace(/\D/g,'')">
-      <button onclick="checkPin()">Apply</button>
-    </div>
-    <div id="pinResult"></div>
-  </div>
-</div>
-
-<!-- TOAST -->
-<div class="toast" id="toast">✅ Added to cart!</div>
-
-<script>
-// ══════════════════════════════════════════
-// PRODUCT DATA
-// ══════════════════════════════════════════
-const products = [
-  // DEALS OF THE WEEK
-  { id:1, name:'Birla White WallCare Putty, 30 Kg Bag', brand:'Birla White', price:615, oldPrice:680, discount:10, icon:'🪣', cat:'painting', tag:'deal' },
-  { id:2, name:'Birla White TX1 Tile Adhesive, White, 20 kg Bag', brand:'Birla White', price:285, oldPrice:570, discount:50, icon:'🟫', cat:'tiling', tag:'deal' },
-  { id:3, name:'Birla White TX2 Tile Adhesive, White, 20 Kg Bag', brand:'Birla White', price:480, oldPrice:550, discount:13, icon:'🟨', cat:'tiling', tag:'deal' },
-  { id:4, name:'Asian Paints TruCare Economy Putty Mixer M02, 800W', brand:'Asian Paints', price:2499, oldPrice:4000, discount:38, icon:'🎨', cat:'painting', tag:'deal' },
-  { id:5, name:'Bathla Arize 5-Step Foldable Aluminium Ladder, 3.6 ft', brand:'Bathla', price:3450, oldPrice:7999, discount:57, icon:'🪜', cat:'tools', tag:'deal' },
-
-  // HARDWARE
-  { id:6, name:'Ebco Soft Close Hinges, 1 Set (2 Nos)', brand:'Ebco', price:129, oldPrice:205, discount:37, icon:'🔩', cat:'hinges', tag:'hardware' },
-  { id:7, name:'Ebco Pro Motion Tandem Box, S3 Series, 50Kg, Anthracite', brand:'Ebco', price:2259, oldPrice:3251, discount:31, icon:'📦', cat:'kitchen', tag:'hardware' },
-  { id:8, name:'Ebco Sleek Telescopic Drawer Channel, 35 kg Capacity', brand:'Ebco', price:178, oldPrice:289, discount:38, icon:'🔧', cat:'kitchen', tag:'hardware' },
-  { id:9, name:'Hettich InnoTech Tandem Box, Silver, 470mm, 30Kg', brand:'Hettich', price:3065, oldPrice:5904, discount:48, icon:'🗄', cat:'kitchen', tag:'hardware' },
-  { id:10, name:'Ebco Slip On Hinge EURO Regular Close Hinges, 1 Set', brand:'Ebco', price:61, oldPrice:98, discount:38, icon:'🔩', cat:'hinges', tag:'hardware' },
-  { id:11, name:'Hettich Quadro-V6 Drawer Runners, Full Extension, 30Kg', brand:'Hettich', price:1498, oldPrice:2952, discount:49, icon:'🔧', cat:'kitchen', tag:'hardware' },
-  { id:12, name:'Hettich Sensys 8657i Corner 165° Soft Close Hinges', brand:'Hettich', price:1145, oldPrice:1645, discount:30, icon:'🔩', cat:'hinges', tag:'hardware' },
-
-  // WIRES
-  { id:13, name:'Polycab FRLS-H Single Core Wire, 300m Coil', brand:'Polycab', price:5327, oldPrice:11285, discount:53, icon:'🔌', cat:'wires', tag:'wires' },
-  { id:14, name:'Polycab Maxima+ Green Wire HR FR-LSH LF, 90m', brand:'Polycab', price:1929, oldPrice:2980, discount:35, icon:'🟢', cat:'wires', tag:'wires' },
-  { id:15, name:'Finolex Flamegard FR-LSH Wire, 90m Coil', brand:'Finolex', price:1729, oldPrice:2285, discount:24, icon:'🔴', cat:'wires', tag:'wires' },
-  { id:16, name:'Finolex Speaker Cable, 100m Coil', brand:'Finolex', price:3416, oldPrice:4595, discount:26, icon:'🔊', cat:'wires', tag:'wires' },
-  { id:17, name:'Schneider Acti9 RCCB, 2 Pole 25A 30mA', brand:'Schneider', price:1639, oldPrice:5158, discount:68, icon:'⚡', cat:'switches', tag:'wires' },
-
-  // EXTRA PRODUCTS
-  { id:18, name:'UltraTech Cement, 50 Kg Bag', brand:'UltraTech', price:385, oldPrice:420, discount:8, icon:'🏗', cat:'cement', tag:'all' },
-  { id:19, name:'ACC Gold Cement, 50 Kg Bag', brand:'ACC', price:375, oldPrice:410, discount:9, icon:'🏗', cat:'cement', tag:'all' },
-  { id:20, name:'Asian Paints Apex Exterior Emulsion, 20 Ltr', brand:'Asian Paints', price:4800, oldPrice:5600, discount:14, icon:'🎨', cat:'painting', tag:'all' },
-  { id:21, name:'Dr. Fixit Newcoat Flex Waterproofing, 20 Kg', brand:'Dr. Fixit', price:3200, oldPrice:4200, discount:24, icon:'💧', cat:'waterproofing', tag:'all' },
-  { id:22, name:'Fevicol SH Synthetic Resin Adhesive, 5 Kg', brand:'Pidilite', price:880, oldPrice:1050, discount:16, icon:'🔵', cat:'fevicol', tag:'all' },
-  { id:23, name:'Greenply Gold MR Plywood, 19mm, 8x4 ft', brand:'Greenply', price:2800, oldPrice:3500, discount:20, icon:'🌲', cat:'plywood', tag:'all' },
-  { id:24, name:'Anchor Roma Modular Switch, 6A', brand:'Anchor', price:120, oldPrice:180, discount:33, icon:'🔲', cat:'switches', tag:'all' },
-  { id:25, name:'Havells Ceramic LED Bulb 9W B22, Pack of 4', brand:'Havells', price:340, oldPrice:480, discount:29, icon:'💡', cat:'lighting', tag:'all' },
-  { id:26, name:'Astral CPVC Pipe 1 Inch, 3m Length', brand:'Astral', price:480, oldPrice:620, discount:23, icon:'🚿', cat:'plumbing', tag:'all' },
-  { id:27, name:'Cera Wall Hung Water Closet with Soft Close Seat', brand:'Cera', price:8500, oldPrice:12000, discount:29, icon:'🛁', cat:'sanitary', tag:'all' },
-  { id:28, name:'Stanley 25mm Combination Plier, Bi-Material Handle', brand:'Stanley', price:480, oldPrice:650, discount:26, icon:'🔧', cat:'tools', tag:'all' },
-  { id:29, name:'Orient Kaze Supreme Ceiling Fan 1200mm, White', brand:'Orient', price:2200, oldPrice:2800, discount:21, icon:'🌀', cat:'appliances', tag:'all' },
-  { id:30, name:'Anchor 25A ISI Piano Switch, White, 5 Pack', brand:'Anchor', price:350, oldPrice:500, discount:30, icon:'🔲', cat:'switches', tag:'all' },
-  { id:31, name:'Hafele Stainless Steel Door Handle, Set of 2', brand:'Hafele', price:1200, oldPrice:1800, discount:33, icon:'🔐', cat:'locks', tag:'all' },
-  { id:32, name:'Hager 40A MCB Single Pole Type B Curve', brand:'Hager', price:320, oldPrice:480, discount:33, icon:'⚡', cat:'conduits', tag:'all' },
+const PRODUCTS=[
+  {id:1,name:"UltraTech OPC 53 Cement",brand:"UltraTech",cat:"Cement",price:450,unit:"50kg bag",emoji:"🪣",stock:320,min:1,badge:"Bestseller"},
+  {id:2,name:"ACC PPC Blended Cement",brand:"ACC",cat:"Cement",price:410,unit:"50kg bag",emoji:"🪣",stock:180,min:1,badge:null},
+  {id:3,name:"M-Sand Manufactured",brand:"Local",cat:"Sand",price:38,unit:"cu.ft",emoji:"⛏",stock:9000,min:10,badge:null},
+  {id:4,name:"River Sand Fine Grade",brand:"Imported",cat:"Sand",price:55,unit:"cu.ft",emoji:"⛏",stock:5000,min:10,badge:null},
+  {id:5,name:"20mm Stone Aggregate",brand:"Local",cat:"Sand",price:42,unit:"cu.ft",emoji:"🪨",stock:12000,min:10,badge:null},
+  {id:6,name:"TMT Steel Bars Fe500",brand:"TATA Tiscon",cat:"Steel",price:68,unit:"kg",emoji:"🔩",stock:8000,min:50,badge:"Top Pick"},
+  {id:7,name:"Binding Wire 16G",brand:"Generic",cat:"Steel",price:92,unit:"kg",emoji:"🔩",stock:2000,min:5,badge:null},
+  {id:8,name:"Red Clay Bricks",brand:"Local Kiln",cat:"Bricks",price:7.5,unit:"piece",emoji:"🧱",stock:50000,min:100,badge:null},
+  {id:9,name:"AAC Lightweight Blocks",brand:"Siporex",cat:"Bricks",price:45,unit:"piece",emoji:"🧱",stock:8000,min:10,badge:"Eco"},
+  {id:10,name:"Solid Concrete Blocks",brand:"Local",cat:"Bricks",price:28,unit:"piece",emoji:"🧱",stock:15000,min:20,badge:null},
+  {id:11,name:"UPVC Pipes 1 inch",brand:"Finolex",cat:"Pipes",price:95,unit:"meter",emoji:"🔧",stock:3000,min:5,badge:null},
+  {id:12,name:"GI Pipes Medium",brand:"Tata",cat:"Pipes",price:320,unit:"meter",emoji:"🔧",stock:1200,min:5,badge:null},
+  {id:13,name:"Vitrified Floor Tiles",brand:"Kajaria",cat:"Tiles",price:65,unit:"sq.ft",emoji:"🪵",stock:20000,min:50,badge:"New"},
+  {id:14,name:"Ceramic Wall Tiles",brand:"Somany",cat:"Tiles",price:38,unit:"sq.ft",emoji:"🪵",stock:25000,min:50,badge:null},
+  {id:15,name:"Marine Plywood 18mm",brand:"CenturyPly",cat:"Wood",price:2400,unit:"sheet",emoji:"🪵",stock:800,min:1,badge:null},
+  {id:16,name:"Flush Door 7x3 ft",brand:"Greenply",cat:"Wood",price:3800,unit:"piece",emoji:"🚪",stock:120,min:1,badge:null}
 ];
 
-// ══════════════════════════════════════════
-// CART
-// ══════════════════════════════════════════
-let cart = {};
+const INIT_DRIVERS=[
+  {id:"D1",name:"Ramesh Kumar",phone:"9876543210",vehicle:"Tata Ace Mini Truck",vno:"UP32 AB 1234",icon:"🚐",lat:26.856,lng:80.952,status:"available",rating:4.8,trips:234,pin:"1234"},
+  {id:"D2",name:"Suresh Yadav",phone:"9845123456",vehicle:"Mahindra Bolero Pickup",vno:"UP32 CD 5678",icon:"🛻",lat:26.843,lng:80.938,status:"available",rating:4.6,trips:187,pin:"1234"},
+  {id:"D3",name:"Mohan Singh",phone:"9912345678",vehicle:"Ashok Leyland Truck",vno:"UP32 EF 9012",icon:"🚛",lat:26.822,lng:80.917,status:"available",rating:4.9,trips:312,pin:"1234"},
+  {id:"D4",name:"Vikram Patel",phone:"9988776655",vehicle:"Eicher Light Truck",vno:"UP32 GH 3456",icon:"🚐",lat:26.872,lng:80.963,status:"available",rating:4.7,trips:156,pin:"1234"}
+];
 
-function addToCart(id) {
-  if (cart[id]) cart[id].qty++;
-  else { const p = products.find(x=>x.id===id); cart[id] = {...p, qty:1}; }
-  updateCartUI();
-  showToast('✅ Added to cart!');
-  renderQtyBtn(id);
-}
-function removeFromCart(id) {
-  if (!cart[id]) return;
-  if (cart[id].qty > 1) cart[id].qty--;
-  else delete cart[id];
-  updateCartUI();
-  renderQtyBtn(id);
-}
+const OFFERS=[
+  {code:"BILTIZO5",label:"5% off (min Rs.2000)",disc:.05,min:2000},
+  {code:"FREE5K",label:"Free delivery (min Rs.5000)",disc:0,min:5000},
+  {code:"BULK8",label:"8% off (min Rs.15000)",disc:.08,min:15000}
+];
 
-function updateCartUI() {
-  const total = Object.values(cart).reduce((s,i)=>s+i.qty,0);
-  document.getElementById('cartCount').textContent = total;
-  const cartItemsEl = document.getElementById('cartItems');
-  const cartFooter = document.getElementById('cartFooter');
-  if (total === 0) {
-    cartItemsEl.innerHTML = '<div class="empty-cart"><div class="ec-icon">🛒</div><p>Your cart is empty</p></div>';
-    cartFooter.style.display='none';
-    return;
-  }
-  cartFooter.style.display='block';
-  let html=''; let grandTotal=0;
-  Object.values(cart).forEach(item=>{
-    const sub = item.price*item.qty; grandTotal+=sub;
-    html+=`<div class="cart-item">
-      <div class="cart-item-img">${item.icon}</div>
-      <div style="flex:1">
-        <div class="cart-item-name">${item.name}</div>
-        <div style="display:flex;align-items:center;gap:10px;margin-top:6px;">
-          <button onclick="removeFromCart(${item.id})" style="background:var(--red);color:#fff;border:none;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">−</button>
-          <span style="font-weight:800;font-size:14px;">${item.qty}</span>
-          <button onclick="addToCart(${item.id})" style="background:var(--red);color:#fff;border:none;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">+</button>
-        </div>
-      </div>
-      <div class="cart-item-price">₹${sub.toLocaleString('en-IN')}</div>
-    </div>`;
-  });
-  cartItemsEl.innerHTML = html;
-  document.getElementById('cartTotal').textContent = '₹'+grandTotal.toLocaleString('en-IN');
+const fmt=n=>"Rs."+Number(n).toLocaleString("en-IN");
+const mkId=()=>"BL"+Math.floor(100000+Math.random()*900000);
+const nowT=()=>new Date().toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit"});
+const getEta=()=>(15+Math.floor(Math.random()*20))+"-"+(35+Math.floor(Math.random()*15))+" mins";
+
+/* ══ HOOKS ══ */
+function useIsMobile(){
+  const[m,setM]=useState(window.innerWidth<768);
+  useEffect(()=>{const h=()=>setM(window.innerWidth<768);window.addEventListener("resize",h);return()=>window.removeEventListener("resize",h);},[]);
+  return m;
+}
+function useGeo(){
+  const[geo,setGeo]=useState({lat:26.8467,lng:80.9462,label:"Hazratganj, Lucknow"});
+  useEffect(()=>{
+    if(!navigator.geolocation)return;
+    navigator.geolocation.getCurrentPosition(pos=>{
+      const{latitude:lat,longitude:lng}=pos.coords;
+      setGeo(g=>({...g,lat,lng,label:"Your Live Location"}));
+      fetch("https://nominatim.openstreetmap.org/reverse?lat="+lat+"&lon="+lng+"&format=json")
+        .then(r=>r.json()).then(d=>{
+          const a=d.address||{};
+          const label=[a.suburb||a.neighbourhood,a.city||a.town].filter(Boolean).join(", ");
+          if(label)setGeo(g=>({...g,label}));
+        }).catch(()=>{});
+    },()=>{},{enableHighAccuracy:true,timeout:8000});
+  },[]);
+  return geo;
 }
 
-function renderQtyBtn(id) {
-  const btn = document.querySelector(`[data-add="${id}"]`);
-  const ctrl = document.querySelector(`[data-qty="${id}"]`);
-  if (!btn || !ctrl) return;
-  const qty = cart[id]?.qty || 0;
-  if (qty>0) {
-    btn.style.display='none'; ctrl.classList.add('show');
-    ctrl.querySelector('.qty-num').textContent = qty;
-  } else {
-    btn.style.display='flex'; ctrl.classList.remove('show');
-  }
+/* ══ LEAFLET MAP ══ */
+function LMap({id,center,zoom,markers,route,onClickMap,height,dark}){
+  zoom=zoom||13;markers=markers||[];route=route||[];height=height||260;dark=dark||false;
+  const ref=useRef(null);const mapRef=useRef(null);const mRef=useRef([]);const rRef=useRef(null);
+  useEffect(()=>{
+    if(!ref.current||mapRef.current)return;
+    const L=window.L;
+    const map=L.map(ref.current,{zoomControl:true}).setView([center.lat,center.lng],zoom);
+    L.tileLayer(dark?"https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png":"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"OSM | Biltizo"}).addTo(map);
+    if(onClickMap)map.on("click",e=>onClickMap({lat:e.latlng.lat,lng:e.latlng.lng}));
+    mapRef.current=map;
+    return()=>{if(mapRef.current){mapRef.current.remove();mapRef.current=null;}};
+  },[]);
+  useEffect(()=>{if(mapRef.current)mapRef.current.setView([center.lat,center.lng],zoom,{animate:true});},[center.lat,center.lng]);
+  useEffect(()=>{
+    if(!mapRef.current||!window.L)return;
+    const L=window.L;
+    mRef.current.forEach(m=>m.remove());mRef.current=[];
+    markers.forEach(m=>{
+      const sz=m.sz||36;
+      const icon=L.divIcon({html:"<div style=\"background:"+m.color+";width:"+sz+"px;height:"+sz+"px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:3px solid white;box-shadow:0 3px 12px rgba(0,0,0,.3)\"><span style=\"transform:rotate(45deg);font-size:"+Math.round(sz*.44)+"px;line-height:1\">"+m.icon+"</span></div>",iconSize:[sz,sz],iconAnchor:[sz/2,sz],className:""});
+      const mk=L.marker([m.lat,m.lng],{icon}).addTo(mapRef.current).bindPopup("<b style=\"font-size:13px\">"+m.title+"</b><br/><span style=\"font-size:11px;color:#5f7a75\">"+(m.sub||"")+"</span>");
+      if(m.open)mk.openPopup();
+      mRef.current.push(mk);
+    });
+  },[JSON.stringify(markers)]);
+  useEffect(()=>{
+    if(!mapRef.current||!window.L)return;
+    if(rRef.current){rRef.current.remove();rRef.current=null;}
+    if(route.length>=2)rRef.current=window.L.polyline(route.map(p=>[p.lat,p.lng]),{color:"#f59e0b",weight:4,dashArray:"12 8",opacity:.9}).addTo(mapRef.current);
+  },[JSON.stringify(route)]);
+  return(
+    <div style={{borderRadius:14,overflow:"hidden",border:"1.5px solid "+C.border}}>
+      <div ref={ref} style={{height,width:"100%"}}/>
+      {onClickMap&&<div style={{textAlign:"center",background:C.teal,color:"#fff",fontSize:11,padding:"4px",fontWeight:600}}>Tap map to set delivery pin</div>}
+    </div>
+  );
+}
+function TrackMap({wh,driver,dest,height}){
+  height=height||280;
+  const[pos,setPos]=useState({lat:driver.lat,lng:driver.lng});
+  const tick=useRef(0);
+  useEffect(()=>{
+    tick.current=0;setPos({lat:driver.lat,lng:driver.lng});
+    const iv=setInterval(()=>{tick.current++;const p=Math.min(tick.current/80,1);setPos({lat:driver.lat+(dest.lat-driver.lat)*p,lng:driver.lng+(dest.lng-driver.lng)*p});if(p>=1)clearInterval(iv);},700);
+    return()=>clearInterval(iv);
+  },[driver.id,dest.lat,dest.lng]);
+  const km=((1-Math.min(tick.current/80,1))*4+.5).toFixed(1);
+  return <LMap id={"tm"+driver.id} center={pos} zoom={13} height={height}
+    markers={[
+      {lat:wh.lat,lng:wh.lng,icon:"🏭",color:"#f59e0b",sz:38,title:"Biltizo Warehouse",sub:"Order dispatched here"},
+      {lat:pos.lat,lng:pos.lng,icon:driver.icon||"🚛",color:C.teal,sz:40,title:driver.name+" (Driver)",sub:km+" km away",open:true},
+      {lat:dest.lat,lng:dest.lng,icon:"📍",color:C.green,sz:36,title:"Delivery Location"}
+    ]}
+    route={[wh,pos,dest]}/>;
 }
 
-function openCart() { document.getElementById('cartOverlay').classList.add('open'); }
-function closeCart() { document.getElementById('cartOverlay').classList.remove('open'); }
-function closeCartOutside(e) { if(e.target===document.getElementById('cartOverlay')) closeCart(); }
-function checkout() { showToast('🚀 Proceeding to checkout…'); closeCart(); }
+/* ══ LOGO & ATOMS ══ */
+function Logo({sz}){sz=sz||34;return(
+  <svg width={sz} height={sz} viewBox="0 0 100 100" fill="none">
+    <defs><linearGradient id="lg" x1="50" y1="0" x2="50" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#f59e0b"/><stop offset="55%" stopColor="#14b8a6"/><stop offset="100%" stopColor="#0d9488"/>
+    </linearGradient></defs>
+    <path d="M50 5C28 5 14 22 14 40c0 22 36 55 36 55s36-33 36-55c0-18-14-35-36-35z" fill="url(#lg)"/>
+    <polygon points="50,20 37,32 37,48 63,48 63,32" fill="white"/>
+    <polygon points="50,14 33,31 67,31" fill="white"/>
+    <rect x="44" y="37" width="12" height="11" rx="2" fill="#0d9488"/>
+    <line x1="14" y1="41" x2="3" y2="41" stroke="#f59e0b" strokeWidth="3.5" strokeLinecap="round"/>
+    <line x1="14" y1="47" x2="7" y2="47" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round"/>
+    <line x1="14" y1="35" x2="7" y2="35" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round"/>
+  </svg>
+);}
+const Tag=({label,color})=>(<span style={{background:(color||C.teal)+"22",border:"1px solid "+(color||C.teal)+"55",borderRadius:10,padding:"2px 9px",color:color||C.teal,fontSize:10,fontWeight:700,whiteSpace:"nowrap"}}>{label}</span>);
 
-// ══════════════════════════════════════════
-// PRODUCT CARD RENDERER
-// ══════════════════════════════════════════
-function productCard(p) {
-  return `<div class="product-card">
-    <div class="product-img">${p.icon}<div class="badge">${p.discount}% OFF</div></div>
-    <div class="product-body">
-      <div class="product-brand">${p.brand}</div>
-      <div class="product-name">${p.name}</div>
-      <div class="product-price">
-        <span class="price-current">₹${p.price.toLocaleString('en-IN')}</span>
-        <span class="price-old">₹${p.oldPrice.toLocaleString('en-IN')}</span>
-      </div>
-      <button class="add-to-cart" data-add="${p.id}" onclick="addToCart(${p.id})">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        Add to Cart
-      </button>
-      <div class="qty-controls" data-qty="${p.id}">
-        <button class="qty-btn" onclick="removeFromCart(${p.id})">−</button>
-        <span class="qty-num">1</span>
-        <button class="qty-btn" onclick="addToCart(${p.id})">+</button>
+/* Sync status banner shown in all portals */
+function SyncBanner({flash,count}){
+  return(
+    <div style={{background:flash?"#064e3b":"#022c22",borderBottom:"1px solid #065f46",padding:"5px 16px",display:"flex",alignItems:"center",gap:8,fontSize:11,color:flash?"#6ee7b7":"#065f46",transition:"all .3s",flexShrink:0}}>
+      <span className={flash?"sync-dot":""} style={{width:7,height:7,borderRadius:"50%",background:flash?"#22c55e":"#065f46",display:"inline-block",flexShrink:0}}/>
+      {flash
+        ?"Data synced across all tabs!"
+        :"Live sync active — changes appear instantly in all open tabs"}
+      {count!=null&&<span style={{marginLeft:"auto",color:"#065f46"}}>{count} orders in system</span>}
+    </div>
+  );
+}
+
+function TopBar({portal,onSwitch}){return(
+  <div style={{background:C.wh,padding:"10px 12px",display:"flex",justifyContent:"space-between",alignItems:"center",borderBottom:"1px solid "+C.whBorder,position:"sticky",top:0,zIndex:300,flexShrink:0,flexWrap:"wrap",gap:8}}>
+    <div onClick={()=>onSwitch("customer")} style={{display:"flex",alignItems:"center",gap:8,cursor:"pointer"}}>
+      <Logo sz={24}/><span style={{color:C.tealM,fontFamily:"'Oswald',sans-serif",fontWeight:700,fontSize:14}}>BILTIZO</span>
+    </div>
+    <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
+      {[["customer","👤 Customer"],["warehouse","🏭 WH"],["driver","🚛 Driver"]].map(([p,l])=>(
+        <button key={p} onClick={()=>onSwitch(p)} style={{background:portal===p?C.teal:"transparent",color:portal===p?"#fff":C.whMuted,border:"1px solid "+(portal===p?C.teal:C.whBorder),borderRadius:8,padding:"7px 10px",fontSize:11,fontWeight:700,cursor:"pointer",minHeight:34}}>{l}</button>
+      ))}
+    </div>
+  </div>
+);}
+
+/* ══ CUSTOMER: HERO ══ */
+const CATS=["All","Cement","Sand","Steel","Bricks","Pipes","Tiles","Wood"];
+function Hero({onShop,mob}){return(
+  <div style={{background:"linear-gradient(140deg,"+C.tealD+","+C.teal+" 55%,#0ea5e9)",padding:mob?"36px 16px 32px":"64px 40px 56px",position:"relative",overflow:"hidden"}}>
+    <div style={{position:"absolute",top:-80,right:-80,width:280,height:280,borderRadius:"50%",background:"rgba(255,255,255,.07)"}}/>
+    <div style={{maxWidth:680,margin:"0 auto",position:"relative"}}>
+      <span style={{display:"inline-block",background:"rgba(245,158,11,.25)",border:"1px solid rgba(245,158,11,.5)",borderRadius:20,padding:"4px 14px",marginBottom:14,color:"#fde68a",fontSize:11,fontWeight:700,letterSpacing:1.5}}>FAST DELIVERY - LUCKNOW</span>
+      <h1 style={{fontFamily:"'Oswald',sans-serif",fontSize:mob?"clamp(30px,8vw,40px)":"clamp(44px,5vw,68px)",fontWeight:700,color:"#fff",margin:"0 0 12px",lineHeight:1.1,textTransform:"uppercase"}}>
+        Build Smarter.<br/><span style={{color:"#fbbf24"}}>Deliver Faster.</span>
+      </h1>
+      <p style={{color:"rgba(255,255,255,.78)",fontSize:mob?14:16,marginBottom:28,maxWidth:440}}>
+        Cement, TMT steel, sand, bricks and 50+ materials delivered same-day to your Lucknow site.
+      </p>
+      <button onClick={onShop} style={{background:"#f59e0b",color:"#0d2926",border:"none",borderRadius:12,padding:mob?"12px 24px":"14px 36px",fontSize:mob?14:17,fontWeight:800,cursor:"pointer"}}>Shop Materials</button>
+      <div style={{display:"flex",gap:mob?16:32,marginTop:32,flexWrap:"wrap"}}>
+        {[["50+","Products"],["500+","Sites"],["4.8","Rating"],["2-4h","ETA"]].map(([v,l])=>(
+          <div key={l}><div style={{color:"#fbbf24",fontSize:mob?20:26,fontWeight:800,fontFamily:"'Oswald',sans-serif"}}>{v}</div><div style={{color:"rgba(255,255,255,.55)",fontSize:11}}>{l}</div></div>
+        ))}
       </div>
     </div>
-  </div>`;
+  </div>
+);}
+
+/* ══ SHOP ══ */
+function Shop({cart,addCart,mob}){
+  const[cat,setCat]=useState("All");const[q,setQ]=useState("");
+  const getQty=id=>cart.find(i=>i.id===id)?.qty||0;
+  const list=PRODUCTS.filter(p=>(cat==="All"||p.cat===cat)&&(p.name+p.brand).toLowerCase().includes(q.toLowerCase()));
+  return(
+    <div style={{maxWidth:1100,margin:"0 auto",padding:mob?"14px 10px":"24px 20px"}}>
+      <input value={q} onChange={e=>setQ(e.target.value)} placeholder="Search materials..." style={{width:"100%",background:C.card,border:"1.5px solid "+C.border,borderRadius:10,padding:"10px 14px",fontSize:13,outline:"none",boxSizing:"border-box",color:C.text,marginBottom:14}}/>
+      <div className="hs" style={{display:"flex",gap:8,overflowX:"auto",paddingBottom:10,marginBottom:18}}>
+        {CATS.map(c=><button key={c} onClick={()=>setCat(c)} style={{flexShrink:0,background:cat===c?C.teal:C.card,color:cat===c?"#fff":C.muted,border:"1.5px solid "+(cat===c?C.teal:C.border),borderRadius:20,padding:"7px 16px",fontSize:13,cursor:"pointer",fontWeight:600,whiteSpace:"nowrap"}}>{c}</button>)}
+      </div>
+      <div style={{display:"grid",gridTemplateColumns:mob?"repeat(2,1fr)":"repeat(auto-fill,minmax(200px,1fr))",gap:mob?10:16}}>
+        {list.map(p=>{
+          const qty=getQty(p.id);const low=p.stock<500;
+          return(
+            <div key={p.id} className="ch" style={{background:C.card,borderRadius:16,overflow:"hidden",border:"1.5px solid "+C.border,boxShadow:"0 2px 8px rgba(13,149,136,.06)"}}>
+              <div style={{background:"linear-gradient(135deg,"+C.tealL+",#e0f2fe)",height:mob?70:82,display:"flex",alignItems:"center",justifyContent:"center",position:"relative"}}>
+                <span style={{fontSize:mob?30:38}}>{p.emoji}</span>
+                {p.badge&&<span style={{position:"absolute",top:6,right:6,background:C.amber,color:"#fff",fontSize:8,fontWeight:800,padding:"2px 7px",borderRadius:8}}>{p.badge}</span>}
+                {low&&<span style={{position:"absolute",top:6,left:6,background:C.red,color:"#fff",fontSize:8,fontWeight:800,padding:"2px 7px",borderRadius:8}}>Low</span>}
+              </div>
+              <div style={{padding:mob?"9px 10px":"12px 14px"}}>
+                <div style={{fontSize:9,color:C.teal,fontWeight:700,textTransform:"uppercase",marginBottom:2}}>{p.brand}</div>
+                <div style={{color:C.text,fontSize:mob?12:13,fontWeight:700,marginBottom:6}}>{p.name}</div>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                  <div><div style={{color:C.amberD,fontWeight:800,fontSize:mob?14:16}}>{fmt(p.price)}</div><div style={{color:C.light,fontSize:9}}>per {p.unit}</div></div>
+                  {qty===0
+                    ?<button onClick={()=>addCart(p,1)} style={{background:C.teal,color:"#fff",border:"none",borderRadius:8,padding:"6px 12px",fontSize:12,fontWeight:700,cursor:"pointer"}}>+ Add</button>
+                    :<div style={{display:"flex",alignItems:"center",gap:6}}>
+                      <button onClick={()=>addCart(p,-1)} style={{background:C.tealL,color:C.teal,border:"none",borderRadius:7,width:mob?32:27,height:mob?32:27,fontSize:16,cursor:"pointer",fontWeight:700}}>-</button>
+                      <span style={{color:C.text,fontWeight:800,minWidth:16,textAlign:"center"}}>{qty}</span>
+                      <button onClick={()=>addCart(p,1)} style={{background:C.teal,color:"#fff",border:"none",borderRadius:7,width:mob?32:27,height:mob?32:27,fontSize:16,cursor:"pointer",fontWeight:700}}>+</button>
+                    </div>}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
-// ══════════════════════════════════════════
-// RENDER SECTIONS
-// ══════════════════════════════════════════
-function renderDeals() {
-  const deals = products.filter(p=>p.tag==='deal');
-  document.getElementById('dealsGrid').innerHTML = deals.map(productCard).join('');
-}
-function renderHardware() {
-  const hw = products.filter(p=>p.tag==='hardware');
-  document.getElementById('hardwareGrid').innerHTML = hw.map(productCard).join('');
-}
-function renderWires() {
-  const ws = products.filter(p=>p.tag==='wires');
-  document.getElementById('wiresGrid').innerHTML = ws.map(productCard).join('');
-}
-
-let currentFilter = 'all';
-let currentSort = 'default';
-
-function renderAllProducts(filter='all') {
-  currentFilter = filter;
-  let list = [...products];
-  if (filter !== 'all') list = list.filter(p=>p.cat===filter);
-  list = sortList(list);
-  document.getElementById('productsCount').textContent = list.length + ' products';
-  const title = filter==='all' ? 'All Products' : filter.charAt(0).toUpperCase()+filter.slice(1);
-  document.getElementById('productsTitle').textContent = title;
-  document.getElementById('allProductsGrid').innerHTML = list.map(productCard).join('');
-}
-
-function sortList(list) {
-  const s = document.getElementById('sortSelect').value;
-  if (s==='price-asc') return list.sort((a,b)=>a.price-b.price);
-  if (s==='price-desc') return list.sort((a,b)=>b.price-a.price);
-  if (s==='discount') return list.sort((a,b)=>b.discount-a.discount);
-  return list;
-}
-function sortProducts() { renderAllProducts(currentFilter); }
-
-function filterCategory(cat) {
-  scrollToSection('allProducts');
-  renderAllProducts(cat);
-}
-
-function init() {
-  renderDeals(); renderHardware(); renderWires(); renderAllProducts();
-}
-
-// ══════════════════════════════════════════
-// SEARCH
-// ══════════════════════════════════════════
-function handleSearch(q) {
-  if (!q.trim()) { renderAllProducts(currentFilter); return; }
-  const low = q.toLowerCase();
-  const results = products.filter(p=>p.name.toLowerCase().includes(low)||p.brand.toLowerCase().includes(low)||p.cat.toLowerCase().includes(low));
-  document.getElementById('productsTitle').textContent = `Search: "${q}"`;
-  document.getElementById('productsCount').textContent = results.length + ' results';
-  document.getElementById('allProductsGrid').innerHTML = results.length ? results.map(productCard).join('') : '<div style="padding:40px;text-align:center;color:var(--text-light);font-size:16px;font-weight:700;">No products found. Try a different search.</div>';
-  scrollToSection('allProducts');
-}
-function triggerSearch() { handleSearch(document.getElementById('searchInput').value); }
-
-// ══════════════════════════════════════════
-// PINCODE
-// ══════════════════════════════════════════
-const serviceablePins = ['226001','226002','226003','226004','226005','226010','226012','226015','226016','226017','226018','226019','226020','226021','226022','226023','273001','273002','273003','273004','273005','273006','273007','273008','273009','273010'];
-
-function openPinModal() { document.getElementById('pinModal').classList.add('open'); }
-function closePinModal() { document.getElementById('pinModal').classList.remove('open'); document.getElementById('pinResult').innerHTML=''; }
-function closePinOutside(e) { if(e.target===document.getElementById('pinModal')) closePinModal(); }
-
-function checkPin() {
-  const pin = document.getElementById('pinInput').value.trim();
-  const resultEl = document.getElementById('pinResult');
-  if (pin.length !== 6) { resultEl.innerHTML='<div class="pin-result err">⚠️ Please enter a valid 6-digit pincode.</div>'; return; }
-  if (serviceablePins.includes(pin)) {
-    resultEl.innerHTML='<div class="pin-result ok">✅ Great! We deliver to <strong>'+pin+'</strong> in 60 minutes!</div>';
-    document.getElementById('pinDisplay').textContent = pin;
-    setTimeout(closePinModal, 1800);
-  } else {
-    resultEl.innerHTML='<div class="pin-result err">😔 Sorry, we don\'t deliver to '+pin+' yet. We\'re expanding soon!</div>';
-  }
+/* ══ CART ══ */
+function CartDrawer({cart,addCart,onClose,onCheckout,mob}){
+  const[coupon,setCoupon]=useState("");const[applied,setApplied]=useState(null);const[couErr,setCouErr]=useState("");
+  const sub=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const disc=applied?Math.floor(sub*applied.disc):0;
+  const deliv=sub-disc>=5000?0:299;const total=sub-disc+deliv;
+  const applyCode=()=>{
+    const o=OFFERS.find(o=>o.code===coupon.trim().toUpperCase());
+    if(!o){setCouErr("Invalid code");setApplied(null);return;}
+    if(sub<o.min){setCouErr("Min "+fmt(o.min)+" required");setApplied(null);return;}
+    setApplied(o);setCouErr("");
+  };
+  return(
+    <div style={{position:"fixed",inset:0,zIndex:200,display:"flex",flexDirection:mob?"column":"row"}}>
+      <div onClick={onClose} style={{flex:1,background:"rgba(13,41,38,.55)",backdropFilter:"blur(4px)"}}/>
+      <div className="su" style={{width:mob?"100%":390,maxHeight:mob?"92vh":"100vh",background:C.card,borderTop:mob?"3px solid "+C.teal:"none",borderLeft:mob?"none":"2px solid "+C.border,borderRadius:mob?"22px 22px 0 0":0,display:"flex",flexDirection:"column",overflow:"hidden",paddingBottom:mob?"env(safe-area-inset-bottom, 0px)":"0"}}>
+        {mob&&<div style={{width:40,height:4,background:C.border,borderRadius:4,margin:"10px auto 0"}}/>}
+        <div style={{padding:mob?"12px 18px 10px":"16px 18px 12px",borderBottom:"1px solid "+C.border,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+          <b style={{color:C.text,fontSize:mob?15:17,fontFamily:"'Oswald',sans-serif"}}>🛒 Cart ({cart.length})</b>
+          <button onClick={onClose} style={{background:C.tealL,border:"none",color:C.teal,fontSize:14,cursor:"pointer",borderRadius:8,padding:"6px 12px",fontWeight:700,minHeight:34}}>✕ Close</button>
+        </div>
+        {cart.length===0
+          ?<div style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:10,color:C.light,padding:40}}>
+            <div style={{fontSize:52}}>🧱</div><div style={{fontSize:16,fontWeight:700}}>Cart is empty</div>
+            <button onClick={onClose} style={{background:C.teal,color:"#fff",border:"none",borderRadius:10,padding:"8px 18px",cursor:"pointer",fontWeight:700}}>Browse</button>
+          </div>
+          :<>
+            <div style={{flex:1,overflowY:"auto",padding:"10px 16px"}}>
+              {cart.map(item=>(
+                <div key={item.id} style={{display:"flex",gap:10,padding:"10px 0",borderBottom:"1px solid "+C.border,alignItems:"center"}}>
+                  <div style={{width:42,height:42,background:C.tealL,borderRadius:10,display:"flex",alignItems:"center",justifyContent:"center",fontSize:22,flexShrink:0}}>{item.emoji}</div>
+                  <div style={{flex:1,minWidth:0}}>
+                    <div style={{color:C.text,fontSize:13,fontWeight:700,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{item.name}</div>
+                    <div style={{color:C.amber,fontSize:13,fontWeight:800}}>{fmt(item.price)}<span style={{color:C.light,fontSize:10,fontWeight:400}}>/{item.unit}</span></div>
+                    <div style={{display:"flex",alignItems:"center",gap:8,marginTop:4}}>
+                      <button onClick={()=>addCart(item,-1)} style={{background:C.tealL,color:C.teal,border:"none",borderRadius:6,width:mob?34:25,height:mob?34:25,fontSize:15,cursor:"pointer",fontWeight:700}}>-</button>
+                      <span style={{color:C.text,fontWeight:800,fontSize:14,minWidth:14,textAlign:"center"}}>{item.qty}</span>
+                      <button onClick={()=>addCart(item,1)} style={{background:C.teal,color:"#fff",border:"none",borderRadius:6,width:mob?34:25,height:mob?34:25,fontSize:15,cursor:"pointer",fontWeight:700}}>+</button>
+                    </div>
+                  </div>
+                  <b style={{color:C.text,fontSize:13,flexShrink:0}}>{fmt(item.price*item.qty)}</b>
+                </div>
+              ))}
+              <div style={{marginTop:14,background:C.tealL,borderRadius:12,padding:12}}>
+                <div style={{color:C.teal,fontWeight:700,fontSize:13,marginBottom:8}}>Coupon Code</div>
+                <div style={{display:"flex",gap:8}}>
+                  <input value={coupon} onChange={e=>setCoupon(e.target.value)} placeholder="Enter code" style={{flex:1,background:"#fff",border:"1.5px solid "+C.border,borderRadius:8,padding:"8px 10px",fontSize:13,color:C.text,outline:"none"}}/>
+                  <button onClick={applyCode} style={{background:C.teal,color:"#fff",border:"none",borderRadius:8,padding:"8px 12px",fontSize:12,fontWeight:700,cursor:"pointer"}}>Apply</button>
+                </div>
+                {couErr&&<div style={{color:C.red,fontSize:11,marginTop:4}}>{couErr}</div>}
+                {applied&&<div style={{color:C.green,fontSize:11,marginTop:4}}>Applied: {applied.label}</div>}
+                <div style={{display:"flex",gap:6,flexWrap:"wrap",marginTop:8}}>
+                  {OFFERS.map(o=><span key={o.code} onClick={()=>{setCoupon(o.code);setCouErr("");}} style={{background:"#fff",border:"1px solid "+C.border,borderRadius:8,padding:"3px 8px",fontSize:10,cursor:"pointer",color:C.teal,fontWeight:600}}>{o.code}</span>)}
+                </div>
+              </div>
+            </div>
+            <div style={{padding:"12px 16px",borderTop:"1px solid "+C.border}}>
+              {[["Subtotal",fmt(sub),""],["Discount",disc>0?"-"+fmt(disc):"--",disc>0?C.green:""],["Delivery",deliv===0?"FREE":fmt(deliv),deliv===0?C.green:""]].map(([l,v,col])=>(
+                <div key={l} style={{display:"flex",justifyContent:"space-between",fontSize:13,marginBottom:5}}><span style={{color:C.muted}}>{l}</span><span style={{color:col||C.text}}>{v}</span></div>
+              ))}
+              <div style={{display:"flex",justifyContent:"space-between",color:C.text,fontWeight:800,fontSize:17,margin:"8px 0 14px",borderTop:"1px dashed "+C.border,paddingTop:8}}>
+                <span>Total</span><span style={{color:C.amberD}}>{fmt(total)}</span>
+              </div>
+              <button onClick={onCheckout} style={{width:"100%",background:C.teal,color:"#fff",border:"none",borderRadius:12,padding:14,fontSize:16,fontWeight:800,cursor:"pointer",boxShadow:"0 4px 16px "+C.teal+"44"}}>Checkout</button>
+            </div>
+          </>}
+      </div>
+    </div>
+  );
 }
 
-// ══════════════════════════════════════════
-// TIMER
-// ══════════════════════════════════════════
-let secs = 2*3600 + 47*60 + 30;
-function tickTimer() {
-  if (secs<=0) secs=24*3600;
-  secs--;
-  const h=Math.floor(secs/3600), m=Math.floor((secs%3600)/60), s=secs%60;
-  const pad=n=>String(n).padStart(2,'0');
-  document.getElementById('th').textContent=pad(h);
-  document.getElementById('tm').textContent=pad(m);
-  document.getElementById('ts').textContent=pad(s);
+/* ══ CHECKOUT ══ */
+function Checkout({cart,onPlace,onBack,mob}){
+  const[f,setF]=useState({name:"",phone:"",address:"",area:"",pin:"",notes:"",pay:"cod"});
+  const[showMap,setShowMap]=useState(false);const[pinPt,setPinPt]=useState(null);
+  const S=k=>e=>setF(p=>({...p,[k]:e.target.value}));
+  const sub=cart.reduce((s,i)=>s+i.price*i.qty,0);const deliv=sub>=5000?0:299;const total=sub+deliv;
+  const ok=f.name&&f.phone.length===10&&f.address&&(VPINS.has(f.pin)||pinPt);
+  const selArea=e=>{const a=AREAS.find(a=>a.name===e.target.value);if(a){setF(p=>({...p,area:a.name,pin:a.pin}));setPinPt({lat:a.lat,lng:a.lng});}};
+  return(
+    <div style={{maxWidth:900,margin:"0 auto",padding:mob?"14px 10px":"28px 20px"}}>
+      <button onClick={onBack} style={{background:"none",border:"none",color:C.teal,cursor:"pointer",fontSize:14,marginBottom:14,padding:0,fontWeight:600}}>Back</button>
+      <h2 style={{fontFamily:"'Oswald',sans-serif",fontSize:mob?22:28,color:C.text,marginBottom:20}}>CHECKOUT</h2>
+      <div style={{display:"grid",gridTemplateColumns:mob?"1fr":"1fr 310px",gap:18}}>
+        <div style={{background:C.card,borderRadius:16,padding:mob?16:24,border:"1.5px solid "+C.border}}>
+          <h3 style={{fontFamily:"'Oswald',sans-serif",fontSize:17,color:C.text,margin:"0 0 16px"}}>Delivery Details</h3>
+          <div style={{display:"grid",gridTemplateColumns:mob?"1fr":"1fr 1fr",gap:12}}>
+            {[["Full Name *","name","Rajesh Kumar","text",mob?"span 1":"span 2"],["Phone *","phone","10-digit","tel","span 1"],["Pincode *","pin","226001","text","span 1"]].map(([l,k,ph,t,gc])=>(
+              <div key={k} style={{gridColumn:gc}}>
+                <label style={{color:C.muted,fontSize:11,fontWeight:600,display:"block",marginBottom:5,textTransform:"uppercase"}}>{l}</label>
+                <input type={t} value={f[k]} onChange={S(k)} placeholder={ph} style={{width:"100%",background:C.bg,border:"1.5px solid "+C.border,borderRadius:10,padding:"12px 14px",color:C.text,fontSize:mob?16:14,outline:"none",boxSizing:"border-box"}}/>
+              </div>
+            ))}
+            <div>
+              <label style={{color:C.muted,fontSize:11,fontWeight:600,display:"block",marginBottom:5,textTransform:"uppercase"}}>AREA</label>
+              <select value={f.area} onChange={selArea} style={{width:"100%",background:C.bg,border:"1.5px solid "+C.border,borderRadius:10,padding:"12px 14px",color:C.text,fontSize:mob?16:14,outline:"none",boxSizing:"border-box"}}>
+                <option value="">Select area</option>
+                {AREAS.map(a=><option key={a.name} value={a.name}>{a.name} ({a.pin})</option>)}
+              </select>
+            </div>
+            <div style={{gridColumn:mob?"span 1":"span 2"}}>
+              <label style={{color:C.muted,fontSize:11,fontWeight:600,display:"block",marginBottom:5,textTransform:"uppercase"}}>SITE ADDRESS *</label>
+              <input value={f.address} onChange={S("address")} placeholder="Building / street / colony" style={{width:"100%",background:C.bg,border:"1.5px solid "+C.border,borderRadius:10,padding:"12px 14px",color:C.text,fontSize:mob?16:14,outline:"none",boxSizing:"border-box"}}/>
+            </div>
+          </div>
+          <div style={{marginTop:16}}>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
+              <b style={{fontSize:14,color:C.text}}>Pin on Map</b>
+              <button onClick={()=>setShowMap(v=>!v)} style={{background:C.tealL,color:C.teal,border:"none",borderRadius:8,padding:"6px 12px",fontSize:12,fontWeight:700,cursor:"pointer"}}>{showMap?"Close Map":"Open Map"}</button>
+            </div>
+            {showMap&&<div className="fi"><LMap id="pick" center={pinPt||{lat:26.8467,lng:80.9462}} zoom={13} height={220} onClickMap={p=>{setPinPt(p);}} markers={pinPt?[{lat:pinPt.lat,lng:pinPt.lng,icon:"📍",color:C.green,sz:36,title:"Delivery Pin",open:true}]:[]}/></div>}
+            {pinPt&&!showMap&&<div style={{color:C.green,fontSize:12,padding:"6px 10px",background:"#dcfce7",borderRadius:8}}>Pinned: {pinPt.lat.toFixed(4)}, {pinPt.lng.toFixed(4)}</div>}
+          </div>
+          <div style={{marginTop:16}}>
+            <b style={{fontSize:14,color:C.text,display:"block",marginBottom:10}}>Payment</b>
+            <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
+              {[["cod","💵 Cash on Delivery"],["upi","📲 UPI on Arrival"],["credit","🏦 Net 30 Credit"]].map(([v,l])=>(
+                <label key={v} style={{display:"flex",alignItems:"center",gap:8,background:f.pay===v?C.tealL:"#f8fafc",border:"1.5px solid "+(f.pay===v?C.teal:C.border),borderRadius:12,padding:mob?"12px 14px":"9px 12px",cursor:"pointer",fontSize:mob?14:13,fontWeight:600,color:f.pay===v?C.teal:C.muted,minHeight:mob?48:36}}>
+                  <input type="radio" name="pay" value={v} checked={f.pay===v} onChange={S("pay")} style={{accentColor:C.teal,width:18,height:18}}/>{l}
+                </label>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div style={{background:C.card,borderRadius:16,padding:20,border:"1.5px solid "+C.border,alignSelf:"start",position:mob?"static":"sticky",top:80}}>
+          <h3 style={{fontFamily:"'Oswald',sans-serif",fontSize:17,color:C.text,margin:"0 0 12px"}}>Summary</h3>
+          <div style={{maxHeight:180,overflowY:"auto",marginBottom:10}}>
+            {cart.map(i=>(<div key={i.id} style={{display:"flex",justifyContent:"space-between",fontSize:13,color:C.muted,marginBottom:6,gap:8}}><span style={{flex:1,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{i.name} x{i.qty}</span><span style={{color:C.text,flexShrink:0}}>{fmt(i.price*i.qty)}</span></div>))}
+          </div>
+          <div style={{borderTop:"1px solid "+C.border,paddingTop:10}}>
+            {[["Subtotal",fmt(sub)],["Delivery",deliv===0?"FREE":fmt(deliv)]].map(([l,v])=>(
+              <div key={l} style={{display:"flex",justifyContent:"space-between",color:C.muted,fontSize:13,marginBottom:6}}><span>{l}</span><span style={{color:deliv===0&&l==="Delivery"?C.green:C.text}}>{v}</span></div>
+            ))}
+            <div style={{display:"flex",justifyContent:"space-between",color:C.text,fontWeight:800,fontSize:18,margin:"10px 0 14px"}}>
+              <span>Total</span><span style={{color:C.amberD}}>{fmt(total)}</span>
+            </div>
+            <div style={{background:C.tealL,borderRadius:10,padding:10,marginBottom:12,fontSize:12,color:C.teal}}>
+              Est. delivery: <b>{getEta()}</b> after confirmation
+            </div>
+            <button onClick={()=>{if(!ok)return;const dc=pinPt||(f.area?AREAS.find(a=>a.name===f.area):{lat:26.8571,lng:80.9903});onPlace({...f,total,delivCoords:dc});}} disabled={!ok} style={{width:"100%",background:ok?C.teal:"#e2e8f0",color:ok?"#fff":"#94a3b8",border:"none",borderRadius:12,padding:14,fontSize:16,fontWeight:800,cursor:ok?"pointer":"not-allowed"}}>
+              Place Order
+            </button>
+            {!ok&&<div style={{color:C.red,fontSize:11,marginTop:6,textAlign:"center"}}>Fill Name, Phone and Address</div>}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
-setInterval(tickTimer,1000);
 
-// ══════════════════════════════════════════
-// TOAST
-// ══════════════════════════════════════════
-let toastTimer;
-function showToast(msg) {
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),2200);
+/* ══ ORDER TRACKING ══ */
+function TrackOrder({order,drivers,warehousePt,mob}){
+  const driver=order.driverId?drivers.find(d=>d.id===order.driverId):null;
+  const si=SLIST.indexOf(order.status);
+  const dest=order.delivCoords||{lat:26.8571,lng:80.9903};
+  const[stars,setStars]=useState(0);const[rated,setRated]=useState(false);
+  return(
+    <div style={{maxWidth:700,margin:"0 auto",padding:mob?"14px 10px":"24px 20px"}}>
+      <div style={{background:C.card,borderRadius:18,padding:mob?16:24,border:"1.5px solid "+C.border,marginBottom:14,boxShadow:"0 2px 12px rgba(13,149,136,.1)"}}>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:18,flexWrap:"wrap",gap:8}}>
+          <div>
+            <div style={{color:C.muted,fontSize:11,fontWeight:600,textTransform:"uppercase",marginBottom:3}}>Order ID</div>
+            <div style={{color:C.teal,fontFamily:"monospace",fontSize:20,fontWeight:800}}>{order.id}</div>
+            <div style={{color:C.muted,fontSize:12,marginTop:2}}>Placed {order.placedAt}</div>
+          </div>
+          <Tag label={order.status} color={SCOL[order.status]}/>
+        </div>
+        <div style={{marginBottom:20}}>
+          {SLIST.map((s,i)=>(
+            <div key={s} style={{display:"flex",gap:12}}>
+              <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
+                <div style={{width:28,height:28,borderRadius:"50%",background:i<=si?SCOL[order.status]:C.border,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,color:i<=si?"#fff":C.light,fontWeight:700,flexShrink:0,border:i===si?"3px solid "+SCOL[order.status]+"66":"none",transition:"all .3s"}}>
+                  {i<si?"V":i===si?"*":"."}
+                </div>
+                {i<SLIST.length-1&&<div style={{width:2,height:22,background:i<si?C.teal:C.border,margin:"3px 0"}}/>}
+              </div>
+              <div style={{paddingTop:4,paddingBottom:i<SLIST.length-1?12:0}}>
+                <div style={{color:i<=si?C.text:C.light,fontWeight:i===si?700:400,fontSize:14}}>{s}</div>
+                {i===si&&<div style={{color:C.muted,fontSize:11}}>Current status</div>}
+              </div>
+            </div>
+          ))}
+        </div>
+        {driver?<TrackMap wh={warehousePt} driver={driver} dest={dest} height={mob?210:290}/>
+          :<LMap id={"t"+order.id} center={warehousePt} zoom={13} height={mob?190:250}
+              markers={[{lat:warehousePt.lat,lng:warehousePt.lng,icon:"🏭",color:C.amber,sz:38,title:"Warehouse",sub:"Biltizo",open:true},{lat:dest.lat,lng:dest.lng,icon:"📍",color:C.green,sz:36,title:"Delivery Location"}]}
+              route={[warehousePt,dest]}/>}
+        {driver&&(
+          <div style={{marginTop:14,background:C.tealL,borderRadius:12,padding:14,display:"flex",gap:12,alignItems:"center"}}>
+            <span style={{fontSize:32}}>{driver.icon}</span>
+            <div style={{flex:1}}><b style={{color:C.text,fontSize:15}}>{driver.name}</b><div style={{color:C.muted,fontSize:12}}>{driver.vehicle} - {driver.vno}</div></div>
+            <a href={"tel:"+driver.phone} style={{background:C.teal,color:"#fff",padding:"8px 14px",borderRadius:10,textDecoration:"none",fontSize:13,fontWeight:700}}>Call</a>
+          </div>
+        )}
+        {order.status==="Delivered"&&!rated&&(
+          <div style={{marginTop:14,background:"#fffbeb",border:"1px solid #f59e0b55",borderRadius:12,padding:14}}>
+            <b style={{color:C.text,display:"block",marginBottom:8}}>Rate your delivery</b>
+            <div style={{display:"flex",gap:6,marginBottom:10}}>{[1,2,3,4,5].map(s=><button key={s} onClick={()=>setStars(s)} style={{fontSize:28,background:"none",border:"none",cursor:"pointer",filter:s<=stars?"none":"grayscale(1)"}}>&#11088;</button>)}</div>
+            {stars>0&&<button onClick={()=>setRated(true)} style={{background:C.amber,color:"#fff",border:"none",borderRadius:8,padding:"7px 16px",fontSize:13,fontWeight:700,cursor:"pointer"}}>Submit</button>}
+          </div>
+        )}
+        {rated&&<div style={{marginTop:12,background:"#dcfce7",borderRadius:10,padding:12,color:C.green,fontWeight:700}}>Thank you for your review!</div>}
+      </div>
+      <div style={{background:C.card,borderRadius:16,padding:mob?14:20,border:"1.5px solid "+C.border}}>
+        <h3 style={{fontFamily:"'Oswald',sans-serif",fontSize:17,color:C.text,margin:"0 0 12px"}}>ORDER ITEMS</h3>
+        {order.items.map(item=>(
+          <div key={item.id} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"8px 0",borderBottom:"1px solid "+C.border}}>
+            <div style={{display:"flex",gap:10,alignItems:"center"}}>
+              <span style={{fontSize:20}}>{item.emoji}</span>
+              <div><div style={{color:C.text,fontSize:13,fontWeight:600}}>{item.name}</div><div style={{color:C.muted,fontSize:11}}>x{item.qty} {item.unit}</div></div>
+            </div>
+            <b style={{color:C.amberD}}>{fmt(item.price*item.qty)}</b>
+          </div>
+        ))}
+        <div style={{display:"flex",justifyContent:"space-between",color:C.text,fontWeight:800,fontSize:16,marginTop:10}}>
+          <span>Total</span><span style={{color:C.teal}}>{fmt(order.total)}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+function History({orders,onTrack,mob}){
+  if(!orders.length)return(<div style={{textAlign:"center",padding:"60px 20px",color:C.light}}><div style={{fontSize:56}}>📋</div><div style={{fontSize:18,fontWeight:700,marginTop:12}}>No orders yet</div></div>);
+  return(
+    <div style={{maxWidth:700,margin:"0 auto",padding:mob?"14px 10px":"24px 20px"}}>
+      <h2 style={{fontFamily:"'Oswald',sans-serif",fontSize:24,color:C.text,marginBottom:18}}>ORDER HISTORY</h2>
+      {orders.map(o=>(
+        <div key={o.id} style={{background:C.card,borderRadius:14,padding:16,marginBottom:12,border:"1.5px solid "+C.border}}>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:8}}>
+            <div>
+              <div style={{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap",marginBottom:4}}><span style={{color:C.teal,fontFamily:"monospace",fontWeight:800}}>{o.id}</span><Tag label={o.status} color={SCOL[o.status]}/></div>
+              <div style={{color:C.text,fontWeight:700}}>{o.customerName}</div>
+              <div style={{color:C.muted,fontSize:12}}>📍 {o.deliveryAddress}</div>
+              <div style={{color:C.muted,fontSize:12}}>{o.items.length} items - <b style={{color:C.amberD}}>{fmt(o.total)}</b> - {o.placedAt}</div>
+            </div>
+            <button onClick={()=>onTrack(o)} style={{background:C.tealL,color:C.teal,border:"none",borderRadius:8,padding:"7px 14px",fontSize:12,fontWeight:700,cursor:"pointer"}}>Track</button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
 
-// ══════════════════════════════════════════
-// NEWSLETTER
-// ══════════════════════════════════════════
-function subscribeNewsletter() {
-  const em = document.getElementById('newsletterEmail').value.trim();
-  if (!em || !em.includes('@')) { showToast('⚠️ Please enter a valid email'); return; }
-  showToast('🎉 Subscribed! Welcome to Subham!');
-  document.getElementById('newsletterEmail').value='';
+/* ══ WAREHOUSE LOGIN ══ */
+function WHLogin({onLogin,mob}){
+  const[u,setU]=useState("");const[p,setP]=useState("");const[err,setErr]=useState(false);
+  const go=()=>u==="admin"&&p==="build@123"?onLogin():setErr(true);
+  return(
+    <div style={{flex:1,background:C.wh,display:"flex",alignItems:"center",justifyContent:"center",padding:20}}>
+      <div style={{width:"100%",maxWidth:380,background:C.whCard,borderRadius:22,padding:mob?24:40,border:"1px solid "+C.whBorder}}>
+        <div style={{textAlign:"center",marginBottom:28}}>
+          <div style={{display:"flex",justifyContent:"center",marginBottom:10}}><Logo sz={52}/></div>
+          <div style={{color:C.tealM,fontFamily:"'Oswald',sans-serif",fontSize:26,fontWeight:700}}>BILTIZO WAREHOUSE</div>
+          <div style={{color:C.whMuted,fontSize:13,marginTop:3}}>Management Portal</div>
+        </div>
+        {[["USERNAME",u,setU,"text","admin"],["PASSWORD",p,setP,"password","..."]].map(([l,v,s,t,ph])=>(
+          <div key={l} style={{marginBottom:14}}>
+            <label style={{color:C.whMuted,fontSize:11,fontWeight:700,display:"block",marginBottom:5,letterSpacing:1}}>{l}</label>
+            <input type={t} placeholder={ph} value={v} onChange={e=>s(e.target.value)} onKeyDown={e=>e.key==="Enter"&&go()} style={{width:"100%",background:C.wh,border:"1.5px solid "+C.whBorder,borderRadius:10,padding:"13px 14px",color:C.tealM,fontSize:16,outline:"none",boxSizing:"border-box"}}/>
+          </div>
+        ))}
+        {err&&<div style={{color:"#f87171",fontSize:12,marginBottom:8}}>Invalid. Try admin / build@123</div>}
+        <div style={{color:"#1e4a44",fontSize:11,marginBottom:14}}>Demo: admin / build@123</div>
+        <button onClick={go} style={{width:"100%",background:C.teal,color:"#fff",border:"none",borderRadius:12,padding:14,fontSize:16,fontWeight:800,cursor:"pointer"}}>Login</button>
+      </div>
+    </div>
+  );
 }
 
-// ══════════════════════════════════════════
-// SCROLL HELPER
-// ══════════════════════════════════════════
-function scrollToSection(id) {
-  const el=document.getElementById(id);
-  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+/* ══ ASSIGN DRIVER MODAL ══ */
+function AssignModal({order,drivers,onAssign,onClose,warehousePt,mob}){
+  const[sel,setSel]=useState("");
+  const avail=drivers.filter(d=>d.status==="available");
+  const dest=order.delivCoords||{lat:26.8571,lng:80.9903};
+  const selD=drivers.find(d=>d.id===sel);
+  const mks=[
+    {lat:warehousePt.lat,lng:warehousePt.lng,icon:"🏭",color:"#f59e0b",sz:36,title:"Warehouse"},
+    {lat:dest.lat,lng:dest.lng,icon:"📍",color:C.green,sz:34,title:"Deliver to: "+order.customerName,sub:order.deliveryAddress,open:true},
+    ...avail.map(d=>({lat:d.lat,lng:d.lng,icon:d.icon,color:sel===d.id?C.teal:"#1d4ed8",sz:sel===d.id?38:28,title:d.name,sub:d.vehicle}))
+  ];
+  const route=selD?[{lat:warehousePt.lat,lng:warehousePt.lng},{lat:selD.lat,lng:selD.lng},dest]:[];
+  return(
+    <div style={{position:"fixed",inset:0,zIndex:400,display:"flex",alignItems:mob?"flex-end":"center",justifyContent:"center",padding:mob?0:16}}>
+      <div onClick={onClose} style={{position:"absolute",inset:0,background:"rgba(0,0,0,.75)",backdropFilter:"blur(4px)"}}/>
+      <div className="su" style={{width:mob?"100%":500,maxHeight:mob?"92vh":"88vh",background:C.whCard,borderRadius:mob?"20px 20px 0 0":20,padding:20,border:"1px solid "+C.whBorder,position:"relative",zIndex:1,overflowY:"auto"}}>
+        <h3 style={{color:C.tealM,fontFamily:"'Oswald',sans-serif",margin:"0 0 4px",fontSize:20}}>Assign Driver</h3>
+        <div style={{color:C.whMuted,fontSize:13,marginBottom:14}}>{order.id} - {order.customerName} - {order.deliveryAddress}</div>
+        <LMap id={"am"+order.id} center={warehousePt} zoom={12} markers={mks} route={route} height={200} dark={true}/>
+        {avail.length===0&&<div style={{color:"#f87171",background:"#7c2d1244",borderRadius:10,padding:12,marginTop:12,fontSize:13}}>No drivers available right now.</div>}
+        <div style={{marginTop:14}}>
+          {avail.map(d=>(
+            <div key={d.id} onClick={()=>setSel(d.id)} style={{background:C.wh,border:"2px solid "+(sel===d.id?C.teal:C.whBorder),borderRadius:12,padding:"12px 14px",marginBottom:10,cursor:"pointer",display:"flex",gap:12,alignItems:"center",transition:"border-color .15s"}}>
+              <span style={{fontSize:28}}>{d.icon}</span>
+              <div style={{flex:1}}><b style={{color:C.tealM}}>{d.name}</b><div style={{color:C.whMuted,fontSize:12}}>{d.vehicle} - {d.vno}</div><div style={{color:"#2d5a55",fontSize:11}}>Tel: {d.phone} | Rating: {d.rating} | Trips: {d.trips}</div></div>
+              <Tag label="Available" color={C.green}/>
+            </div>
+          ))}
+        </div>
+        <div style={{display:"flex",gap:10,marginTop:8}}>
+          <button onClick={onClose} style={{flex:1,background:C.wh,color:C.whMuted,border:"1px solid "+C.whBorder,borderRadius:10,padding:12,fontSize:14,cursor:"pointer"}}>Cancel</button>
+          <button onClick={()=>{if(sel)onAssign(order.id,sel);}} disabled={!sel} style={{flex:2,background:sel?C.teal:"#1c3532",color:sel?"#fff":"#2d5a55",border:"none",borderRadius:10,padding:12,fontSize:14,fontWeight:700,cursor:sel?"pointer":"not-allowed"}}>
+            Assign and Dispatch
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-// INIT
-init();
+/* ══ WAREHOUSE DASHBOARD ══ */
+function WHDash({orders,drivers,inventory,warehousePt,geoLabel,onStatusChange,onAssignDriver,onRestock,onLogout,mob,syncFlash}){
+  const[tab,setTab]=useState("orders");
+  const[assignO,setAssignO]=useState(null);
+  const[viewO,setViewO]=useState(null);
+  const[search,setSearch]=useState("");
+  const[fSt,setFSt]=useState("All");
+  const counts={total:orders.length,pending:orders.filter(o=>o.status==="Pending").length,active:orders.filter(o=>["Confirmed","Loading","Dispatched","Out for Delivery"].includes(o.status)).length,done:orders.filter(o=>o.status==="Delivered").length};
+  const revenue=orders.filter(o=>o.status==="Delivered").reduce((s,o)=>s+o.total,0);
+  const low=inventory.filter(p=>p.stock<500);
+  const vis=orders.filter(o=>(fSt==="All"||o.status===fSt)&&(o.id+o.customerName+o.deliveryAddress).toLowerCase().includes(search.toLowerCase()));
+  const fmks=[
+    {lat:warehousePt.lat,lng:warehousePt.lng,icon:"🏭",color:"#f59e0b",sz:40,title:"Your Warehouse",sub:geoLabel,open:true},
+    ...drivers.map(d=>({lat:d.lat,lng:d.lng,icon:d.icon,color:d.status==="available"?C.green:C.orange,sz:32,title:d.name,sub:d.vehicle+" - "+d.status})),
+    ...orders.filter(o=>["Dispatched","Out for Delivery"].includes(o.status)&&o.delivCoords).map(o=>({lat:o.delivCoords.lat,lng:o.delivCoords.lng,icon:"📍",color:C.teal,sz:26,title:o.id,sub:o.customerName}))
+  ];
+  return(
+    <div style={{minHeight:"calc(100vh - 96px)",background:C.wh,display:"flex",flexDirection:"column"}}>
+      <SyncBanner flash={syncFlash} count={orders.length}/>
+      <div style={{background:C.whCard,borderBottom:"1px solid "+C.whBorder,padding:mob?"12px 14px":"14px 24px",display:"flex",justifyContent:"space-between",alignItems:"center",flexShrink:0}}>
+        <div style={{display:"flex",alignItems:"center",gap:10}}>
+          <Logo sz={34}/>
+          <div><div style={{color:C.tealM,fontFamily:"'Oswald',sans-serif",fontWeight:700,fontSize:mob?14:18}}>BILTIZO WAREHOUSE</div>
+            <div style={{color:C.whMuted,fontSize:10,display:"flex",alignItems:"center",gap:4}}><span style={{width:6,height:6,borderRadius:"50%",background:C.green,display:"inline-block"}}/>{geoLabel}</div>
+          </div>
+        </div>
+        <div style={{display:"flex",alignItems:"center",gap:mob?8:18}}>
+          {!mob&&[["Total",counts.total],["Pending",counts.pending],["Active",counts.active],["Done",counts.done]].map(([l,v])=>(
+            <div key={l} style={{textAlign:"center"}}><div style={{color:C.tealM,fontWeight:800,fontSize:18}}>{v}</div><div style={{color:C.whMuted,fontSize:9}}>{l}</div></div>
+          ))}
+          <button onClick={onLogout} style={{background:C.wh,border:"1px solid "+C.whBorder,color:C.whMuted,borderRadius:8,padding:"6px 10px",fontSize:11,cursor:"pointer"}}>Exit</button>
+        </div>
+      </div>
+      {low.length>0&&<div style={{background:"#7c2d12",padding:"8px 20px",fontSize:12,color:"#fed7aa",display:"flex",gap:8,alignItems:"center",flexShrink:0}}>
+        Low stock: {low.slice(0,3).map(p=>p.name).join(", ")}
+        <button onClick={()=>setTab("inventory")} style={{background:"none",border:"none",color:"#fb923c",cursor:"pointer",fontWeight:700,fontSize:12}}>Manage</button>
+      </div>}
+      <div className="hs" style={{background:C.whCard,borderBottom:"1px solid "+C.whBorder,padding:"0 16px",display:"flex",gap:20,overflowX:"auto",flexShrink:0}}>
+        {[["orders","Orders"],["map","Fleet Map"],["inventory","Inventory"],["analytics","Analytics"],["drivers","Drivers"]].map(([k,l])=>(
+          <button key={k} onClick={()=>setTab(k)} style={{background:"none",border:"none",color:tab===k?C.tealM:C.whMuted,cursor:"pointer",padding:"12px 4px",fontSize:mob?11:13,fontWeight:600,borderBottom:tab===k?"2px solid "+C.teal:"2px solid transparent",whiteSpace:"nowrap"}}>{l}</button>
+        ))}
+      </div>
+      <div style={{flex:1,overflowY:"auto",padding:mob?"12px 10px":"18px 24px"}}>
+        {tab==="orders"&&(
+          <div>
+            <div style={{display:"flex",gap:8,marginBottom:14,flexWrap:"wrap"}}>
+              <input placeholder="Search order ID, name..." value={search} onChange={e=>setSearch(e.target.value)} style={{flex:1,minWidth:140,background:C.whCard,border:"1px solid "+C.whBorder,borderRadius:10,padding:"10px 12px",color:C.tealM,fontSize:16,outline:"none"}}/>
+              <select value={fSt} onChange={e=>setFSt(e.target.value)} style={{background:C.whCard,border:"1px solid "+C.whBorder,color:C.tealM,borderRadius:10,padding:"10px 12px",fontSize:14,cursor:"pointer",minHeight:44}}>
+                <option value="All">All Status</option>
+                {SLIST.map(s=><option key={s} value={s}>{s}</option>)}
+              </select>
+            </div>
+            {orders.length===0&&(
+              <div style={{textAlign:"center",padding:"60px 20px",color:C.whMuted}}>
+                <div style={{fontSize:48,marginBottom:12}}>📭</div>
+                <div style={{fontSize:16,fontWeight:700}}>No orders yet</div>
+                <div style={{fontSize:13,marginTop:6,color:"#1e4a44"}}>Customer orders appear here instantly across all tabs</div>
+              </div>
+            )}
+            {vis.map(o=>(
+              <div key={o.id} style={{background:C.whCard,borderRadius:14,padding:mob?14:18,marginBottom:12,border:"1px solid "+(o.status==="Pending"?"#f59e0b66":C.whBorder)}}>
+                <div style={{display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:10}}>
+                  <div style={{flex:1,minWidth:0}}>
+                    <div style={{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap",marginBottom:6}}>
+                      <span style={{color:C.amber,fontFamily:"monospace",fontWeight:800,fontSize:15}}>{o.id}</span>
+                      <Tag label={o.status} color={SCOL[o.status]}/>
+                      <Tag label={(o.payment||"cod").toUpperCase()} color={C.blue}/>
+                    </div>
+                    <div style={{color:C.tealM,fontWeight:700,fontSize:14}}>{o.customerName}</div>
+                    <div style={{color:C.whMuted,fontSize:12}}>Tel: {o.phone} | Time: {o.placedAt}</div>
+                    <div style={{color:C.whMuted,fontSize:12,marginTop:2}}>Address: {o.deliveryAddress}</div>
+                    <div style={{color:C.whMuted,fontSize:12}}>{o.items.length} items | <span style={{color:C.amber,fontWeight:700}}>{fmt(o.total)}</span></div>
+                    {o.driverId&&(<div style={{color:C.green,fontSize:12,marginTop:4}}>Driver: {drivers.find(d=>d.id===o.driverId)?.name} - {drivers.find(d=>d.id===o.driverId)?.vno}</div>)}
+                  </div>
+                  <div style={{display:"flex",flexDirection:"column",gap:8,minWidth:155}}>
+                    {o.status!=="Delivered"&&(<select value={o.status} onChange={e=>onStatusChange(o.id,e.target.value)} style={{background:C.wh,border:"1px solid "+C.whBorder,color:C.tealM,borderRadius:8,padding:"8px 10px",fontSize:12,cursor:"pointer"}}>{SLIST.map(s=><option key={s} value={s}>{s}</option>)}</select>)}
+                    {!o.driverId&&o.status!=="Delivered"&&(<button onClick={()=>setAssignO(o)} style={{background:"#1d4ed8",color:"#fff",border:"none",borderRadius:8,padding:"8px",fontSize:12,fontWeight:700,cursor:"pointer"}}>Assign Driver</button>)}
+                    <button onClick={()=>setViewO(o)} style={{background:C.teal+"22",color:C.tealM,border:"1px solid "+C.teal+"44",borderRadius:8,padding:"8px",fontSize:12,cursor:"pointer"}}>Track Order</button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        {tab==="map"&&(
+          <div>
+            <h3 style={{color:C.tealM,fontFamily:"'Oswald',sans-serif",marginBottom:14,fontSize:20}}>LIVE FLEET MAP</h3>
+            <LMap id="fleet" center={warehousePt} zoom={12} markers={fmks} height={mob?280:420} dark={true}/>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(180px,1fr))",gap:10,marginTop:14}}>
+              {drivers.map(d=>(<div key={d.id} style={{background:C.whCard,borderRadius:12,padding:14,border:"1px solid "+C.whBorder}}>
+                <div style={{display:"flex",gap:10,alignItems:"center",marginBottom:8}}><span style={{fontSize:22}}>{d.icon}</span><div><b style={{color:C.tealM,fontSize:13}}>{d.name}</b><div style={{color:C.whMuted,fontSize:11}}>{d.vno}</div></div></div>
+                <Tag label={d.status==="available"?"Available":"On Route"} color={d.status==="available"?C.green:C.orange}/>
+              </div>))}
+            </div>
+          </div>
+        )}
+        {tab==="inventory"&&(
+          <div>
+            <h3 style={{color:C.tealM,fontFamily:"'Oswald',sans-serif",marginBottom:14,fontSize:20}}>INVENTORY</h3>
+            <div style={{display:"grid",gridTemplateColumns:mob?"1fr":"repeat(auto-fill,minmax(250px,1fr))",gap:12}}>
+              {inventory.map(p=>{
+                const pct=Math.min(100,(p.stock/10000)*100);const isLow=p.stock<500;
+                return(<div key={p.id} style={{background:C.whCard,borderRadius:14,padding:16,border:"1px solid "+(isLow?"#9a3412":C.whBorder)}}>
+                  <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:10}}>
+                    <div><b style={{color:C.tealM,fontSize:13}}>{p.emoji} {p.name}</b><div style={{color:C.whMuted,fontSize:10}}>{p.brand}</div></div>
+                    {isLow&&<Tag label="Low" color={C.red}/>}
+                  </div>
+                  <div style={{background:C.wh,borderRadius:6,height:6,marginBottom:6,overflow:"hidden"}}><div style={{width:pct+"%",height:"100%",background:isLow?C.red:C.teal,borderRadius:6}}/></div>
+                  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                    <span style={{color:isLow?C.red:C.tealM,fontWeight:700}}>{p.stock.toLocaleString()} {p.unit}</span>
+                    <div style={{display:"flex",gap:6}}>
+                      <button onClick={()=>onRestock(p.id,-100)} style={{background:C.wh,border:"1px solid "+C.whBorder,color:C.whMuted,borderRadius:6,padding:"3px 8px",fontSize:11,cursor:"pointer"}}>-100</button>
+                      <button onClick={()=>onRestock(p.id,500)} style={{background:C.teal,border:"none",color:"#fff",borderRadius:6,padding:"3px 8px",fontSize:11,cursor:"pointer"}}>+500</button>
+                    </div>
+                  </div>
+                </div>);
+              })}
+            </div>
+          </div>
+        )}
+        {tab==="analytics"&&(
+          <div>
+            <h3 style={{color:C.tealM,fontFamily:"'Oswald',sans-serif",marginBottom:18,fontSize:20}}>ANALYTICS</h3>
+            <div style={{display:"grid",gridTemplateColumns:mob?"repeat(2,1fr)":"repeat(4,1fr)",gap:12,marginBottom:20}}>
+              {[["Orders",counts.total,C.teal],["Revenue",fmt(revenue),C.amber],["Active",counts.active,C.blue],["Done",counts.done,C.green]].map(([l,v,cl])=>(
+                <div key={l} style={{background:C.whCard,borderRadius:14,padding:18,border:"1px solid "+C.whBorder,textAlign:"center"}}>
+                  <div style={{color:cl,fontWeight:800,fontSize:mob?18:24,fontFamily:"'Oswald',sans-serif"}}>{v}</div>
+                  <div style={{color:C.whMuted,fontSize:11}}>{l}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{background:C.whCard,borderRadius:16,padding:20,border:"1px solid "+C.whBorder}}>
+              <b style={{color:C.tealM,fontSize:14,display:"block",marginBottom:14}}>Status Breakdown</b>
+              {SLIST.map(s=>{const cnt=orders.filter(o=>o.status===s).length;const pct=orders.length?Math.round(cnt/orders.length*100):0;return(
+                <div key={s} style={{marginBottom:12}}>
+                  <div style={{display:"flex",justifyContent:"space-between",marginBottom:4}}><span style={{color:C.tealM,fontSize:12}}>{s}</span><span style={{color:SCOL[s],fontWeight:700,fontSize:12}}>{cnt} ({pct}%)</span></div>
+                  <div style={{background:C.wh,borderRadius:6,height:7,overflow:"hidden"}}><div style={{width:pct+"%",height:"100%",background:SCOL[s],borderRadius:6,transition:"width .5s"}}/></div>
+                </div>
+              );})}
+              {orders.length===0&&<div style={{color:"#1e4a44",fontSize:13}}>Place orders to see data</div>}
+            </div>
+          </div>
+        )}
+        {tab==="drivers"&&(
+          <div>
+            <h3 style={{color:C.tealM,fontFamily:"'Oswald',sans-serif",marginBottom:14,fontSize:20}}>DRIVER ROSTER</h3>
+            {drivers.map(d=>(<div key={d.id} style={{background:C.whCard,borderRadius:14,padding:mob?14:18,marginBottom:12,border:"1px solid "+C.whBorder,display:"flex",gap:14,alignItems:"center"}}>
+              <div style={{width:50,height:50,background:C.teal+"22",borderRadius:14,display:"flex",alignItems:"center",justifyContent:"center",fontSize:26,flexShrink:0}}>{d.icon}</div>
+              <div style={{flex:1}}>
+                <b style={{color:C.tealM,fontSize:14}}>{d.name}</b>
+                <div style={{color:C.whMuted,fontSize:12}}>{d.vehicle} - <span style={{color:C.amber}}>{d.vno}</span></div>
+                <div style={{color:"#2d5a55",fontSize:11}}>Tel: {d.phone} | Rating: {d.rating} | Trips: {d.trips}</div>
+              </div>
+              <Tag label={d.status==="available"?"Available":"Busy"} color={d.status==="available"?C.green:C.orange}/>
+            </div>))}
+          </div>
+        )}
+      </div>
+      {assignO&&<AssignModal order={assignO} drivers={drivers} onAssign={(oid,did)=>{onAssignDriver(oid,did);setAssignO(null);}} onClose={()=>setAssignO(null)} warehousePt={warehousePt} mob={mob}/>}
+      {viewO&&(<div style={{position:"fixed",inset:0,zIndex:300,background:"rgba(0,0,0,.85)",display:"flex",alignItems:"center",justifyContent:"center",padding:12}}>
+        <div onClick={()=>setViewO(null)} style={{position:"absolute",inset:0}}/>
+        <div style={{width:"100%",maxWidth:660,maxHeight:"90vh",overflowY:"auto",position:"relative",zIndex:1}}>
+          <button onClick={()=>setViewO(null)} style={{position:"absolute",top:8,right:8,zIndex:10,background:C.teal,border:"none",color:"#fff",borderRadius:8,padding:"5px 10px",cursor:"pointer",fontWeight:700}}>Close</button>
+          <TrackOrder order={viewO} drivers={drivers} warehousePt={warehousePt} mob={mob}/>
+        </div>
+      </div>)}
+    </div>
+  );
+}
+
+/* ══ DRIVER LOGIN & DASHBOARD ══ */
+function DriverLogin({drivers,onLogin,mob}){
+  const[ph,setPh]=useState("");const[pin,setPin]=useState("");const[err,setErr]=useState(false);
+  const go=()=>{const d=drivers.find(d=>d.phone===ph.trim()&&d.pin===pin.trim());if(d)onLogin(d);else setErr(true);};
+  return(
+    <div style={{flex:1,background:C.wh,display:"flex",alignItems:"center",justifyContent:"center",padding:20}}>
+      <div style={{width:"100%",maxWidth:360,background:C.whCard,borderRadius:22,padding:mob?24:40,border:"1px solid "+C.whBorder}}>
+        <div style={{textAlign:"center",marginBottom:28}}>
+          <div style={{fontSize:52,marginBottom:10}}>🚛</div>
+          <div style={{color:C.tealM,fontFamily:"'Oswald',sans-serif",fontSize:24,fontWeight:700}}>DRIVER PORTAL</div>
+          <div style={{color:C.whMuted,fontSize:13,marginTop:3}}>Biltizo Delivery Partner</div>
+        </div>
+        {[["PHONE NUMBER",ph,setPh,"tel","9876543210"],["4-DIGIT PIN",pin,setPin,"password","1234"]].map(([l,v,s,t,ph2])=>(
+          <div key={l} style={{marginBottom:14}}>
+            <label style={{color:C.whMuted,fontSize:11,fontWeight:700,display:"block",marginBottom:5,letterSpacing:1}}>{l}</label>
+            <input type={t} placeholder={ph2} value={v} onChange={e=>s(e.target.value)} onKeyDown={e=>e.key==="Enter"&&go()} style={{width:"100%",background:C.wh,border:"1.5px solid "+C.whBorder,borderRadius:10,padding:"13px 14px",color:C.tealM,fontSize:16,outline:"none",boxSizing:"border-box"}}/>
+          </div>
+        ))}
+        {err&&<div style={{color:"#f87171",fontSize:12,marginBottom:8}}>Wrong phone/PIN. Try 9876543210 + 1234</div>}
+        <div style={{color:"#1e4a44",fontSize:11,marginBottom:14}}>Demo: 9876543210 / 1234 (all drivers share PIN 1234)</div>
+        <button onClick={go} style={{width:"100%",background:C.teal,color:"#fff",border:"none",borderRadius:12,padding:14,fontSize:16,fontWeight:800,cursor:"pointer"}}>Login as Driver</button>
+      </div>
+    </div>
+  );
+}
+
+function DriverDash({driver,orders,warehousePt,onDelivered,onLogout,mob,syncFlash}){
+  const[online,setOnline]=useState(true);const[tab,setTab]=useState("orders");
+  const myOrders=orders.filter(o=>o.driverId===driver.id);
+  const active=myOrders.filter(o=>o.status!=="Delivered"&&o.status!=="Pending");
+  const done=myOrders.filter(o=>o.status==="Delivered");
+  const earnings=done.reduce((s,o)=>s+Math.round(o.total*.04),0);
+  const cur=active[0];const dest=cur?.delivCoords||{lat:26.8571,lng:80.9903};
+  return(
+    <div style={{minHeight:"calc(100vh - 96px)",background:C.wh,display:"flex",flexDirection:"column"}}>
+      <SyncBanner flash={syncFlash}/>
+      <div style={{background:C.whCard,borderBottom:"1px solid "+C.whBorder,padding:mob?"12px 14px":"14px 24px",display:"flex",justifyContent:"space-between",alignItems:"center",flexShrink:0}}>
+        <div style={{display:"flex",alignItems:"center",gap:10}}><span style={{fontSize:32}}>{driver.icon}</span><div><b style={{color:C.tealM,fontSize:14}}>{driver.name}</b><div style={{color:C.whMuted,fontSize:11}}>{driver.vehicle} - {driver.vno}</div></div></div>
+        <div style={{display:"flex",gap:8,alignItems:"center"}}>
+          <button onClick={()=>setOnline(v=>!v)} style={{background:online?"#14532d":"#1c1917",border:"1.5px solid "+(online?C.green:"#57534e"),borderRadius:20,padding:"6px 12px",color:online?C.green:"#57534e",fontSize:12,fontWeight:700,cursor:"pointer"}}>{online?"Online":"Offline"}</button>
+          <button onClick={onLogout} style={{background:C.wh,border:"1px solid "+C.whBorder,color:C.whMuted,borderRadius:8,padding:"6px 10px",fontSize:11,cursor:"pointer"}}>Exit</button>
+        </div>
+      </div>
+      <div style={{background:C.whCard,borderBottom:"1px solid "+C.whBorder,padding:"10px 16px",display:"flex",gap:mob?16:28,flexShrink:0}}>
+        {[["Active",active.length],["Done",done.length],["Earned",fmt(earnings)],["Rating",driver.rating]].map(([l,v])=>(
+          <div key={l} style={{textAlign:"center"}}><div style={{color:C.tealM,fontWeight:800,fontSize:mob?16:20}}>{v}</div><div style={{color:C.whMuted,fontSize:9}}>{l}</div></div>
+        ))}
+      </div>
+      <div className="hs" style={{background:C.whCard,borderBottom:"1px solid "+C.whBorder,padding:"0 16px",display:"flex",gap:20,overflowX:"auto",flexShrink:0}}>
+        {[["orders","My Orders"],["map","Navigate"],["earnings","Earnings"]].map(([k,l])=>(
+          <button key={k} onClick={()=>setTab(k)} style={{background:"none",border:"none",color:tab===k?C.tealM:C.whMuted,cursor:"pointer",padding:"12px 4px",fontSize:mob?11:13,fontWeight:600,borderBottom:tab===k?"2px solid "+C.teal:"2px solid transparent",whiteSpace:"nowrap"}}>{l}</button>
+        ))}
+      </div>
+      <div style={{flex:1,overflowY:"auto",padding:mob?"12px 10px":"18px 24px",maxWidth:800,margin:"0 auto",width:"100%"}}>
+        {tab==="orders"&&(
+          <div>
+            {myOrders.length===0&&(<div style={{textAlign:"center",padding:"60px 20px",color:C.whMuted}}><div style={{fontSize:48,marginBottom:12}}>📭</div><div style={{fontSize:15,fontWeight:700}}>No orders assigned yet</div><div style={{fontSize:13,marginTop:6,color:"#1e4a44"}}>Warehouse assigns orders to you. Stay online!</div></div>)}
+            {active.map(o=>(
+              <div key={o.id} style={{background:C.whCard,borderRadius:14,padding:16,marginBottom:12,border:"2px solid "+C.teal}}>
+                <div style={{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap",marginBottom:8}}>
+                  <span style={{color:C.amber,fontFamily:"monospace",fontWeight:800}}>{o.id}</span>
+                  <Tag label={o.status} color={SCOL[o.status]}/>
+                  <Tag label="YOUR DELIVERY" color={C.teal}/>
+                </div>
+                <b style={{color:C.tealM,fontSize:15}}>{o.customerName}</b>
+                <div style={{color:C.whMuted,fontSize:12}}>Tel: {o.phone}</div>
+                <div style={{color:C.whMuted,fontSize:12}}>Address: {o.deliveryAddress}</div>
+                <div style={{color:C.whMuted,fontSize:12}}>{o.items.length} items - <span style={{color:C.amber,fontWeight:700}}>{fmt(o.total)}</span></div>
+                <div style={{display:"flex",gap:8,marginTop:12,flexWrap:"wrap"}}>
+                  <a href={"tel:"+o.phone} style={{background:C.teal,color:"#fff",padding:"8px 14px",borderRadius:10,textDecoration:"none",fontSize:13,fontWeight:700}}>Call Customer</a>
+                  <button onClick={()=>onDelivered(o.id)} style={{background:C.green,color:"#fff",border:"none",borderRadius:10,padding:"8px 14px",fontSize:13,fontWeight:700,cursor:"pointer"}}>Mark Delivered</button>
+                </div>
+              </div>
+            ))}
+            {done.map(o=>(<div key={o.id} style={{background:C.whCard,borderRadius:12,padding:12,marginBottom:8,border:"1px solid "+C.whBorder,opacity:.65}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                <div><span style={{color:C.whMuted,fontFamily:"monospace",fontSize:12}}>{o.id}</span><div style={{color:"#3d6b65",fontSize:11}}>{o.customerName} - {fmt(o.total)}</div></div>
+                <Tag label="Delivered" color={C.green}/>
+              </div>
+            </div>))}
+          </div>
+        )}
+        {tab==="map"&&(
+          <div>
+            <h3 style={{color:C.tealM,fontFamily:"'Oswald',sans-serif",marginBottom:12,fontSize:20}}>NAVIGATION</h3>
+            {cur?<TrackMap wh={warehousePt} driver={driver} dest={dest} height={mob?300:420}/>
+              :<LMap id={"dm"+driver.id} center={{lat:driver.lat,lng:driver.lng}} zoom={13} markers={[{lat:driver.lat,lng:driver.lng,icon:driver.icon,color:C.teal,sz:40,title:"Your Location",sub:driver.vehicle,open:true},{lat:warehousePt.lat,lng:warehousePt.lng,icon:"🏭",color:"#f59e0b",sz:36,title:"Warehouse"}]} height={mob?280:380} dark={true}/>}
+            {cur&&(<div style={{background:C.whCard,borderRadius:12,padding:14,marginTop:12,border:"1px solid "+C.whBorder}}>
+              <b style={{color:C.tealM,fontSize:14,display:"block",marginBottom:4}}>Active Delivery</b>
+              <div style={{color:C.whMuted,fontSize:12}}>Address: {cur.deliveryAddress}</div>
+              <div style={{color:C.whMuted,fontSize:12}}>Customer: {cur.customerName} - Tel: {cur.phone}</div>
+              <div style={{display:"flex",gap:8,marginTop:10,flexWrap:"wrap"}}>
+                <a href={"https://maps.google.com/?q="+dest.lat+","+dest.lng} target="_blank" rel="noreferrer" style={{background:"#1d4ed8",color:"#fff",padding:"8px 14px",borderRadius:10,textDecoration:"none",fontSize:13,fontWeight:700}}>Google Maps</a>
+                <button onClick={()=>onDelivered(cur.id)} style={{background:C.green,color:"#fff",border:"none",borderRadius:10,padding:"8px 14px",fontSize:13,fontWeight:700,cursor:"pointer"}}>Mark Delivered</button>
+              </div>
+            </div>)}
+            {!cur&&<div style={{background:C.whCard,borderRadius:10,padding:12,marginTop:10,color:C.whMuted,fontSize:13,textAlign:"center"}}>Waiting for assignment...</div>}
+          </div>
+        )}
+        {tab==="earnings"&&(
+          <div>
+            <h3 style={{color:C.tealM,fontFamily:"'Oswald',sans-serif",marginBottom:16,fontSize:20}}>EARNINGS</h3>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:12,marginBottom:20}}>
+              {[["Today",fmt(earnings),C.amber],["Trips",done.length,C.teal],["Rating",driver.rating,C.green],["All-time",driver.trips,C.blue]].map(([l,v,cl])=>(
+                <div key={l} style={{background:C.whCard,borderRadius:14,padding:16,border:"1px solid "+C.whBorder,textAlign:"center"}}>
+                  <div style={{color:cl,fontWeight:800,fontSize:22,fontFamily:"'Oswald',sans-serif"}}>{v}</div>
+                  <div style={{color:C.whMuted,fontSize:11}}>{l}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{background:C.whCard,borderRadius:14,padding:16,border:"1px solid "+C.whBorder}}>
+              <b style={{color:C.tealM,display:"block",marginBottom:10}}>Delivery Log</b>
+              {done.length===0&&<div style={{color:"#1e4a44",fontSize:13}}>No deliveries yet</div>}
+              {done.map(o=>(<div key={o.id} style={{display:"flex",justifyContent:"space-between",padding:"8px 0",borderBottom:"1px solid "+C.whBorder}}>
+                <div><div style={{color:C.tealM,fontSize:12,fontFamily:"monospace"}}>{o.id}</div><div style={{color:C.whMuted,fontSize:11}}>{o.customerName}</div></div>
+                <div style={{textAlign:"right"}}><div style={{color:C.amber,fontWeight:700,fontSize:13}}>+{fmt(Math.round(o.total*.04))}</div><div style={{color:"#1e4a44",fontSize:10}}>4% commission</div></div>
+              </div>))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   ROOT APP
+   orders, drivers, inventory use useSharedState()
+   — writes to localStorage + broadcasts via BroadcastChannel
+   — all open tabs receive updates instantly
+══════════════════════════════════════════════════════ */
+function App(){
+  const mob=useIsMobile();
+  const geo=useGeo();
+  const warehousePt={lat:geo.lat,lng:geo.lng};
+
+  /* SHARED STATE — syncs across all tabs automatically */
+  const[orders,setOrders]=useSharedState("orders",[]);
+  const[drivers,setDrivers]=useSharedState("drivers",INIT_DRIVERS);
+  const[inventory,setInventory]=useSharedState("inventory",PRODUCTS.map(p=>({...p})));
+
+  /* Flash indicator so users see when data arrived from another tab */
+  const[syncFlash,setSyncFlash]=useState(false);
+  useEffect(()=>{
+    const bc=new BroadcastChannel("biltizo_sync_orders");
+    const bc2=new BroadcastChannel("biltizo_sync_drivers");
+    const flash=()=>{setSyncFlash(true);setTimeout(()=>setSyncFlash(false),2000);};
+    bc.onmessage=flash; bc2.onmessage=flash;
+    return()=>{bc.close();bc2.close();};
+  },[]);
+
+  /* LOCAL STATE — per-tab, no sync needed */
+  const[portal,setPortal]=useState("customer");
+  const[whLoggedIn,setWhLoggedIn]=useState(false);
+  const[driverUser,setDriverUser]=useState(null);
+  const[cart,setCart]=useState([]);
+  const[view,setView]=useState("home");
+  const[trackId,setTrackId]=useState(null);
+  const[showCart,setShowCart]=useState(false);
+
+  const cartCount=cart.reduce((s,i)=>s+i.qty,0);
+  const liveOrder=trackId?orders.find(o=>o.id===trackId):null;
+
+  /* ── ACTIONS ── */
+  const addCart=(product,delta)=>{
+    setCart(c=>{
+      const ex=c.find(i=>i.id===product.id);
+      if(!ex)return delta>0?[...c,{...product,qty:product.min||1}]:c;
+      const nq=ex.qty+(delta*(product.min||1));
+      if(nq<=0)return c.filter(i=>i.id!==product.id);
+      return c.map(i=>i.id===product.id?{...i,qty:nq}:i);
+    });
+  };
+
+  const placeOrder=(form)=>{
+    const order={
+      id:mkId(),customerName:form.name,phone:form.phone,
+      deliveryAddress:[form.address,form.area,form.pin].filter(Boolean).join(", "),
+      delivCoords:form.delivCoords||{lat:26.8571,lng:80.9903},
+      items:cart.map(i=>({...i})),total:form.total,
+      status:"Pending",driverId:null,payment:form.pay||"cod",placedAt:nowT()
+    };
+    /* Deduct inventory (shared — other tabs will update too) */
+    setInventory(inv=>inv.map(p=>{const ci=cart.find(i=>i.id===p.id);return ci?{...p,stock:Math.max(0,p.stock-ci.qty)}:p;}));
+    /* Add order (shared — warehouse tab sees it instantly) */
+    setOrders(prev=>[order,...prev]);
+    setCart([]);setTrackId(order.id);setView("track");
+  };
+
+  const updateStatus=(orderId,newStatus)=>{
+    setOrders(prev=>prev.map(o=>o.id===orderId?{...o,status:newStatus}:o));
+  };
+
+  const assignDriver=(orderId,driverId)=>{
+    setOrders(prev=>prev.map(o=>o.id===orderId?{...o,driverId:driverId,status:"Dispatched"}:o));
+    setDrivers(prev=>prev.map(d=>d.id===driverId?{...d,status:"busy"}:d));
+  };
+
+  const markDelivered=(orderId)=>{
+    const order=orders.find(o=>o.id===orderId);
+    setOrders(prev=>prev.map(o=>o.id===orderId?{...o,status:"Delivered"}:o));
+    if(order&&order.driverId)setDrivers(prev=>prev.map(d=>d.id===order.driverId?{...d,status:"available"}:d));
+  };
+
+  const restockItem=(id,delta)=>setInventory(inv=>inv.map(p=>p.id===id?{...p,stock:Math.max(0,p.stock+delta)}:p));
+  const switchPortal=p=>setPortal(p);
+
+  /* ── WAREHOUSE PORTAL ── */
+  if(portal==="warehouse"){return(
+    <div style={{minHeight:"100vh",display:"flex",flexDirection:"column"}}>
+      <TopBar portal={portal} onSwitch={switchPortal}/>
+      {!whLoggedIn
+        ?<WHLogin onLogin={()=>setWhLoggedIn(true)} mob={mob}/>
+        :<WHDash orders={orders} drivers={drivers} inventory={inventory} warehousePt={warehousePt} geoLabel={geo.label} onStatusChange={updateStatus} onAssignDriver={assignDriver} onRestock={restockItem} onLogout={()=>{setWhLoggedIn(false);switchPortal("customer");}} mob={mob} syncFlash={syncFlash}/>}
+    </div>
+  );}
+
+  /* ── DRIVER PORTAL ── */
+  if(portal==="driver"){return(
+    <div style={{minHeight:"100vh",display:"flex",flexDirection:"column"}}>
+      <TopBar portal={portal} onSwitch={switchPortal}/>
+      {!driverUser
+        ?<DriverLogin drivers={drivers} onLogin={d=>setDriverUser(d)} mob={mob}/>
+        :<DriverDash driver={drivers.find(d=>d.id===driverUser.id)||driverUser} orders={orders} warehousePt={warehousePt} onDelivered={markDelivered} onLogout={()=>{setDriverUser(null);switchPortal("customer");}} mob={mob} syncFlash={syncFlash}/>}
+    </div>
+  );}
+
+  /* ── CUSTOMER PORTAL ── */
+  return(
+    <div style={{minHeight:"100vh",background:C.bg}}>
+      {/* Sync banner */}
+      {syncFlash&&<div style={{position:"fixed",top:60,left:"50%",transform:"translateX(-50%)",zIndex:500,background:"#064e3b",color:"#6ee7b7",borderRadius:20,padding:"8px 20px",fontSize:12,fontWeight:700,boxShadow:"0 4px 20px rgba(0,0,0,.3)",whiteSpace:"nowrap"}}>
+        Synced with other tabs!
+      </div>}
+      <nav style={{position:"sticky",top:0,zIndex:100,background:"rgba(240,253,249,.97)",backdropFilter:"blur(14px)",borderBottom:"1.5px solid "+C.border,padding:mob?"10px 14px":"12px 24px",paddingTop:mob?"max(10px, env(safe-area-inset-top))":"12px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+        <div onClick={()=>setView("home")} style={{cursor:"pointer",display:"flex",alignItems:"center",gap:8}}>
+          <Logo sz={mob?26:32}/>
+          <div>
+            <div style={{color:C.teal,fontFamily:"'Oswald',sans-serif",fontWeight:700,fontSize:mob?17:20,letterSpacing:.5}}>BILTIZO</div>
+            {!mob&&<div style={{color:C.light,fontSize:10}}>Lucknow Construction Delivery</div>}
+          </div>
+        </div>
+        {!mob&&(<div style={{display:"flex",gap:4}}>
+          {[["home","Home"],["shop","Shop"],["history","My Orders"]].map(([v,l])=>(
+            <button key={v} onClick={()=>setView(v)} style={{background:view===v?C.tealL:"none",color:view===v?C.teal:C.muted,border:"none",borderRadius:8,padding:"7px 14px",fontSize:13,cursor:"pointer",fontWeight:600}}>{l}</button>
+          ))}
+        </div>)}
+        <div style={{display:"flex",gap:6,alignItems:"center"}}>
+          {!mob&&<>
+            <button onClick={()=>switchPortal("warehouse")} style={{background:C.tealL,color:C.teal,border:"none",borderRadius:8,padding:"7px 10px",fontSize:12,fontWeight:600,cursor:"pointer"}}>Warehouse</button>
+            <button onClick={()=>switchPortal("driver")} style={{background:"#fff7ed",color:C.orange,border:"none",borderRadius:8,padding:"7px 10px",fontSize:12,fontWeight:600,cursor:"pointer"}}>Driver Portal</button>
+          </>}
+          {liveOrder&&<button onClick={()=>setView("track")} style={{background:"#dcfce7",color:C.green,border:"none",borderRadius:8,padding:mob?"6px 8px":"7px 10px",fontSize:mob?11:12,fontWeight:700,cursor:"pointer"}}>📍 Track</button>}
+          <button onClick={()=>{setView("shop");setShowCart(true);}} style={{background:cartCount>0?C.teal:C.tealL,color:cartCount>0?"#fff":C.teal,border:"none",borderRadius:10,padding:mob?"8px 12px":"8px 14px",fontSize:mob?13:14,fontWeight:800,cursor:"pointer",minHeight:38}}>
+            {cartCount>0?"🛒 "+cartCount:"Cart"}
+          </button>
+        </div>
+      </nav>
+      <div style={{background:"linear-gradient(90deg,#b45309,#f59e0b)",padding:mob?"10px 14px":"11px 32px",display:"flex",gap:mob?14:32,overflowX:"auto",scrollbarWidth:"none"}}>
+        {[["5% off (min Rs.2000)","BILTIZO5"],["Free delivery Rs.5000+","FREE5K"],["8% bulk discount","BULK8"]].map(([t,code])=>(
+          <div key={code} style={{flexShrink:0,display:"flex",alignItems:"center",gap:7,color:"#fff"}}>
+            <span style={{fontSize:mob?11:13,fontWeight:700}}>{t}</span>
+            <span style={{background:"rgba(255,255,255,.25)",borderRadius:6,padding:"2px 8px",fontSize:11,fontWeight:800,fontFamily:"monospace"}}>{code}</span>
+          </div>
+        ))}
+      </div>
+      {view==="home"&&(
+        <>
+          <Hero onShop={()=>setView("shop")} mob={mob}/>
+          <div style={{maxWidth:1100,margin:"0 auto",padding:mob?"20px 10px":"36px 20px"}}>
+            <div style={{display:"grid",gridTemplateColumns:mob?"repeat(2,1fr)":"repeat(3,1fr)",gap:mob?10:16,marginBottom:36}}>
+              {[["2-4h Delivery","Same-day to your site"],["Live GPS Tracking","Real-time driver on map"],["50+ Materials","All construction needs"],["Any Load Size","Bikes to full trucks"],["Best Prices","No middlemen"],["24/7 Support","Always here"]].map(([t,d])=>(
+                <div key={t} style={{background:C.card,borderRadius:14,padding:mob?14:18,border:"1.5px solid "+C.border}}>
+                  <div style={{color:C.text,fontWeight:700,fontSize:mob?13:14,marginBottom:3}}>{t}</div>
+                  <div style={{color:C.muted,fontSize:mob?11:12,lineHeight:1.5}}>{d}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{textAlign:"center",background:"linear-gradient(135deg,"+C.teal+",#0ea5e9)",borderRadius:20,padding:mob?"28px 16px":"44px 40px"}}>
+              <h2 style={{fontFamily:"'Oswald',sans-serif",fontSize:mob?26:38,color:"#fff",marginBottom:8}}>READY TO BUILD?</h2>
+              <p style={{color:"rgba(255,255,255,.75)",marginBottom:22,fontSize:15}}>Order now, materials delivered today in Lucknow</p>
+              <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
+                <button onClick={()=>setView("shop")} style={{background:"#f59e0b",color:"#0d2926",border:"none",borderRadius:12,padding:mob?"12px 24px":"14px 36px",fontSize:mob?15:17,fontWeight:800,cursor:"pointer"}}>Browse Materials</button>
+                <button onClick={()=>switchPortal("warehouse")} style={{background:"rgba(255,255,255,.2)",color:"#fff",border:"1px solid rgba(255,255,255,.3)",borderRadius:12,padding:mob?"12px 18px":"14px 26px",fontSize:mob?14:16,fontWeight:700,cursor:"pointer"}}>Warehouse Login</button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+      {view==="shop"&&<Shop cart={cart} addCart={addCart} mob={mob}/>}
+      {view==="checkout"&&<Checkout cart={cart} onPlace={placeOrder} onBack={()=>{setView("shop");setShowCart(true);}} mob={mob}/>}
+      {view==="history"&&<History orders={orders} onTrack={o=>{setTrackId(o.id);setView("track");}} mob={mob}/>}
+      {view==="track"&&liveOrder&&<TrackOrder order={liveOrder} drivers={drivers} warehousePt={warehousePt} mob={mob}/>}
+      {showCart&&<CartDrawer cart={cart} addCart={addCart} onClose={()=>setShowCart(false)} onCheckout={()=>{setShowCart(false);setView("checkout");}} mob={mob}/>}
+      {mob&&(
+        <div className="mob-nav" style={{position:"fixed",bottom:0,left:0,right:0,background:C.card,borderTop:"1.5px solid "+C.border,display:"flex",zIndex:99,boxShadow:"0 -4px 24px rgba(13,149,136,.15)"}}>
+          {[
+            ["🏠","Home","home",false],
+            ["🛍️","Shop","shop",false],
+            [cartCount>0?"🛒":"🛒",cartCount>0?"Cart "+cartCount:"Cart","cart",false],
+            ["📋","Orders","history",false],
+            ["📍","Track","track",false],
+            ["🏭","WH","warehouse",false],
+            ["🚛","Driver","driver",false]
+          ].map(([icon,lbl,v])=>{
+            const active=(v==="warehouse"&&portal==="warehouse")||(v==="driver"&&portal==="driver")||(portal==="customer"&&view===v)||(v==="cart"&&showCart);
+            return(
+            <button key={v} onClick={()=>{if(v==="cart"){setView("shop");setShowCart(true);}else if(v==="warehouse")switchPortal("warehouse");else if(v==="driver")switchPortal("driver");else setView(v);}}
+              style={{flex:1,background:active?C.tealL+"88":"none",border:"none",borderTop:active?"2px solid "+C.teal:"2px solid transparent",padding:"7px 1px 6px",cursor:"pointer",color:active?C.teal:C.light,display:"flex",flexDirection:"column",alignItems:"center",gap:1,minHeight:52,transition:"all .15s"}}>
+              <span style={{fontSize:17,lineHeight:1.2}}>{icon}</span>
+              <span style={{fontSize:9,fontWeight:700,whiteSpace:"nowrap",letterSpacing:.2}}>{lbl}</span>
+            </button>
+          );})}
+        </div>
+      )}
+      {mob&&<div style={{height:"calc(52px + env(safe-area-inset-bottom, 0px))"}}/>}
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>
 </body>
 </html>
