@@ -8,7 +8,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:"Segoe UI",system-ui,sans-serif;background:#0D4040;overflow:hidden}
 .app{max-width:430px;margin:0 auto;border-radius:18px;overflow:hidden;height:100vh;max-height:680px;position:relative;background:#F0F4F2;box-shadow:0 20px 60px rgba(0,0,0,.4);display:flex;flex-direction:column}
-.sc{display:none;background:#F0F4F2}.sc.on{display:flex;flex-direction:column;position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden}
+.sc{display:none;background:#F0F4F2}.sc.on{display:flex!important;flex-direction:column;position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;z-index:1}
 .nav{background:#fff;padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #E0EBE7;flex-shrink:0;z-index:10}
 .ntitle{font-size:14px;font-weight:700;color:#1A1A1A;flex:1}
 .bk{width:30px;height:30px;border-radius:8px;background:#F0F4F2;border:1px solid #D8E4E0;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
@@ -124,6 +124,43 @@ body{font-family:"Segoe UI",system-ui,sans-serif;background:#0D4040;overflow:hid
 /* Bulk discount bar */
 #bulkBar{display:none;margin:8px 14px 0;padding:9px 12px;background:#E6F5F2;border:1.5px solid #1A6B5A;border-radius:10px;font-size:12px;font-weight:600;align-items:center;gap:8px}
 
+
+.rc-card{background:#fff;border:2px solid #E8EDEB;border-radius:14px;padding:14px 10px;cursor:pointer;text-align:center;transition:all .15s}
+.rc-card.sel{border-color:#0D4040;background:#EBF5F0}
+.ob{width:52px;height:52px;border-radius:12px;border:2px solid #E8EDEB;background:#F8FAF9;text-align:center;font-size:22px;font-weight:700;color:#111;outline:none}
+.ob.ok{border-color:#0D4040;background:#E6F5F2}
+.ob.err{border-color:#EF4444;background:#FFEBEE}
+.adm-side{width:80px;background:#0D4040;display:flex;flex-direction:column;align-items:stretch;padding:8px 5px;gap:2px;flex-shrink:0;overflow-y:auto;scrollbar-width:none}
+.adm-side::-webkit-scrollbar{display:none}
+.adm-si{width:100%;padding:10px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;border-radius:10px;border:none;background:transparent;text-align:center}
+.adm-si:hover{background:rgba(255,255,255,.1)}
+.adm-si.on{background:rgba(232,160,32,.22);border-left:3px solid #E8A020}
+.adm-si-ic{font-size:22px;display:block}
+.adm-si-lb{font-size:9px;color:rgba(255,255,255,.7);font-weight:600;line-height:1.3;word-break:break-word;max-width:70px}
+.adm-si.on .adm-si-lb{color:#E8A020;font-weight:700}
+.adm-content{flex:1;overflow-y:auto;background:#F0F4F2;min-width:0}
+.adm-wrap{display:flex;flex:1;overflow:hidden;min-height:0}
+.pg2{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 12px 70px}
+.pc{background:#fff;border-radius:14px;border:1px solid #E8EDEB;overflow:hidden;display:flex;flex-direction:column}
+.pcb{padding:9px 10px 10px;display:flex;flex-direction:column;gap:5px;flex:1}
+.pcn{font-size:11px;font-weight:700;color:#111;line-height:1.35;min-height:28px}
+.sk{font-size:9px;font-weight:600;padding:2px 7px;border-radius:20px;background:#F0F5F2;color:#4A5550;border:1.5px solid #E8EDEB;cursor:pointer;white-space:nowrap}
+.sk.on{background:#0D4040;color:#fff;border-color:#0D4040}
+.addb{padding:6px 12px;background:#E8A020;border:none;border-radius:8px;font-size:16px;font-weight:800;cursor:pointer;color:#111}
+.qb{width:28px;height:28px;border-radius:8px;background:#E6F5F2;border:1.5px solid #1A6B5A;font-size:15px;font-weight:700;cursor:pointer;color:#0D4040;display:flex;align-items:center;justify-content:center}
+.qn{font-size:14px;font-weight:800;color:#111;min-width:18px;text-align:center}
+.qc{display:flex;align-items:center;gap:5px}
+.pcf{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:7px}
+
+
+/* ── STAT GRID (Admin Overview) ── */
+.sta-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}
+.sta-c{background:#fff;border-radius:14px;border:1px solid #E8EDEB;padding:14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.sta-v{font-size:24px;font-weight:900;color:#111;line-height:1.1;margin:5px 0}
+.sta-l{font-size:9px;font-weight:700;color:#9AABA5;text-transform:uppercase;letter-spacing:.6px}
+/* ── PROFILE MODAL ── */
+.modal-bg{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:9998;display:flex;align-items:flex-end}
+.modal-sheet{background:#fff;border-radius:20px 20px 0 0;width:100%;max-height:85vh;overflow-y:auto}
 </style>
 </head>
 <body>
@@ -168,33 +205,44 @@ window.onerror = function(msg, src, line, col, err) {
 
 <!-- LOGIN -->
 <div class="sc" id="sc-login">
-  <div style="background:linear-gradient(145deg,#0D4040,#1A6B5A);padding:28px 22px 22px;text-align:center;color:#fff;flex-shrink:0">
-    <svg width="64" height="64" style="display:block;margin:0 auto 10px"><use href="#bz"/></svg>
-    <div style="font-size:20px;font-weight:900">Welcome to Biltizo</div>
-    <div style="font-size:11px;color:rgba(255,255,255,.7);margin-top:3px">Lucknow's fastest construction delivery</div>
-  </div>
-  <div style="flex:1;overflow-y:auto;padding:18px 16px;background:#F0F4F2">
-    <div style="font-size:11px;font-weight:700;color:#4A5550;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Select Your Role</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px">
-      <div id="rc0" style="background:#fff;border:2.5px solid #1A6B5A;border-radius:14px;padding:13px 10px;cursor:pointer;text-align:center;box-shadow:0 2px 10px rgba(26,107,90,.15)" onclick="selRole('customer',0)"><div style="font-size:26px;margin-bottom:6px">🏗️</div><div style="font-size:12px;font-weight:700;color:#1A1A1A">Customer</div></div>
-      <div id="rc1" style="background:#fff;border:2px solid #E0EBE7;border-radius:14px;padding:13px 10px;cursor:pointer;text-align:center" onclick="selRole('driver',1)"><div style="font-size:26px;margin-bottom:6px">🚛</div><div style="font-size:12px;font-weight:700;color:#1A1A1A">Driver</div></div>
-      <div id="rc2" style="background:#fff;border:2px solid #E0EBE7;border-radius:14px;padding:13px 10px;cursor:pointer;text-align:center" onclick="selRole('warehouse',2)"><div style="font-size:26px;margin-bottom:6px">🏭</div><div style="font-size:12px;font-weight:700;color:#1A1A1A">Warehouse</div></div>
-      <div id="rc3" style="background:#fff;border:2px solid #E0EBE7;border-radius:14px;padding:13px 10px;cursor:pointer;text-align:center" onclick="selRole('admin',3)"><div style="font-size:26px;margin-bottom:6px">⚡</div><div style="font-size:12px;font-weight:700;color:#1A1A1A">Super Admin</div></div>
-    </div>
-    <div style="background:#fff;border:1px solid #E0EBE7;border-radius:14px;padding:14px;margin-bottom:10px">
-      <div style="font-size:10px;font-weight:700;color:#4A5550;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Demo Login</div>
-      <div style="background:#E6F5F2;border-radius:10px;padding:10px;margin-bottom:12px;text-align:center">
-        <div style="font-size:11px;color:#0D4040;font-weight:700">OTP: <strong style="font-size:16px;color:#1A6B5A;letter-spacing:4px">7392</strong></div>
+  <div style="flex:1;overflow-y:auto;background:linear-gradient(160deg,#092B2B,#0D4040,#1A6B5A);display:flex;flex-direction:column">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px 16px;min-height:180px">
+      <div style="width:68px;height:68px;background:#E8A020;border-radius:18px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;box-shadow:0 8px 28px rgba(232,160,32,.45)">
+        <svg width="42" height="42"><use href="#bz"/></svg>
       </div>
-      <div style="display:flex;gap:10px;justify-content:center;margin-bottom:14px">
-        <input type="tel" maxlength="1" id="d1" style="width:52px;height:52px;border-radius:10px;border:2px solid #D8E4E0;background:#F8FAF9;text-align:center;font-size:22px;font-weight:700;color:#1A1A1A;outline:none" onkeyup="otpKey(this,'d2',event)">
-        <input type="tel" maxlength="1" id="d2" style="width:52px;height:52px;border-radius:10px;border:2px solid #D8E4E0;background:#F8FAF9;text-align:center;font-size:22px;font-weight:700;color:#1A1A1A;outline:none" onkeyup="otpKey(this,'d3',event)">
-        <input type="tel" maxlength="1" id="d3" style="width:52px;height:52px;border-radius:10px;border:2px solid #D8E4E0;background:#F8FAF9;text-align:center;font-size:22px;font-weight:700;color:#1A1A1A;outline:none" onkeyup="otpKey(this,'d4',event)">
-        <input type="tel" maxlength="1" id="d4" style="width:52px;height:52px;border-radius:10px;border:2px solid #D8E4E0;background:#F8FAF9;text-align:center;font-size:22px;font-weight:700;color:#1A1A1A;outline:none" onkeyup="otpKey(this,'',event)">
-      </div>
-      <button onclick="tryLogin()" style="width:100%;background:#E8A020;border:none;border-radius:11px;padding:13px;font-size:14px;font-weight:800;color:#1A1A1A;cursor:pointer">Sign In →</button>
+      <div style="font-size:28px;font-weight:900;color:#fff;letter-spacing:-.5px">BILTIZO</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.55);margin-top:4px">Lucknow · Construction Delivery</div>
     </div>
-    <div style="text-align:center;font-size:12px;color:#8A9890">Tap <span style="color:#1A6B5A;cursor:pointer;font-weight:700" onclick="quickFill()">fill demo</span> then Sign In</div>
+    <div style="background:#F0F4F2;border-radius:26px 26px 0 0;padding:22px 18px 30px">
+      <div style="font-size:10px;font-weight:700;color:#9AABA5;text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px">Your role</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px" id="roleGrid">
+        <div class="rc-card sel" id="rc0" onclick="setRole('customer',0)"><div style="font-size:24px;margin-bottom:5px">🏗️</div><div style="font-size:12px;font-weight:700;color:#111">Customer</div></div>
+        <div class="rc-card" id="rc1" onclick="setRole('driver',1)"><div style="font-size:24px;margin-bottom:5px">🚛</div><div style="font-size:12px;font-weight:700;color:#111">Driver</div></div>
+        <div class="rc-card" id="rc2" onclick="setRole('warehouse',2)"><div style="font-size:24px;margin-bottom:5px">🏭</div><div style="font-size:12px;font-weight:700;color:#111">Warehouse</div></div>
+        <div class="rc-card" id="rc3" onclick="setRole('admin',3)"><div style="font-size:24px;margin-bottom:5px">⚡</div><div style="font-size:12px;font-weight:700;color:#111">Admin</div></div>
+      </div>
+      <div id="ph1">
+        <div style="display:flex;gap:8px;margin-bottom:12px">
+          <div style="padding:11px 12px;background:#fff;border:1.5px solid #E8EDEB;border-radius:11px;font-size:13px;color:#6B7F7A;font-weight:600;flex-shrink:0">+91</div>
+          <input id="loginEmail" type="tel" maxlength="10" placeholder="Mobile number" style="flex:1;background:#fff;border:1.5px solid #E8EDEB;border-radius:11px;padding:11px 13px;font-size:14px;color:#111;outline:none">
+        </div>
+        <button onclick="doSendOTP()" style="width:100%;background:#0D4040;border:none;border-radius:13px;padding:14px;font-size:15px;font-weight:800;color:#fff;cursor:pointer">Send OTP →</button>
+      </div>
+      <div id="ph2" style="display:none">
+        <div style="background:#E6F5F2;border-radius:11px;padding:10px 14px;text-align:center;margin-bottom:14px">
+          <div style="font-size:12px;color:#0D4040;font-weight:700">Demo OTP: <span style="font-size:18px;letter-spacing:4px;color:#1A6B5A;font-weight:900">7392</span></div>
+        </div>
+        <div style="display:flex;gap:10px;justify-content:center;margin-bottom:16px">
+          <input class="ob" type="tel" maxlength="1" id="o1" onkeyup="otpNxt(this,'o2',event)">
+          <input class="ob" type="tel" maxlength="1" id="o2" onkeyup="otpNxt(this,'o3',event)">
+          <input class="ob" type="tel" maxlength="1" id="o3" onkeyup="otpNxt(this,'o4',event)">
+          <input class="ob" type="tel" maxlength="1" id="o4" onkeyup="otpNxt(this,'',event)">
+        </div>
+        <button onclick="doVerify()" style="width:100%;background:#0D4040;border:none;border-radius:13px;padding:14px;font-size:15px;font-weight:800;color:#fff;cursor:pointer;margin-bottom:10px">Verify & Sign In →</button>
+        <div style="text-align:center"><span onclick="document.getElementById('ph2').style.display='none';document.getElementById('ph1').style.display='block'" style="font-size:12px;color:#6B7F7A;cursor:pointer">← Change number</span></div>
+      </div>
+      <div style="text-align:center;margin-top:14px"><span onclick="demoFill()" style="font-size:12px;color:#0D4040;font-weight:700;cursor:pointer">fill demo</span><span style="font-size:12px;color:#9AABA5"> → tap Verify</span></div>
+    </div>
   </div>
 </div>
 <div class="sc" id="sc-c-home">
@@ -229,7 +277,7 @@ window.onerror = function(msg, src, line, col, err) {
       <div style="height:1px;background:#E0EBE7;margin-bottom:10px"></div>
       <!-- QUICK ACCESS -->
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:10px">
-        <div style="background:#fff;border:1px solid #E0EBE7;border-radius:10px;padding:9px 5px;text-align:center;cursor:pointer" onclick="goS('sc-c-community')"><div style="font-size:19px;margin-bottom:3px">💬</div><div style="font-size:9px;font-weight:600;color:#1A1A1A" id="qa-comm">Community</div></div>
+        <div style="background:#fff;border:1px solid #E0EBE7;border-radius:10px;padding:9px 5px;text-align:center;cursor:pointer" onclick="goS('sc-c-support')"><div style="font-size:19px;margin-bottom:3px">💬</div><div style="font-size:9px;font-weight:600;color:#1A1A1A" id="qa-comm">Community</div></div>
         <div style="background:#fff;border:1px solid #E0EBE7;border-radius:10px;padding:9px 5px;text-align:center;cursor:pointer" onclick="goS('sc-c-coins')"><div style="font-size:19px;margin-bottom:3px">🪙</div><div style="font-size:9px;font-weight:600;color:#1A1A1A" id="qa-coins">My Coins</div></div>
         <div style="background:#fff;border:1px solid #E0EBE7;border-radius:10px;padding:9px 5px;text-align:center;cursor:pointer" onclick="goS('sc-c-khata')"><div style="font-size:19px;margin-bottom:3px">📒</div><div style="font-size:9px;font-weight:600;color:#1A1A1A" id="qa-khata">Khata</div></div>
         <div style="background:#fff;border:1px solid #E0EBE7;border-radius:10px;padding:9px 5px;text-align:center;cursor:pointer" onclick="goS('sc-c-calc')"><div style="font-size:19px;margin-bottom:3px">🧮</div><div style="font-size:9px;font-weight:600;color:#1A1A1A" id="qa-calc">Estimate</div></div>
@@ -245,9 +293,9 @@ window.onerror = function(msg, src, line, col, err) {
       <div style="background:#fff;border:1px solid #E0EBE7;border-radius:11px;padding:10px;display:flex;align-items:center;gap:9px;margin-bottom:8px">
         <div style="width:32px;height:32px;background:#E6F5F2;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">📅</div>
         <div style="flex:1"><div style="font-size:12px;font-weight:700;color:#1A1A1A" id="h-sched">Schedule Delivery</div><div style="font-size:10px;color:#8A9890" id="h-sched-s">Book a slot for tomorrow</div></div>
-        <button onclick="showToast('Opening slots...')" style="padding:6px 11px;background:#1A6B5A;color:#fff;border:none;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer" id="h-sched-btn">Book</button>
+        <button onclick="goS('sc-c-standing')" style="padding:6px 11px;background:#1A6B5A;color:#fff;border:none;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer" id="h-sched-btn">Book</button>
       </div>
-      <div style="background:linear-gradient(90deg,#25D366,#128C7E);border-radius:11px;padding:10px;display:flex;align-items:center;gap:9px;cursor:pointer;margin-bottom:10px" onclick="showToast('Opening WhatsApp ordering...')">
+      <div style="background:linear-gradient(90deg,#25D366,#128C7E);border-radius:11px;padding:10px;display:flex;align-items:center;gap:9px;cursor:pointer;margin-bottom:10px" onclick="goS('sc-c-wabot')">
         <div style="font-size:20px">💬</div>
         <div style="flex:1"><div style="font-size:12px;font-weight:700;color:#fff" id="h-wa">Order via WhatsApp</div><div style="font-size:10px;color:rgba(255,255,255,.8)" id="h-wa-s">Type your order, we handle the rest</div></div>
         <div style="font-size:16px;color:rgba(255,255,255,.7)">→</div>
@@ -277,7 +325,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni on" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb" id="nb-home">Home</span></button>
     <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb" id="nb-cart">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb" id="nb-track">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb" id="nb-comm">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-support')"><span class="ni-ic">💬</span><span class="ni-lb" id="nb-comm">Community</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb" id="nb-set">Settings</span></button>
   </div>
 </div>
@@ -325,7 +373,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni on"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -353,18 +401,16 @@ window.onerror = function(msg, src, line, col, err) {
 
 <!-- NOTIFICATIONS -->
 <div class="sc" id="sc-c-notif">
-  <div class="nav"><button class="bk" onclick="goS('sc-c-home')">←</button><div class="ntitle" style="flex:1">Notifications</div><button style="background:none;border:none;font-size:11px;color:#1A6B5A;cursor:pointer;font-weight:600" onclick="showToast('All marked read')">Mark all read</button></div>
-  <div style="overflow-y:auto;flex:1;min-height:0" id="notifList"></div>
-  <div class="bn">
-    <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
-    <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
-    <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
-    <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
+  <div class="nav"><button class="bk" onclick="goS('sc-c-home')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.5"><path d="M19 12H5M5 12l7-7M5 12l7 7"/></svg></button><div class="ntitle">Notifications</div><button onclick="showToast('All cleared')" style="font-size:11px;font-weight:600;color:#1A6B5A;background:none;border:none;cursor:pointer">Clear all</button></div>
+  <div style="overflow-y:auto;flex:1;min-height:0;padding:10px" id="notifList">
+    <div style="background:#fff;border-radius:12px;border:1px solid #E8EDEB;margin-bottom:8px;overflow:hidden">
+      <div style="display:flex;gap:10px;padding:12px 14px;border-bottom:1px solid #F5F7F6"><div style="width:36px;height:36px;border-radius:10px;background:#E6F5F2;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🚛</div><div style="flex:1"><div style="font-size:12px;font-weight:700;color:#111">Driver assigned for BLT-04041890</div><div style="font-size:11px;color:#9AABA5;margin-top:2px">Ramesh Kumar on the way · ETA 24 min</div><div style="font-size:10px;color:#9AABA5;margin-top:3px">4 min ago</div></div></div>
+      <div style="display:flex;gap:10px;padding:12px 14px;border-bottom:1px solid #F5F7F6"><div style="width:36px;height:36px;border-radius:10px;background:#FFF3DC;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🏷️</div><div style="flex:1"><div style="font-size:12px;font-weight:700;color:#111">Copper Wire price dropped 8%</div><div style="font-size:11px;color:#9AABA5;margin-top:2px">Now ₹294/coil — was ₹320</div><div style="font-size:10px;color:#9AABA5;margin-top:3px">1 hour ago</div></div></div>
+      <div style="display:flex;gap:10px;padding:12px 14px;border-bottom:1px solid #F5F7F6"><div style="width:36px;height:36px;border-radius:10px;background:#E3F2FD;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🎁</div><div style="flex:1"><div style="font-size:12px;font-weight:700;color:#111">420 coins earned this month</div><div style="font-size:11px;color:#9AABA5;margin-top:2px">Redeem on next order</div><div style="font-size:10px;color:#9AABA5;margin-top:3px">2 hours ago</div></div></div>
+      <div style="display:flex;gap:10px;padding:12px 14px"><div style="width:36px;height:36px;border-radius:10px;background:#E8F5E9;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">✅</div><div style="flex:1"><div style="font-size:12px;font-weight:700;color:#111">Order BLT-04041755 delivered</div><div style="font-size:11px;color:#9AABA5;margin-top:2px">Rate your experience</div><div style="font-size:10px;color:#9AABA5;margin-top:3px">Yesterday</div></div></div>
+    </div>
   </div>
 </div>
-
-<!-- BILTIZO COINS -->
 <div class="sc" id="sc-c-coins">
   <div class="nav"><button class="bk" onclick="goS('sc-c-home')">←</button><div class="ntitle" style="flex:1">Biltizo Coins</div></div>
   <div style="overflow-y:auto;flex:1;min-height:0;padding:12px">
@@ -398,7 +444,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -432,7 +478,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -449,7 +495,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni on"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -536,7 +582,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni on"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -579,7 +625,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -592,7 +638,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -609,7 +655,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -623,19 +669,19 @@ window.onerror = function(msg, src, line, col, err) {
   </div>
   <div style="overflow-y:auto;flex:1;min-height:0">
     <div class="set-sec">Account</div>
-    <div class="set-row" onclick="showToast('Profile...')"><div class="set-ic" style="background:#E6F5F2">👤</div><div style="flex:1"><div class="sn" id="s-profile">Profile Information</div></div><span style="color:#8A9890">›</span></div>
+    <div class="set-row" onclick="showProfile()"><div class="set-ic" style="background:#E6F5F2">👤</div><div style="flex:1"><div class="sn" id="s-profile">Profile Information</div></div><span style="color:#8A9890">›</span></div>
     <div class="set-row" onclick="goS('sc-c-aiplanner')"><div class="set-ic" style="background:#EDE8FB">🏗️</div><div style="flex:1"><div class="sn">AI Site Planner</div><div class="sd">Describe project → get BOM</div></div><span style="color:#8A9890">›</span></div>
     <div class="set-row" onclick="goS('sc-c-addresses')"><div class="set-ic" style="background:#E6F5F2">📍</div><div style="flex:1"><div class="sn">Saved Sites</div><div class="sd">3 delivery addresses</div></div><span style="color:#8A9890">›</span></div>
     <div class="set-row" onclick="goS('sc-c-returns')"><div class="set-ic" style="background:#FCEBEB">↩️</div><div style="flex:1"><div class="sn">Returns & Complaints</div><div class="sd">1 active ticket</div></div><span style="color:#8A9890">›</span></div>
     <div class="set-row" onclick="goS('sc-c-projects')"><div class="set-ic" style="background:#E6F5F2">🏗️</div><div style="flex:1"><div class="sn">My Projects</div><div class="sd">2 active projects</div></div><span style="color:#8A9890">›</span></div>
-    <div class="set-row" onclick="goS('sc-c-analytics')"><div class="set-ic" style="background:#E6F1FB">📊</div><div style="flex:1"><div class="sn">Spend Analytics</div><div class="sd">₹1,24,200 this month</div></div><span style="color:#8A9890">›</span></div>
+    <span style="color:#8A9890">›</span></div>
     <div class="set-row" onclick="goS('sc-c-referral')"><div class="set-ic" style="background:#FFF3DC">🎁</div><div style="flex:1"><div class="sn">Refer & Earn</div><div class="sd">₹200 per referral · ₹400 earned</div></div><span style="color:#8A9890">›</span></div>
     <div class="set-row" onclick="goS('sc-c-wishlist')"><div class="set-ic" style="background:#FEF2F2">❤️</div><div style="flex:1"><div class="sn">Wishlist</div><div class="sd">4 saved items</div></div><span style="color:#8A9890">›</span></div>
     <div class="set-row" onclick="goS('sc-c-support')"><div class="set-ic" style="background:#E6F5F2">💬</div><div style="flex:1"><div class="sn">Support Chat</div><div class="sd">Avg 2 min response</div></div><span style="color:#8A9890">›</span></div>
     <div class="set-row" onclick="goS('sc-c-hist')"><div class="set-ic" style="background:#EFF6FF">📋</div><div style="flex:1"><div class="sn" id="s-orders">Order History</div></div><span style="color:#8A9890">›</span></div>
     <div class="set-row" onclick="goS('sc-c-khata')"><div class="set-ic" style="background:#FFF3DC">📒</div><div style="flex:1"><div class="sn" id="s-khata">Digital Khata</div><div class="sd">₹48,200 outstanding</div></div><span style="color:#8A9890">›</span></div>
     <div class="set-row" onclick="goS('sc-c-coins')"><div class="set-ic" style="background:#FFF3DC">🪙</div><div style="flex:1"><div class="sn" id="s-coins">Biltizo Coins</div><div class="sd" id="coinsSetSub">420 coins</div></div><span style="color:#8A9890">›</span></div>
-    <div class="set-row" onclick="showToast('BNPL credit...')"><div class="set-ic" style="background:#E6F5F2">🏦</div><div style="flex:1"><div class="sn" id="s-bnpl">BNPL Credit</div><div class="sd">₹50,000 limit · ₹12,000 used</div></div><span style="color:#8A9890">›</span></div>
+    <div class="set-row" onclick="goS('sc-c-bnpl-dash')"><div class="set-ic" style="background:#E6F5F2">🏦</div><div style="flex:1"><div class="sn" id="s-bnpl">BNPL Credit</div><div class="sd">₹50,000 limit · ₹12,000 used</div></div><span style="color:#8A9890">›</span></div>
     <div class="set-row" onclick="showToast('Opening community...');goS('sc-c-community')"><div class="set-ic" style="background:#E6F5F2">💬</div><div style="flex:1"><div class="sn">Community Forum</div></div><span style="color:#8A9890">›</span></div>
     <div class="set-sec">Preferences</div>
     <div class="set-row"><div class="set-ic" style="background:#E6F5F2">🔔</div><div style="flex:1"><div class="sn" id="s-notifs">Order Alerts</div></div><button class="tgl on" onclick="togSet(this)"><div class="tglk"></div></button></div>
@@ -647,7 +693,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni on"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -896,7 +942,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -925,7 +971,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -951,7 +997,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -964,7 +1010,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -1005,7 +1051,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -1033,7 +1079,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -1050,7 +1096,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button>
     <button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button>
     <button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button>
-    <button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button>
+    <button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button>
     <button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button>
   </div>
 </div>
@@ -1126,7 +1172,7 @@ window.onerror = function(msg, src, line, col, err) {
       <div style="font-size:11px;color:#8A9890;margin-top:3px">Daily · Weekly · Monthly · Custom</div>
     </div>
   </div>
-  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
+  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
 </div>
 
 <!-- BNPL DASHBOARD -->
@@ -1151,7 +1197,7 @@ window.onerror = function(msg, src, line, col, err) {
     <button onclick="showToast('Opening UPI payment...')" style="width:100%;background:#E8A020;border:none;border-radius:11px;padding:12px;font-size:13px;font-weight:800;color:#1A1A1A;cursor:pointer">💳 Pay Now ₹4,200</button>
     <button onclick="showToast('Requesting limit increase...')" style="width:100%;background:transparent;border:2px solid #1A6B5A;border-radius:11px;padding:10px;font-size:13px;font-weight:600;color:#1A6B5A;cursor:pointer;margin-top:8px">↑ Request Credit Limit Increase</button>
   </div>
-  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
+  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
 </div>
 
 <!-- BULK QUOTE / RFQ -->
@@ -1176,7 +1222,7 @@ window.onerror = function(msg, src, line, col, err) {
       <div style="padding:8px 0"><div style="display:flex;justify-content:space-between;margin-bottom:3px"><div style="font-size:12px;font-weight:600;color:#1A1A1A">RFQ-2026-031 · Foundation</div><span class="pill pb">Quoted</span></div><div style="font-size:11px;color:#8A9890">Quote: ₹2,14,000 · Valid 3 more days</div></div>
     </div>
   </div>
-  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
+  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
 </div>
 
 <!-- B2B ACCOUNT MANAGEMENT -->
@@ -1206,7 +1252,7 @@ window.onerror = function(msg, src, line, col, err) {
       <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0"><span style="color:#4A5550">Above ₹1,00,000</span><span style="font-weight:600;color:#DC2626">Owner + Finance</span></div>
     </div>
   </div>
-  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
+  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
 </div>
 
 <!-- PRICE INDEX / TICKER -->
@@ -1226,7 +1272,7 @@ window.onerror = function(msg, src, line, col, err) {
       <button onclick="showToast('Price alert set! We will notify you.')" style="margin-top:8px;padding:7px 14px;background:#1A6B5A;border:none;border-radius:8px;font-size:11px;font-weight:700;color:#fff;cursor:pointer">Set Alert</button>
     </div>
   </div>
-  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
+  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
 </div>
 
 <!-- AI BLUEPRINT ESTIMATOR -->
@@ -1260,7 +1306,7 @@ window.onerror = function(msg, src, line, col, err) {
       <div style="display:flex;gap:8px"><button onclick="showToast('All items added to cart!')" style="flex:1;padding:11px;background:#E8A020;border:none;border-radius:10px;font-size:12px;font-weight:800;color:#1A1A1A;cursor:pointer">Add All to Cart</button><button onclick="showToast('BOM exported as PDF!')" style="flex:1;padding:11px;background:#1A6B5A;border:none;border-radius:10px;font-size:12px;font-weight:700;color:#fff;cursor:pointer">Export PDF</button></div>
     </div>
   </div>
-  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
+  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
 </div>
 
 <!-- WHATSAPP BOT SIMULATION -->
@@ -1287,22 +1333,22 @@ window.onerror = function(msg, src, line, col, err) {
 
 <!-- TOOL RENTAL MARKETPLACE -->
 <div class="sc" id="sc-c-tools">
-  <div class="nav"><button class="bk" onclick="goS('sc-c-community')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.5"><path d="M19 12H5M5 12l7-7M5 12l7 7"/></svg></button><div class="ntitle" style="flex:1">Tool Rental</div><button style="padding:6px 12px;background:#E8A020;border:none;border-radius:8px;font-size:11px;font-weight:700;color:#1A1A1A;cursor:pointer" onclick="showToast('Listing your tool...')">List Tool</button></div>
+  <div class="nav"><button class="bk" onclick="goS('sc-c-support')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.5"><path d="M19 12H5M5 12l7-7M5 12l7 7"/></svg></button><div class="ntitle" style="flex:1">Tool Rental</div><button style="padding:6px 12px;background:#E8A020;border:none;border-radius:8px;font-size:11px;font-weight:700;color:#1A1A1A;cursor:pointer" onclick="showToast('Listing your tool...')">List Tool</button></div>
   <div style="overflow-y:auto;flex:1;min-height:0;padding:12px">
     <div class="srch" style="margin:-12px -12px 12px;border-radius:0"><div style="width:28px;height:28px;background:#E6F5F2;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1A6B5A" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div><input class="srch-in" placeholder="Search scaffolding, mixer, compactor..."></div>
     <div id="toolRentalList"></div>
   </div>
-  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni on" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
+  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni on" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
 </div>
 
 <!-- EXPERT CONSULTATION -->
 <div class="sc" id="sc-c-expert">
-  <div class="nav"><button class="bk" onclick="goS('sc-c-community')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.5"><path d="M19 12H5M5 12l7-7M5 12l7 7"/></svg></button><div class="ntitle" style="flex:1">Expert Consultation</div></div>
+  <div class="nav"><button class="bk" onclick="goS('sc-c-support')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.5"><path d="M19 12H5M5 12l7-7M5 12l7 7"/></svg></button><div class="ntitle" style="flex:1">Expert Consultation</div></div>
   <div style="overflow-y:auto;flex:1;min-height:0;padding:12px">
     <div style="background:#E6F5F2;border:1px solid #C0E8E0;border-radius:12px;padding:11px 13px;margin-bottom:12px;font-size:12px;color:#0D4040">Book a 30-min video call with a licensed engineer. ₹299/session. First session free.</div>
     <div id="expertList"></div>
   </div>
-  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni on" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
+  <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni on" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
 </div>
 
 <!-- DRIVER STREAK TRACKER -->
@@ -1392,8 +1438,8 @@ window.onerror = function(msg, src, line, col, err) {
       <button onclick="goS('sc-adm-inbox');renderInbox()" style="padding:5px 9px;background:#FEF2F2;border:1.5px solid #FECACA;border-radius:8px;font-size:11px;font-weight:700;color:#DC2626;cursor:pointer">📬</button>
     </div>
     <div style="display:flex;flex:1;min-height:0;overflow:hidden">
-      <div style="width:110px;background:#0D4040;overflow-y:auto;flex-shrink:0;padding:8px 0" id="admSide"></div>
-      <div style="flex:1;overflow-y:auto;min-width:0" id="admContent"></div>
+      <div class="adm-side" id="admSide"></div>
+      <div class="adm-content" id="admContent"></div>
     </div>
   </div>
 </div>
@@ -1453,7 +1499,7 @@ window.onerror = function(msg, src, line, col, err) {
         <button onclick="document.getElementById('plannerOut').style.display='none';document.getElementById('plannerIn').style.display='block'" style="width:100%;padding:10px;background:transparent;border:1.5px solid #1A6B5A;border-radius:10px;font-size:12px;font-weight:600;color:#1A6B5A;cursor:pointer">Plan Another Project</button>
       </div>
     </div>
-    <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni" onclick="goS('sc-c-community')"><span class="ni-ic">💬</span><span class="ni-lb">Community</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
+    <div class="bn"><button class="ni" onclick="goS('sc-c-home')"><span class="ni-ic">🏠</span><span class="ni-lb">Home</span></button><button class="ni" onclick="goS('sc-c-cart')"><span class="ni-ic">🛒</span><span class="ni-lb">Cart</span></button><button class="ni" onclick="goS('sc-c-track')"><span class="ni-ic">📍</span><span class="ni-lb">Track</span></button><button class="ni" onclick="goS('sc-c-hist')"><span class="ni-ic">📋</span><span class="ni-lb">Orders</span></button><button class="ni" onclick="goS('sc-c-set')"><span class="ni-ic">⚙️</span><span class="ni-lb">Settings</span></button></div>
   </div>
 </div>
 
@@ -1473,21 +1519,31 @@ function toggleLang(){
   showToast(isHindi?'हिंदी में बदल दिया गया! 🇮🇳':'Switched to English');
 }
 
-var CATS=[{id:'all',l:'All'},{id:'equip',l:'🏗️ Equipment'},{id:'mcb',l:'MCB'},{id:'wire',l:'Wires'},{id:'conduit',l:'Conduit'},{id:'sw',l:'Switches'},{id:'sk',l:'Sockets'},{id:'bx',l:'Boxes'}];
+var CATS=[{id:'all',l:'All'},{id:'civil',l:'🧱 Civil'},{id:'equip',l:'🏗️ Equip'},{id:'mcb',l:'⚡ MCB'},{id:'wire',l:'🔴 Wire'},{id:'conduit',l:'⬜ Conduit'},{id:'sw',l:'🔌 Switch'},{id:'sk',l:'🔋 Socket'},{id:'bx',l:'📦 Boxes'}];
 var PRODS=[
-  {id:11,cat:'equip',icon:'🏗️',name:'Boom Pump — Concrete',skus:['21m','28m','37m','42m','52m'],badge:'NEW',rent:true},
-  {id:12,cat:'equip',icon:'🧱',name:'Concrete Mixer Diesel',skus:['0.5 cu ft','1 cu ft','2 cu ft'],rent:true},
-  {id:1,cat:'mcb',icon:'⚡',name:'MCB SP — C Curve',skus:['6A','10A','16A','20A','25A','32A']},
-  {id:2,cat:'mcb',icon:'⚡',name:'RCCB — 2 Pole',skus:['16A/30mA','25A/30mA','40A/30mA','63A/30mA']},
-  {id:3,cat:'wire',icon:'🔴',name:'Copper FR Wire Red',skus:['1.0mm²','1.5mm²','2.5mm²','4mm²','6mm²']},
-  {id:4,cat:'wire',icon:'🔵',name:'Copper FR Wire Blue',skus:['1.5mm²','2.5mm²','4mm²']},
-  {id:5,cat:'conduit',icon:'⬜',name:'PVC Conduit Pipe HD',skus:['16mm','20mm','25mm','32mm','40mm']},
-  {id:6,cat:'conduit',icon:'⚙️',name:'Conduit Bend 90°',skus:['16mm','20mm','25mm','32mm']},
-  {id:7,cat:'sw',icon:'🔌',name:'Modular Switch 6A',skus:['1 Mod','2 Mod','4 Mod','6 Mod']},
-  {id:8,cat:'sk',icon:'🔋',name:'3 Pin Socket Round',skus:['5A','6A','16A','20A']},
-  {id:9,cat:'bx',icon:'📦',name:'Concealed Box GI',skus:['1x1','2x2','3x3','4x4']}
+  {id:11,cat:'equip',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Concrete_pump_truck.jpg/320px-Concrete_pump_truck.jpg',name:'Boom Pump',brand:'Schwing',skus:['21m','28m','37m','42m','52m'],badge:'NEW',rent:true},
+  {id:12,cat:'equip',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Cement_mixer.jpg/240px-Cement_mixer.jpg',name:'Concrete Mixer',brand:'Ajax Fiori',skus:['0.5 cuft','1 cuft','2 cuft'],rent:true},
+  {id:13,cat:'equip',img:'',name:'Needle Vibrator',brand:'Jaypee',skus:['25mm','38mm','51mm'],rent:true},
+  {id:20,cat:'civil',img:'',name:'OPC Cement 43G',brand:'UltraTech',skus:['1 bag','5 bags','10 bags','25 bags'],badge:'BEST'},
+  {id:21,cat:'civil',img:'',name:'OPC Cement 53G',brand:'Ambuja',skus:['1 bag','5 bags','10 bags']},
+  {id:22,cat:'civil',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Steel_reinforcing_bar_rebar.jpg/320px-Steel_reinforcing_bar_rebar.jpg',name:'TMT Steel Fe500',brand:'TATA Tiscon',skus:['8mm','10mm','12mm','16mm','20mm'],badge:'IS'},
+  {id:23,cat:'civil',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Bricks.jpg/320px-Bricks.jpg',name:'Red Clay Bricks',brand:'Local Kiln',skus:['500 pcs','1000 pcs','2000 pcs']},
+  {id:24,cat:'civil',img:'',name:'River Sand',brand:'Local Quarry',skus:['1 brass','2 brass','5 brass']},
+  {id:1,cat:'mcb',img:'https://www.havells.com/media/catalog/product/d/h/dhmgcspf016_1.jpg',name:'MCB SP C Curve',brand:'Havells',skus:['6A','10A','16A','20A','25A','32A'],badge:'IS'},
+  {id:2,cat:'mcb',img:'https://www.havells.com/media/catalog/product/d/h/dhrxcksf040_1.jpg',name:'RCCB 2 Pole 30mA',brand:'Havells',skus:['16A','25A','40A','63A'],badge:'IS'},
+  {id:30,cat:'mcb',img:'',name:'MCB TP D Curve',brand:'Havells',skus:['16A','20A','25A','32A','40A'],badge:'IS'},
+  {id:33,cat:'mcb',img:'',name:'DB Box',brand:'Havells',skus:['4 way','6 way','8 way','12 way','16 way']},
+  {id:3,cat:'wire',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Electrical_wire.jpg/240px-Electrical_wire.jpg',name:'Copper FR Wire Red',brand:'Polycab',skus:['1.0mm²','1.5mm²','2.5mm²','4mm²','6mm²'],badge:'IS'},
+  {id:4,cat:'wire',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Electrical_wire.jpg/240px-Electrical_wire.jpg',name:'Copper FR Wire Blue',brand:'Polycab',skus:['1.5mm²','2.5mm²','4mm²'],badge:'IS'},
+  {id:40,cat:'wire',img:'',name:'Copper FR Wire Green',brand:'RR Kabel',skus:['1.5mm²','2.5mm²','4mm²'],badge:'IS'},
+  {id:5,cat:'conduit',img:'',name:'PVC Conduit Pipe HD',brand:'Prince',skus:['16mm','20mm','25mm','32mm','40mm']},
+  {id:6,cat:'conduit',img:'',name:'Conduit Bend 90°',brand:'Prince',skus:['16mm','20mm','25mm','32mm']},
+  {id:7,cat:'sw',img:'',name:'Modular Switch 6A',brand:'Anchor',skus:['1 Mod','2 Mod','4 Mod','6 Mod'],badge:'IS'},
+  {id:60,cat:'sw',img:'',name:'Fan Regulator',brand:'Anchor',skus:['Rotary','Electronic']},
+  {id:8,cat:'sk',img:'',name:'3 Pin Socket Round',brand:'Anchor',skus:['5A','6A','16A','20A']},
+  {id:9,cat:'bx',img:'',name:'Concealed Box GI',brand:'GI Steel',skus:['1x1','2x2','3x3','4x4']},
 ];
-var PRICES={1:280,2:1200,3:320,4:280,5:85,6:45,7:65,8:55,9:120,11:8500,12:1800};
+var PRICES={1:280,2:1200,3:320,4:280,5:85,6:45,7:65,8:55,9:120,11:8500,12:1800,13:800,20:410,21:420,22:68,23:8400,24:1800,30:850,33:750,40:295,60:450,80:85};
 var ORDERS=[
   {id:'BLT-04041890',cust:'Rajesh Sharma',phone:'98765 43210',area:'Vikas Nagar',address:'Plot 14, Vikas Nagar Phase 2',items:[{n:'MCB SP C-16A',q:2,u:'pcs'},{n:'Copper Wire 2.5mm',q:3,u:'coils'}],weight:'68 kg',amount:'₹10,170',driver:'Ramesh Kumar',status:'Packing',time:'3:42 PM',gst:'₹1,830'},
   {id:'BLT-04041782',cust:'Anita Singh',phone:'87654 32109',area:'Gomti Nagar',address:'B-12, Rishihood Enclave',items:[{n:'RCCB 2P 40A',q:1,u:'pcs'},{n:'MCB TP D-32A',q:2,u:'pcs'}],weight:'38 kg',amount:'₹5,840',driver:'Ramesh Kumar',status:'Dispatched',time:'2:15 PM',gst:'₹1,051'},
@@ -1625,15 +1681,25 @@ function renderCatalog(){
 }
 function renderProdList(list){
   var pg=document.getElementById('prodGrid');if(!pg)return;
+  var catBg={civil:'#FFF8E1',equip:'#FFF3DC',mcb:'#EBF4FF',wire:'#FFF0F0',conduit:'#F5F5F5',sw:'#EBEBF8',sk:'#EBF8EB',bx:'#FFF8E1'};
+  var catIco={civil:'🧱',equip:'🏗️',mcb:'⚡',wire:'🔴',conduit:'⬜',sw:'🔌',sk:'🔋',bx:'📦'};
   pg.innerHTML=list.map(function(p){
     var ss=selSkus[p.id]||p.skus[0],k=p.id+'|'+ss,qty=cart[k]||0;
-    var sks=p.skus.map(function(s){return '<span class="sk'+(s===ss?' on':'')+'" onclick="setSku('+p.id+',\''+s+'\')">'+s+'</span>';}).join('');
-    var qh=qty===0?'<button class="addb" onclick="addToCart('+p.id+',\''+ss+'\')">+</button>':'<div class="qc"><button class="qb" onclick="chgQ('+p.id+',\''+ss+'\',-1)">−</button><span class="qn">'+qty+'</span><button class="qb" onclick="chgQ('+p.id+',\''+ss+'\',1)">+</button></div>';
-    var price=PRICES[p.id]?'<span style="font-size:10px;font-weight:700;color:#1A6B5A">₹'+PRICES[p.id].toLocaleString()+(p.rent?'/day':'')+'</span>':'<span style="font-size:10px;color:#8A9890">Enquire</span>';
-    var badge=p.badge?'<div style="position:absolute;top:6px;right:6px;background:#E8A020;color:#1A1A1A;font-size:8px;font-weight:800;padding:2px 6px;border-radius:20px">'+p.badge+'</div>':'';
-    return '<div class="pc" style="position:relative">'+badge+'<div class="pct" style="'+(p.cat==='equip'?'background:linear-gradient(135deg,#FFF3DC,#FDDEA0)':'')+'">'+p.icon+'</div><div class="pcb"><div class="pcn">'+p.name+'</div><div class="sk-row">'+sks+'</div><div class="pcf">'+price+qh+'</div></div></div>';
+    var bg=catBg[p.cat]||'#F0F4F2',ico=catIco[p.cat]||'📦';
+    var sks=p.skus.slice(0,4).map(function(s){return '<span class="sk'+(s===ss?' on':'')+'" onclick="pSku('+p.id+',this)">'+s+'</span>';}).join('');
+    var price=PRICES[p.id]?'<b style="font-size:12px;color:#1A6B5A">&#8377;'+PRICES[p.id].toLocaleString()+(p.rent?'<span style="font-size:9px;color:#8A9890">/day</span>':'')+'</b>':'<span style="font-size:10px;color:#8A9890">Enquire</span>';
+    var qh=qty===0?'<button class="addb" onclick="pAdd('+p.id+')">+</button>':'<div class="qc"><button class="qb" onclick="pAdj('+p.id+',-1)">&#8722;</button><span class="qn">'+qty+'</span><button class="qb" onclick="pAdj('+p.id+',1)">+</button></div>';
+    var isb=p.badge==='IS'?'<div style="position:absolute;top:5px;left:5px;font-size:8px;font-weight:700;background:#1A6B5A;color:#fff;padding:2px 6px;border-radius:20px;z-index:2">IS&#10003;</div>':'';
+    var newb=p.badge&&p.badge!=='IS'?'<div style="position:absolute;top:5px;right:5px;font-size:8px;font-weight:700;background:#E8A020;color:#111;padding:2px 6px;border-radius:20px;z-index:2">'+p.badge+'</div>':'';
+    var brand=p.brand?'<div style="position:absolute;bottom:4px;right:5px;font-size:7px;font-weight:700;background:rgba(255,255,255,.9);color:#4A5550;padding:1px 5px;border-radius:8px;z-index:2">'+p.brand+'</div>':'';
+    var ts='height:90px;position:relative;overflow:hidden;flex-shrink:0;background-color:'+bg+';'+(p.img?'background-image:url('+p.img+');background-size:contain;background-repeat:no-repeat;background-position:center;':'');
+    var ico2=p.img?'':'<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:28px">'+ico+'</div>';
+    return '<div class="pc"><div style="'+ts+'">'+ico2+isb+newb+brand+'</div><div class="pcb"><div class="pcn">'+p.name+'</div><div class="sk-row">'+sks+'</div><div class="pcf">'+price+qh+'</div></div></div>';
   }).join('');
 }
+function pSku(pid,el){selSkus[pid]=el.textContent;el.parentNode.querySelectorAll('.sk').forEach(function(s){s.classList.remove('on');});el.classList.add('on');}
+function pAdd(pid){var p=PRODS.find(function(x){return x.id===pid;});addToCart(pid,selSkus[pid]||(p?p.skus[0]:''));}
+function pAdj(pid,d){var p=PRODS.find(function(x){return x.id===pid;});chgQ(pid,selSkus[pid]||(p?p.skus[0]:''),d);}
 function setCat(id){curCat=id;renderCatalog();}
 function setSku(pid,sku){selSkus[pid]=sku;renderCatalog();}
 function addToCart(pid,sku){cart[pid+'|'+sku]=1;updCart();renderCatalog();showToast('Added to cart!');}
@@ -1762,12 +1828,72 @@ function renderCalc(){
   document.getElementById('calcForm').innerHTML='<div class="card">'+m.f.map(function(f){return '<div style="margin-bottom:10px"><div style="font-size:11px;font-weight:600;color:#4A5550;margin-bottom:4px;text-transform:uppercase;letter-spacing:.4px">'+f.ph+'</div><input type="number" id="cf_'+f.id+'" placeholder="0" min="0" step="0.1" style="width:100%;background:#F8FAF9;border:1.5px solid #D8E4E0;border-radius:10px;padding:10px 12px;font-size:13px;color:#1A1A1A;outline:none;display:block"></div>';}).join('')+'<button onclick="doCalc()" style="width:100%;background:#E8A020;border:none;border-radius:10px;padding:12px;font-size:14px;font-weight:800;color:#1A1A1A;cursor:pointer">Calculate →</button></div>';
   document.getElementById('calcResult').style.display='none';
 }
-function setCalc(i){curCalcIdx=i;renderCalc();}
-function doLogin(){
-  var screens={customer:'sc-c-home',driver:'sc-d-home',warehouse:'sc-wh',admin:'sc-admin'};
-  goS(screens[role]||'sc-c-home');
-  renderCalc();
+function setCalc(i){curCalcIdx=i;
 }
+/* LOGIN HELPERS */
+function setRole(r,i){role=r;document.querySelectorAll('.rc-card').forEach(function(c,j){c.classList.toggle('sel',j===i);});}
+function doSendOTP(){var ph=(document.getElementById('loginEmail').value||'').replace(/\D/g,'');if(ph.length<10){showToast('Enter 10-digit number');return;}document.getElementById('ph1').style.display='none';document.getElementById('ph2').style.display='block';showToast('OTP sent! Demo: 7392');setTimeout(function(){var e=document.getElementById('o1');if(e)e.focus();},200);}
+function otpNxt(el,nid,e){el.value=el.value.replace(/[^0-9]/g,'').slice(-1);el.className='ob'+(el.value?' ok':'');if(el.value&&nid){var n=document.getElementById(nid);if(n)n.focus();}var c='';['o1','o2','o3','o4'].forEach(function(id){var x=document.getElementById(id);if(x)c+=x.value;});if(c==='7392')doVerify();}
+function doVerify(){var c='';['o1','o2','o3','o4'].forEach(function(id){var x=document.getElementById(id);if(x)c+=x.value;});if(c.length<4){showToast('Enter the 4-digit OTP');return;}if(c!=='7392'){['o1','o2','o3','o4'].forEach(function(id){var x=document.getElementById(id);if(x)x.className='ob err';});showToast('Wrong OTP — use 7392');return;}doLogin();}
+function demoFill(){var ph={customer:'9876543210',driver:'9876543211',warehouse:'9876543212',admin:'9876543213'};var el=document.getElementById('loginEmail');if(el)el.value=ph[role]||'9876543210';['o1','o2','o3','o4'].forEach(function(id,i){var e=document.getElementById(id);if(e){e.value='7392'[i];e.className='ob ok';}});showToast('Filled! Tap Verify & Sign In');}
+
+/* ACCOUNT MANAGEMENT */
+var ACCOUNTS=[
+  {id:'USR-0001',name:'Rajesh Sharma',phone:'9876543210',role:'customer',orders:42,joined:'Jan 2024',area:'Vikas Nagar',active:true},
+  {id:'USR-0002',name:'Anita Singh',phone:'8765432109',role:'customer',orders:18,joined:'Feb 2024',area:'Gomti Nagar',active:true},
+  {id:'USR-0003',name:'Mohd. Raza',phone:'7654321098',role:'customer',orders:29,joined:'Jan 2024',area:'Aliganj',active:true},
+  {id:'DRV-0001',name:'Ramesh Kumar',phone:'9870011111',role:'driver',orders:184,joined:'Jan 2024',area:'WH1 Zone',active:true},
+  {id:'DRV-0002',name:'Sunil Verma',phone:'9870022222',role:'driver',orders:142,joined:'Feb 2024',area:'Hazratganj',active:true},
+  {id:'WH-0001',name:'Suresh Kumar',phone:'9870033333',role:'warehouse',orders:0,joined:'Jan 2024',area:'Nadar Ganj',active:true},
+  {id:'ADM-0001',name:'Super Admin',phone:'9870000001',role:'admin',orders:0,joined:'Jan 2024',area:'HQ',active:true},
+];
+var _seq=8;
+function buildAdmUsers(){
+  var cust=ACCOUNTS.filter(function(u){return u.role==='customer';}).length;
+  var drv=ACCOUNTS.filter(function(u){return u.role==='driver';}).length;
+  var wh=ACCOUNTS.filter(function(u){return u.role==='warehouse';}).length;
+  var h='<div style="padding:11px">';
+  h+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:12px">';
+  [{l:'Total',v:ACCOUNTS.length,c:'#0D4040'},{l:'Customers',v:cust,c:'#1565C0'},{l:'Drivers',v:drv,c:'#2E7D32'},{l:'Warehouse',v:wh,c:'#C07010'}].forEach(function(s){h+='<div class="card" style="text-align:center;padding:10px"><div style="font-size:20px;font-weight:900;color:'+s.c+'">'+s.v+'</div><div style="font-size:9px;color:#9AABA5;margin-top:2px">'+s.l+'</div></div>';});
+  h+='</div>';
+  h+='<div style="display:flex;gap:7px;margin-bottom:10px"><input id="acQ" type="text" placeholder="Search name, phone, ID, role..." oninput="acSearch(this.value)" style="flex:1;background:#fff;border:1.5px solid #E8EDEB;border-radius:10px;padding:9px 12px;font-size:12px;color:#111;outline:none"><button onclick="acAdd()" style="padding:9px 13px;background:#E8A020;border:none;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;color:#111">+ New</button></div>';
+  h+='<div id="acList">'+acRender(ACCOUNTS)+'</div></div>';return h;
+}
+function acRender(list){
+  var rs={customer:{bg:'#E3F2FD',c:'#1565C0',ic:'👤'},driver:{bg:'#E8F5E9',c:'#2E7D32',ic:'🚛'},warehouse:{bg:'#FFF8E1',c:'#C07010',ic:'🏭'},admin:{bg:'#F3E5F5',c:'#6A1B9A',ic:'⚡'}};
+  return list.map(function(u){
+    var r=rs[u.role]||{bg:'#F0F4F2',c:'#555',ic:'👤'};
+    var ri=ACCOUNTS.indexOf(u);
+    var h='<div class="card" style="margin-bottom:9px">';
+    h+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:9px">';
+    h+='<div style="width:40px;height:40px;border-radius:12px;background:'+r.bg+';display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">'+r.ic+'</div>';
+    h+='<div style="flex:1"><div style="font-size:13px;font-weight:700;color:#111">'+u.name+(u.active?'':'<span style="color:#EF4444;font-size:10px"> [Suspended]</span>')+'</div>';
+    h+='<div style="font-size:10px;color:#9AABA5;margin-top:1px">'+u.id+' · '+u.phone+'</div>';
+    h+='<div style="font-size:10px;color:#6B7F7A;margin-top:1px">'+u.area+' · '+u.joined+'</div></div>';
+    h+='<span style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:'+r.bg+';color:'+r.c+'">'+u.role+'</span></div>';
+    h+='<div style="display:flex;gap:5px;flex-wrap:wrap">';
+    if(u.role==='customer'){h+='<button onclick="acPromote(\'\1\',\'\1\')" style="flex:1;min-width:70px;padding:7px 4px;background:#FFF8E1;border:1.5px solid #FCD34D;border-radius:8px;font-size:10px;font-weight:700;cursor:pointer;color:#C07010">&#8594; Warehouse</button>';}
+    if(u.role!=='admin'){h+='<button onclick="acEdit('+ri+')" style="flex:1;min-width:50px;padding:7px 4px;background:#EBF4FF;border:1.5px solid #90CAF9;border-radius:8px;font-size:10px;font-weight:700;cursor:pointer;color:#1565C0">Edit</button>';}
+    h+='<button onclick="acToggle('+ri+')" style="flex:1;min-width:60px;padding:7px 4px;background:'+(u.active?'#FFEBEE':'#E8F5E9')+';border:1.5px solid '+(u.active?'#FFCDD2':'#A5D6A7')+';border-radius:8px;font-size:10px;font-weight:700;cursor:pointer;color:'+(u.active?'#C62828':'#2E7D32')+'">'+(u.active?'Suspend':'Restore')+'</button>';
+    h+='</div></div>';return h;
+  }).join('');
+}
+function acSearch(q){var l=q?ACCOUNTS.filter(function(u){return (u.name+u.phone+u.id+u.role).toLowerCase().includes(q.toLowerCase());}):ACCOUNTS;var el=document.getElementById('acList');if(el)el.innerHTML=acRender(l);}
+function acPromote(i,role){var u=ACCOUNTS[i];if(!u||!window.confirm('Change '+u.name+' to '+role+'?'))return;u.role=role;var p={customer:'USR',driver:'DRV',warehouse:'WH',admin:'ADM'}[role];u.id=p+'-'+String(_seq).padStart(4,'0');_seq++;showToast(u.name+' is now '+role+' ('+u.id+')');var c=document.getElementById('admContent');if(c)c.innerHTML=buildAdmUsers();}
+function acEdit(i){var u=ACCOUNTS[i];if(!u)return;var n=window.prompt('Name:',u.name);if(!n)return;var p=window.prompt('Phone:',u.phone);if(!p)return;u.name=n.trim();u.phone=p.trim();showToast('Updated');var c=document.getElementById('admContent');if(c)c.innerHTML=buildAdmUsers();}
+function acToggle(i){var u=ACCOUNTS[i];if(!u)return;u.active=!u.active;showToast(u.name+' '+(u.active?'restored':'suspended'));var c=document.getElementById('admContent');if(c)c.innerHTML=buildAdmUsers();}
+function acAdd(){var n=window.prompt('Full name:');if(!n||!n.trim())return;var p=window.prompt('Phone:');if(!p||!p.trim())return;var r=window.prompt('Role (customer/driver/warehouse/admin):');if(!r)return;r=r.toLowerCase().trim();if(!['customer','driver','warehouse','admin'].includes(r)){showToast('Invalid role');return;}if(r==='admin'){var pw=window.prompt('Admin password (8+ chars):');if(!pw||pw.length<8){showToast('Password too short');return;}}var prefix={customer:'USR',driver:'DRV',warehouse:'WH',admin:'ADM'}[r];var id=prefix+'-'+String(_seq).padStart(4,'0');_seq++;ACCOUNTS.push({id:id,name:n.trim(),phone:p.trim(),role:r,orders:0,joined:'Apr 2026',area:'Lucknow',active:true});showToast(id+' created');var c=document.getElementById('admContent');if(c)c.innerHTML=buildAdmUsers();}
+
+renderCalc();
+
+function doLogin(){
+  showToast('Welcome to Biltizo!');
+  if(role==='customer'){renderCatalog();renderHistory();renderNotifications();renderCommunity();renderWishlist();goS('sc-c-home');}
+  else if(role==='driver'){startPingTimer();goS('sc-d-home');}
+  else if(role==='warehouse'){initWH();goS('sc-wh');}
+  else{initAdmin();goS('sc-admin');}
+}
+
 /* ── OTP LOGIN ── */
 function autoOTP(el){
   el.value=el.value.replace(/[^0-9]/g,'').slice(-1);
@@ -2091,16 +2217,44 @@ function buildWHAna(){return '<div style="padding:11px"><div style="background:l
 function buildAddProd(){return '<div style="padding:11px"><div class="card"><div style="font-size:14px;font-weight:800;color:#1A1A1A;margin-bottom:11px">➕ Add New SKU</div><input type="text" placeholder="Product Name" style="width:100%;background:#F8FAF9;border:1.5px solid #D8E4E0;border-radius:10px;padding:10px 12px;font-size:12px;color:#1A1A1A;outline:none;margin-bottom:9px;display:block"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:9px"><select style="background:#F8FAF9;border:1.5px solid #D8E4E0;border-radius:10px;padding:9px 11px;font-size:12px;color:#1A1A1A;outline:none"><option>Equipment</option><option>MCB/RCCB</option><option>Wires</option><option>Conduit</option></select><select style="background:#F8FAF9;border:1.5px solid #D8E4E0;border-radius:10px;padding:9px 11px;font-size:12px;color:#1A1A1A;outline:none"><option>5%</option><option>12%</option><option selected>18%</option><option>28%</option></select></div><button onclick="showToast(\'SKU added!\')" style="width:100%;background:#E8A020;border:none;border-radius:10px;padding:11px;font-size:13px;font-weight:800;color:#1A1A1A;cursor:pointer">Add to Catalog</button></div></div>';}
 function buildWHSet(){return '<div><div class="set-sec">Dispatch Controls</div><div class="set-row"><div class="set-ic" style="background:#E6F5F2">📷</div><div style="flex:1"><div class="sn">Dispatch Photo Required</div></div><button class="tgl on" onclick="togSet(this)"><div class="tglk"></div></button></div><div class="set-row"><div class="set-ic" style="background:#E6F5F2">🔔</div><div style="flex:1"><div class="sn">Auto-Reorder Triggers</div></div><button class="tgl on" onclick="togSet(this)"><div class="tglk"></div></button></div><div style="padding:12px"><button style="width:100%;background:transparent;border:2px solid #EF4444;border-radius:10px;padding:11px;font-size:13px;color:#DC2626;cursor:pointer" onclick="logout()">⏻ Sign Out</button></div></div>';}
 
-var admTabs=[{ic:'📊',lb:'Overview'},{ic:'📦',lb:'Orders'},{ic:'🗺️',lb:'Heatmap'},{ic:'🚛',lb:'Drivers'},{ic:'👥',lb:'Segments'},{ic:'⚠️',lb:'Disputes'},{ic:'↩️',lb:'Refunds'},{ic:'🏷️',lb:'Rate Card'},{ic:'💎',lb:'CLV'},{ic:'🚫',lb:'Blocklist'},{ic:'📋',lb:'Catalog'},{ic:'💹',lb:'Finance'},{ic:'⏱️',lb:'SLA'},{ic:'🧾',lb:'GST'},{ic:'🔮',lb:'Forecast'},{ic:'🎯',lb:'Incentives'},{ic:'📣',lb:'Campaigns'},{ic:'📝',lb:'Audit'},{ic:'⚙️',lb:'Settings'}];
+var admTabs=[{ic:'📊',lb:'Overview'},{ic:'📦',lb:'Orders'},{ic:'🗺️',lb:'Heatmap'},{ic:'🚛',lb:'Drivers'},{ic:'👥',lb:'Segments'},{ic:'⚠️',lb:'Disputes'},{ic:'↩️',lb:'Refunds'},{ic:'🏷️',lb:'Rate Card'},{ic:'💎',lb:'CLV'},{ic:'🚫',lb:'Blocklist'},{ic:'📋',lb:'Catalog'},{ic:'💹',lb:'Finance'},{ic:'⏱️',lb:'SLA'},{ic:'🧾',lb:'GST'},{ic:'🔮',lb:'Forecast'},{ic:'🎯',lb:'Incentives'},{ic:'📣',lb:'Campaigns'},{ic:'📝',lb:'Audit'},{ic:'👥',lb:'Users'},{ic:'⚙️',lb:'Settings'}];
 function initAdmin(){var side=document.getElementById('admSide');side.innerHTML=admTabs.map(function(t,i){return '<button class="adm-si" id="as'+i+'" onclick="admTab('+i+')"><span class="adm-si-ic">'+t.ic+'</span><span class="adm-si-lb">'+t.lb+'</span></button>';}).join('');admTab(0);}
 function admTab(i){
   curAdm=i;
   document.querySelectorAll('[id^=as]').forEach(function(t,j){t.className='adm-si'+(j===i?' on':'');});
   var c=document.getElementById('admContent');
-  var fns=[buildAdmOv,buildAdmOrd,function(){c.innerHTML=buildAdmHeatHTML();setTimeout(initAdmHeatmap,80);return null;},buildAdmDrv,buildAdmSeg,buildAdmDisp,buildAdmRefunds,buildAdmRateCard,buildAdmCLV,buildAdmBlocklist,buildAdmCat,buildAdmFin,buildAdmSLA,buildAdmGST,buildAdmForecast,buildAdmIncentives,buildAdmCamp,buildAdmAudit,buildAdmSet];
+  var fns=[buildAdmOv,buildAdmOrd,function(){c.innerHTML=buildAdmHeatHTML();setTimeout(initAdmHeatmap,80);return null;},buildAdmDrv,buildAdmSeg,buildAdmDisp,buildAdmRefunds,buildAdmRateCard,buildAdmCLV,buildAdmBlocklist,buildAdmCat,buildAdmFin,buildAdmSLA,buildAdmGST,buildAdmForecast,buildAdmIncentives,buildAdmCamp,buildAdmAudit,buildAdmUsers,buildAdmSet];
   if(fns[i]){var r=fns[i]();if(r!==null)c.innerHTML=r;}
 }
-function buildAdmOv(){return '<div class="sta-grid"><div class="sta-c"><div class="sta-l">GMV Today</div><div class="sta-v">₹1,24,840</div><div style="font-size:10px;font-weight:600;margin-top:2px;color:#059669">↑ 18%</div></div><div class="sta-c"><div class="sta-l">Revenue</div><div class="sta-v">₹12,484</div></div><div class="sta-c"><div class="sta-l">Active</div><div class="sta-v" style="color:#1A6B5A">47</div></div><div class="sta-c"><div class="sta-l">Disputes</div><div class="sta-v" style="color:#DC2626">8</div></div></div><div style="padding:0 10px 10px"><div class="sect" style="margin-top:8px;font-size:11px">Live Orders</div>'+ORDERS.slice(0,3).map(function(o){var p=o.status==='Packing'?'po':o.status==='Dispatched'?'pb':'pg';return '<div class="card" style="display:flex;align-items:center;gap:7px;margin-bottom:7px"><div style="flex:1"><div style="font-size:11px;font-weight:700;color:#1A6B5A">'+o.id+'</div><div style="font-size:10px;color:#8A9890">'+o.cust+' · '+o.area+'</div></div><span class="pill '+p+'">'+o.status+'</span></div>';}).join('')+'</div>';}
+function buildAdmOv(){
+  var h='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 12px 4px">';
+  h+='<div style="background:#fff;border-radius:14px;border:1px solid #E8EDEB;padding:14px;text-align:center"><div style="font-size:9px;font-weight:700;color:#9AABA5;text-transform:uppercase;letter-spacing:.6px">GMV Today</div><div style="font-size:24px;font-weight:900;color:#111;margin:5px 0">&#8377;1,24,840</div><div style="font-size:11px;font-weight:600;color:#059669">&#8593; 18% vs yesterday</div></div>';
+  h+='<div style="background:#fff;border-radius:14px;border:1px solid #E8EDEB;padding:14px;text-align:center"><div style="font-size:9px;font-weight:700;color:#9AABA5;text-transform:uppercase;letter-spacing:.6px">Revenue</div><div style="font-size:24px;font-weight:900;color:#111;margin:5px 0">&#8377;12,484</div><div style="font-size:11px;font-weight:600;color:#8A9890">10% rate</div></div>';
+  h+='<div style="background:#fff;border-radius:14px;border:1px solid #E8EDEB;padding:14px;text-align:center"><div style="font-size:9px;font-weight:700;color:#9AABA5;text-transform:uppercase;letter-spacing:.6px">Active Orders</div><div style="font-size:24px;font-weight:900;color:#1A6B5A;margin:5px 0">47</div><div style="font-size:11px;font-weight:600;color:#1A6B5A">12 dispatched</div></div>';
+  h+='<div style="background:#fff;border-radius:14px;border:1px solid #E8EDEB;padding:14px;text-align:center"><div style="font-size:9px;font-weight:700;color:#9AABA5;text-transform:uppercase;letter-spacing:.6px">Disputes</div><div style="font-size:24px;font-weight:900;color:#DC2626;margin:5px 0">8</div><div style="font-size:11px;font-weight:600;color:#DC2626">2 urgent</div></div>';
+  h+='</div>';
+  h+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 12px 10px">';
+  h+='<button onclick="admTab(1)" style="padding:10px 6px;background:#E6F5F2;border:1.5px solid #1A6B5A;border-radius:10px;font-size:10px;font-weight:700;color:#0D4040;cursor:pointer">&#128230; Orders</button>';
+  h+='<button onclick="admTab(18)" style="padding:10px 6px;background:#E3F2FD;border:1.5px solid #90CAF9;border-radius:10px;font-size:10px;font-weight:700;color:#1565C0;cursor:pointer">&#128101; Users</button>';
+  h+='<button onclick="admTab(5)" style="padding:10px 6px;background:#FFEBEE;border:1.5px solid #FFCDD2;border-radius:10px;font-size:10px;font-weight:700;color:#C62828;cursor:pointer">&#9888; Disputes</button>';
+  h+='</div>';
+  h+='<div style="margin:0 12px 12px;background:#fff;border:1px solid #E8EDEB;border-radius:14px;padding:12px">';
+  h+='<div style="font-size:11px;font-weight:700;color:#111;margin-bottom:10px">GMV Trend</div>';
+  h+='<div style="display:flex;align-items:flex-end;gap:3px;height:60px">';
+  [4.2,6.8,9.4,12,14.8,16.2,18.4,19.8,22,23.8,25.4,28.4].forEach(function(v,i){
+    h+='<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px"><div style="width:100%;border-radius:3px 3px 0 0;background:'+(i===11?'#E8A020':i>=9?'#1A6B5A':'#D1E8E2')+';height:'+(v*2.1)+'px"></div><div style="font-size:7px;color:#9AABA5">'+['M','J','J','A','S','O','N','D','J','F','M','A'][i]+'</div></div>';
+  });
+  h+='</div></div>';
+  h+='<div style="padding:0 12px 12px">';
+  h+='<div style="font-size:11px;font-weight:700;color:#111;margin-bottom:8px">Live Orders</div>';
+  ORDERS.slice(0,3).forEach(function(o){
+    var c=o.status==='Packing'?'#FFF3DC':o.status==='Dispatched'?'#E3F2FD':'#E8F5E9';
+    var t=o.status==='Packing'?'#C07010':o.status==='Dispatched'?'#1565C0':'#2E7D32';
+    h+='<div style="background:#fff;border:1px solid #E8EDEB;border-radius:12px;padding:10px 12px;margin-bottom:7px;display:flex;align-items:center;gap:9px;cursor:pointer" onclick="admTab(1)"><div style="flex:1"><div style="font-size:11px;font-weight:700;color:#1A6B5A">'+o.id+'</div><div style="font-size:10px;color:#9AABA5;margin-top:1px">'+o.cust+' &#183; '+o.area+'</div></div><div style="text-align:right"><div style="font-size:12px;font-weight:700">'+o.amount+'</div><span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;background:'+c+';color:'+t+'">'+o.status+'</span></div></div>';
+  });
+  h+='</div>';
+  return h;
+}
 function buildAdmOrd(){return '<div style="padding:10px">'+ORDERS.map(function(o){var p=o.status==='Packing'?'po':o.status==='Dispatched'?'pb':o.status==='Delivered'?'pg':'pr';return '<div class="card" style="margin-bottom:9px"><div style="display:flex;justify-content:space-between;margin-bottom:7px"><div><div style="font-size:12px;font-weight:700;color:#1A6B5A">'+o.id+'</div><div style="font-size:10px;color:#8A9890">'+o.time+'</div></div><span class="pill '+p+'">'+o.status+'</span></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:7px"><div><div style="font-size:9px;font-weight:700;color:#8A9890;text-transform:uppercase;margin-bottom:2px">Customer</div><div style="font-size:12px;font-weight:600;color:#1A1A1A">'+o.cust+'</div><div style="font-size:10px;color:#4A5550">'+o.phone+'</div></div><div><div style="font-size:9px;font-weight:700;color:#8A9890;text-transform:uppercase;margin-bottom:2px">Location</div><div style="font-size:12px;font-weight:600;color:#1A1A1A">'+o.area+'</div></div></div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:7px"><span style="font-size:10px;padding:3px 7px;border-radius:20px;background:#F0F4F2;color:#4A5550;border:1px solid #D8E4E0;font-weight:600">'+o.weight+'</span><span style="font-size:10px;padding:3px 7px;border-radius:20px;background:#F0F4F2;color:#4A5550;border:1px solid #D8E4E0;font-weight:600">'+o.amount+'</span><span style="font-size:10px;padding:3px 7px;border-radius:20px;background:#F0F4F2;color:#4A5550;border:1px solid #D8E4E0;font-weight:600">'+o.gst+'</span></div><div style="display:flex;gap:6px"><button onclick="showToast(\'Calling...\')" style="flex:1;padding:7px;background:#E6F5F2;border:1.5px solid #1A6B5A;border-radius:7px;font-size:11px;font-weight:600;color:#0D4040;cursor:pointer">📞 Call</button><button onclick="showToast(\'Invoice...\')" style="flex:1;padding:7px;background:#FFF3DC;border:1.5px solid #E8A020;border-radius:7px;font-size:11px;font-weight:600;color:#C07010;cursor:pointer">🧾 Invoice</button></div></div>';}).join('')+'</div>';}
 function buildAdmHeatHTML(){return '<div style="padding:10px"><div id="admHeatMap" style="height:280px;border-radius:12px;overflow:hidden;border:1px solid #E0EBE7"><div class="map-loading" style="height:280px">Loading Lucknow map…</div></div><div style="margin-top:10px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:9px"><div style="display:flex;align-items:center;gap:7px;padding:7px;background:#fff;border-radius:9px;border:1px solid #E0EBE7"><div style="width:10px;height:10px;border-radius:3px;background:#EF4444"></div><div style="flex:1;font-size:11px;font-weight:500;color:#1A1A1A">Gomti Nagar</div><div style="font-size:11px;color:#8A9890">348</div></div><div style="display:flex;align-items:center;gap:7px;padding:7px;background:#fff;border-radius:9px;border:1px solid #E0EBE7"><div style="width:10px;height:10px;border-radius:3px;background:#E8A020"></div><div style="flex:1;font-size:11px;font-weight:500;color:#1A1A1A">Vikas Nagar</div><div style="font-size:11px;color:#8A9890">286</div></div></div><div style="background:#E6F5F2;border:1px solid #C0E8E0;border-radius:10px;padding:9px 12px;font-size:11px;font-weight:600;color:#0D4040">💡 Gomti Nagar has highest demand — ideal for Warehouse 2</div></div></div>';}
 function buildAdmDrv(){var drvs=[['Ramesh Kumar','Online','4.8','₹842','Silver'],['Sunil Verma','Online','4.6','₹1,240','Gold'],['Ajay Maurya','Delivering','4.5','₹725','Silver'],['Deepak Singh','Offline','4.4','₹0','Bronze']];return '<div style="padding:10px"><div style="display:flex;justify-content:space-between;margin-bottom:9px"><div class="sect" style="margin:0">Drivers</div><button onclick="showToast(\'Onboarding...\')" style="padding:6px 11px;background:#E8A020;border:none;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;color:#1A1A1A">+ Onboard</button></div>'+drvs.map(function(d){var p=d[1]==='Online'?'pg':d[1]==='Delivering'?'pb':'pgr';var tier=d[4]==='Gold'?'tier-g':d[4]==='Silver'?'tier-s':'tier-b';return '<div class="card" style="margin-bottom:8px"><div style="display:flex;align-items:center;gap:9px"><div style="width:36px;height:36px;border-radius:50%;background:#E6F5F2;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">👨</div><div style="flex:1"><div style="font-size:12px;font-weight:700;color:#1A1A1A">'+d[0]+'</div><div style="font-size:10px;color:#8A9890">★'+d[2]+' · '+d[3]+'</div></div><div style="text-align:right"><span class="pill '+p+'" style="display:block;margin-bottom:3px">'+d[1]+'</span><span class="tier-badge '+tier+'">'+d[4]+'</span></div></div></div>';}).join('')+'</div>';}
@@ -2139,179 +2293,35 @@ function pBack(el,pid,e){if(e.key==='Backspace'&&!el.value&&pid){var p=document.
 function pAutoV(){var code=['pod1','pod2','pod3','pod4'].map(function(id){var e=document.getElementById(id);return e?e.value:'';}).join('');if(code.length===4){var msg=document.getElementById('podMsg');if(code==='7392'){if(msg)msg.innerHTML='<span style="color:#1A6B5A;font-weight:600">✓ OTP matched!</span>';completePOD();}else{['pod1','pod2','pod3','pod4'].forEach(function(id){var e=document.getElementById(id);if(e)e.className='ob err';});if(msg)msg.innerHTML='<span style="color:#EF4444;font-weight:600">✗ Wrong OTP</span>';}}}
 function pManualV(){var code=['pod1','pod2','pod3','pod4'].map(function(id){var e=document.getElementById(id);return e?e.value:'';}).join('');if(code.length<4){showToast('Enter all 4 digits');return;}if(code==='7392')completePOD();else showToast('Wrong OTP!');}
 function completePOD(){showToast('Delivery confirmed! ₹340 added.');setTimeout(function(){orderAccepted=false;var ab=document.getElementById('activeOrderBar');if(ab)ab.style.display='none';goS('sc-d-earn');},1500);}
-function setEP(el,amt,sub,pct){document.querySelectorAll('#epRow .cat').forEach(function(e){e.classList.remove('on');});el.classList.add('on');document.getElementById('earnAmt').textContent=amt;document.getElementById('earnSub').textContent=sub;if(document.getElementById('earnPct'))document.getElementById('earnPct').textContent=pct+'%';if(document.getElementById('earnBar'))document.getElementById('earnBar').style.width=pct+'%';}
 
-/* WAREHOUSE */
-function initWH(){
-  document.getElementById('whTabs').innerHTML=['Dashboard','Orders','Inventory','GRN','Suppliers','Transfer','Audit','Analytics','Add SKU','Settings'].map(function(t,i){return '<div class="tab" id="wt'+i+'" onclick="whTab('+i+')">'+(i===6?'➕ '+t:t)+'</div>';}).join('');
-  whTab(0);
-}
-function whTab(i){
-  document.querySelectorAll('[id^=wt]').forEach(function(t,j){t.className='tab'+(j===i?' on':'');});
-  var c=document.getElementById('whContent');
-  if(i===0)c.innerHTML=buildWHDash();
-  else if(i===1)c.innerHTML=buildWHOrd();
-  else if(i===2)c.innerHTML=buildWHInv();
-  else if(i===3)c.innerHTML=buildGRN();
-  else if(i===4)c.innerHTML=buildSuppliers();
-  else if(i===5)c.innerHTML=buildWHTransfer();
-  else if(i===6)c.innerHTML=buildWHAudit();
-  else if(i===7)c.innerHTML=buildWHAna();
-  else if(i===8)c.innerHTML=buildAddProd();
-  else c.innerHTML=buildWHSet();
-}
-function buildWHDash(){
-  return '<div style="padding:11px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:11px"><div class="card"><div style="font-size:9px;font-weight:700;color:#8A9890;text-transform:uppercase;margin-bottom:3px">Today Orders</div><div style="font-size:22px;font-weight:800;color:#1A1A1A">24</div><div style="font-size:10px;color:#059669">↑ 8 vs yesterday</div></div><div class="card"><div style="font-size:9px;font-weight:700;color:#8A9890;text-transform:uppercase;margin-bottom:3px">Packing Now</div><div style="font-size:22px;font-weight:800;color:#C07010">3</div></div><div class="card"><div style="font-size:9px;font-weight:700;color:#8A9890;text-transform:uppercase;margin-bottom:3px">Low Stock</div><div style="font-size:22px;font-weight:800;color:#DC2626">5</div></div><div class="card"><div style="font-size:9px;font-weight:700;color:#8A9890;text-transform:uppercase;margin-bottom:3px">Tally Sync</div><div style="font-size:22px;font-weight:800;color:#059669">✓</div></div></div><div style="background:#FEF2F2;border:1.5px solid #FECACA;border-radius:11px;padding:10px 12px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between"><div style="font-size:12px;font-weight:700;color:#991B1B">⚠️ MCB SP 16A — Only 8 units left</div><button onclick="showToast(\'Reorder sent!\')" style="padding:6px 11px;background:#1A6B5A;color:#fff;border:none;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer">Reorder</button></div>'+
-    ORDERS.slice(0,3).map(function(o){var p=o.status==='Packing'?'po':o.status==='Dispatched'?'pb':'pg';return '<div class="card" style="display:flex;align-items:center;gap:9px;margin-bottom:7px"><div style="flex:1"><div style="font-size:12px;font-weight:700">'+o.id+'</div><div style="font-size:11px;color:#8A9890">'+o.cust+' · '+o.weight+'</div></div><span class="pill '+p+'">'+o.status+'</span></div>';}).join('')+
-    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px"><button onclick="whTab(6)" style="padding:10px;background:#E8A020;border:none;border-radius:10px;font-size:12px;font-weight:700;color:#1A1A1A;cursor:pointer">➕ Add SKU</button><button onclick="showToast(\'Scan mode on!\')" style="padding:10px;background:#1A6B5A;border:none;border-radius:10px;font-size:12px;font-weight:700;color:#fff;cursor:pointer">📷 Scan Mode</button></div></div>';
-}
-function buildWHOrd(){
-  return '<div style="padding:11px">'+ORDERS.map(function(o){
-    var p=o.status==='Packing'?'po':o.status==='Dispatched'?'pb':o.status==='Delivered'?'pg':'pr';
-    var items=o.items.map(function(i){return '<div style="display:flex;justify-content:space-between;font-size:11px;color:#4A5550;padding:3px 0"><span>'+i.n+'</span><span style="font-weight:600">×'+i.q+' '+i.u+'</span></div>';}).join('');
-    return '<div class="card" style="margin-bottom:9px"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px"><div><div style="font-size:12px;font-weight:700;color:#1A6B5A">'+o.id+'</div><div style="font-size:10px;color:#8A9890">'+o.time+'</div></div><span class="pill '+p+'">'+o.status+'</span></div><div style="display:flex;gap:8px;margin-bottom:8px"><div style="flex:1"><div style="font-size:9px;font-weight:700;color:#8A9890;text-transform:uppercase;margin-bottom:2px">Customer</div><div style="font-size:12px;font-weight:600;color:#1A1A1A">'+o.cust+'</div><div style="font-size:10px;color:#8A9890">'+o.phone+'</div></div><div style="flex:1"><div style="font-size:9px;font-weight:700;color:#8A9890;text-transform:uppercase;margin-bottom:2px">Location</div><div style="font-size:12px;font-weight:600;color:#1A1A1A">'+o.area+'</div></div></div><div style="background:#F8FAF9;border-radius:8px;padding:7px;margin-bottom:8px">'+items+'</div><div style="display:flex;gap:5px;flex-wrap:wrap"><span style="font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;background:#F0F4F2;color:#4A5550;border:1px solid #D8E4E0">⚖️ '+o.weight+'</span><span style="font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;background:#F0F4F2;color:#4A5550;border:1px solid #D8E4E0">💰 '+o.amount+'</span><span style="font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;background:#F0F4F2;color:#4A5550;border:1px solid #D8E4E0">🧾 '+o.gst+'</span></div>'+(o.status==='Packing'?'<button onclick="showToast(\'Dispatched!\')" style="width:100%;margin-top:8px;padding:8px;background:#E8A020;border:none;border-radius:8px;font-size:12px;font-weight:700;color:#1A1A1A;cursor:pointer">Mark Dispatched →</button>':'')+'</div>';
-  }).join('')+'</div>';
-}
-function buildWHInv(){
-  var items=[['MCB SP C Curve 16A','8 units','#DC2626',13],['Copper FR Wire 2.5mm','14 coils','#F59E0B',18],['PVC Conduit HD 25mm','220 pcs','#059669',72],['Boom Pump 21m','2 units','#F59E0B',20],['Modular Switch 6A','360 pcs','#059669',88],['RCCB 2P 40A/30mA','42 pcs','#059669',65]];
-  return '<div style="padding:11px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div class="sect" style="margin:0">Stock Levels</div><button onclick="showToast(\'Scan mode on!\')" style="padding:6px 11px;background:#E8A020;border:none;border-radius:8px;font-size:11px;font-weight:700;color:#1A1A1A;cursor:pointer">📷 Scan</button></div>'+items.map(function(x){return '<div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:12px;font-weight:600;color:#1A1A1A">'+x[0]+'</span><span style="font-size:12px;font-weight:700;color:'+x[2]+'">'+x[1]+'</span></div><div style="height:7px;background:#F0F4F2;border-radius:4px;overflow:hidden"><div style="height:100%;width:'+x[3]+'%;background:'+x[2]+';border-radius:4px"></div></div>'+(x[3]<25?'<div style="font-size:10px;color:#DC2626;margin-top:4px;font-weight:600">⚠️ Low stock — reorder soon</div>':'')+'</div>';}).join('')+'</div>';
-}
-function buildGRN(){
-  return '<div style="padding:11px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div class="sect" style="margin:0">Goods Received Notes</div><button onclick="showToast(\'Creating new GRN...\')" style="padding:6px 11px;background:#E8A020;border:none;border-radius:8px;font-size:11px;font-weight:700;color:#1A1A1A;cursor:pointer">+ New GRN</button></div>'+
-    '<div class="card" style="margin-bottom:8px;border-left:4px solid #1A6B5A"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><div><div style="font-size:12px;font-weight:700;color:#1A6B5A">GRN-2026-0041</div><div style="font-size:10px;color:#8A9890">Received: Apr 4, 2026 · 10:30 AM</div></div><span class="pill pg">Verified</span></div><div style="font-size:12px;font-weight:600;color:#1A1A1A;margin-bottom:4px">Supplier: Havells India</div><div style="font-size:11px;color:#4A5550;margin-bottom:7px">MCB SP C Curve × 200 pcs · Wire 2.5mm × 50 coils</div><div style="display:flex;gap:5px;flex-wrap:wrap"><span style="font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;background:#F0F4F2;color:#4A5550;border:1px solid #D8E4E0">PO-2026-0038 matched</span><span style="font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;background:#F0F4F2;color:#4A5550;border:1px solid #D8E4E0">Total ₹48,200</span></div></div>'+
-    '<div class="card" style="margin-bottom:8px;border-left:4px solid #E8A020"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><div><div style="font-size:12px;font-weight:700;color:#1A6B5A">GRN-2026-0040</div><div style="font-size:10px;color:#8A9890">Received: Apr 3, 2026 · 2:15 PM</div></div><span class="pill po">QC Pending</span></div><div style="font-size:12px;font-weight:600;color:#1A1A1A;margin-bottom:4px">Supplier: Polycab Wires</div><div style="font-size:11px;color:#4A5550;margin-bottom:7px">CPVC Pipe 32mm × 100 pcs · Conduit Bend × 50 pcs</div><button onclick="showToast(\'Opening QC workflow...\')" style="width:100%;padding:8px;background:#FFF3DC;border:1.5px solid #E8A020;border-radius:8px;font-size:11px;font-weight:600;color:#C07010;cursor:pointer">Start Quality Check →</button></div>'+
-    '<div class="card" style="border-left:4px solid #EF4444"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><div><div style="font-size:12px;font-weight:700;color:#1A6B5A">GRN-2026-0039</div><div style="font-size:10px;color:#8A9890">Received: Apr 2, 2026</div></div><span class="pill pr">Discrepancy</span></div><div style="font-size:12px;font-weight:600;color:#1A1A1A;margin-bottom:4px">Supplier: Legrand</div><div style="font-size:11px;color:#EF4444;margin-bottom:7px">⚠️ PO: 50 units · Received: 42 units · Difference: 8 units</div><button onclick="showToast(\'Raising dispute with Legrand...\')" style="width:100%;padding:8px;background:#FEF2F2;border:1.5px solid #EF4444;border-radius:8px;font-size:11px;font-weight:600;color:#DC2626;cursor:pointer">Raise Supplier Dispute</button></div></div>';
-}
-function buildSuppliers(){
-  var sups=[['Havells India','MCBs, Switches, Wires','A+','₹2.4L/mo','5 days','9876-543210'],['Polycab Wires','Wires, Cables, Conduit','A','₹1.8L/mo','7 days','8765-432109'],['Legrand India','MCBs, DB Boxes','B','₹1.1L/mo','7 days','7654-321098'],['Anchor Electricals','Switches, Sockets','A','₹0.8L/mo','4 days','6543-210987']];
-  return '<div style="padding:11px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div class="sect" style="margin:0">Suppliers</div><button onclick="showToast(\'Adding new supplier...\')" style="padding:6px 11px;background:#E8A020;border:none;border-radius:8px;font-size:11px;font-weight:700;color:#1A1A1A;cursor:pointer">+ Add</button></div>'+
-    sups.map(function(s){
-      var gc=s[2]==='A+'?'#059669':s[2]==='A'?'#1A6B5A':'#F59E0B';
-      return '<div class="card" style="margin-bottom:8px"><div style="display:flex;align-items:center;gap:10px;margin-bottom:9px"><div style="width:38px;height:38px;border-radius:9px;background:#E6F5F2;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">🏭</div><div style="flex:1"><div style="font-size:13px;font-weight:700;color:#1A1A1A">'+s[0]+'</div><div style="font-size:11px;color:#8A9890;margin-top:1px">'+s[1]+'</div></div><div style="text-align:right"><div style="background:'+gc+';color:#fff;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700">'+s[2]+'</div><div style="font-size:10px;color:#8A9890;margin-top:2px">Rating</div></div></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px"><div style="background:#F8FAF9;border-radius:8px;padding:7px;text-align:center"><div style="font-size:11px;font-weight:700;color:#1A1A1A">'+s[3]+'</div><div style="font-size:9px;color:#8A9890">Monthly</div></div><div style="background:#F8FAF9;border-radius:8px;padding:7px;text-align:center"><div style="font-size:11px;font-weight:700;color:#1A1A1A">'+s[4]+'</div><div style="font-size:9px;color:#8A9890">Lead time</div></div><div style="background:#F8FAF9;border-radius:8px;padding:7px;text-align:center"><div style="font-size:11px;font-weight:700;color:#1A6B5A" onclick="showToast(\'Calling '+s[0]+'...\')">📞 Call</div><div style="font-size:9px;color:#8A9890;cursor:pointer" onclick="showToast(\'Calling...\')">'+s[5].substring(0,8)+'...</div></div></div><div style="display:flex;gap:6px"><button onclick="showToast(\'Creating PO for '+s[0]+'...\')" style="flex:1;padding:7px;background:#E8A020;border:none;border-radius:8px;font-size:11px;font-weight:700;color:#1A1A1A;cursor:pointer">Create PO</button><button onclick="showToast(\'Viewing history...\')" style="flex:1;padding:7px;background:#F0F4F2;border:1.5px solid #D8E4E0;border-radius:8px;font-size:11px;font-weight:600;color:#1A1A1A;cursor:pointer">History</button></div></div>';
-    }).join('')+'</div>';
-}
-function buildWHAna(){
-  return '<div style="padding:11px"><div style="background:linear-gradient(145deg,#0D4040,#1A6B5A);border-radius:13px;padding:15px;text-align:center;color:#fff;margin-bottom:11px"><div style="font-size:11px;color:rgba(255,255,255,.7)">Monthly GMV</div><div style="font-size:28px;font-weight:900;color:#E8A020">₹ 8.4L</div><div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:3px">↑ 22% vs last month</div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:11px"><div class="card" style="text-align:center"><div style="font-size:18px;font-weight:800;color:#1A6B5A">312</div><div style="font-size:10px;color:#8A9890">Orders</div></div><div class="card" style="text-align:center"><div style="font-size:18px;font-weight:800;color:#1A6B5A">₹2,692</div><div style="font-size:10px;color:#8A9890">Avg value</div></div><div class="card" style="text-align:center"><div style="font-size:18px;font-weight:800;color:#1A6B5A">22%</div><div style="font-size:10px;color:#8A9890">Margin</div></div><div class="card" style="text-align:center"><div style="font-size:18px;font-weight:800;color:#1A6B5A">97%</div><div style="font-size:10px;color:#8A9890">On-time</div></div></div></div>';
-}
-function buildAddProd(){
-  return '<div style="padding:11px"><div class="card"><div style="font-size:14px;font-weight:800;color:#1A1A1A;margin-bottom:11px">➕ Add New SKU</div><div style="font-size:11px;font-weight:600;color:#4A5550;margin-bottom:4px;text-transform:uppercase">Product Name</div><input type="text" placeholder="e.g. MCB Triple Pole D Curve" style="width:100%;background:#F8FAF9;border:1.5px solid #D8E4E0;border-radius:10px;padding:10px 12px;font-size:12px;color:#1A1A1A;outline:none;margin-bottom:9px;display:block"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:9px"><div><div style="font-size:11px;font-weight:600;color:#4A5550;margin-bottom:4px;text-transform:uppercase">Category</div><select style="width:100%;background:#F8FAF9;border:1.5px solid #D8E4E0;border-radius:10px;padding:9px 11px;font-size:12px;color:#1A1A1A;outline:none"><option>Equipment</option><option>MCB / RCCB</option><option>Wires</option><option>Conduit</option><option>Switches</option></select></div><div><div style="font-size:11px;font-weight:600;color:#4A5550;margin-bottom:4px;text-transform:uppercase">GST %</div><select style="width:100%;background:#F8FAF9;border:1.5px solid #D8E4E0;border-radius:10px;padding:9px 11px;font-size:12px;color:#1A1A1A;outline:none"><option>5%</option><option>12%</option><option selected>18%</option><option>28%</option></select></div></div><div style="font-size:11px;font-weight:600;color:#4A5550;margin-bottom:4px;text-transform:uppercase">Supplier</div><select style="width:100%;background:#F8FAF9;border:1.5px solid #D8E4E0;border-radius:10px;padding:9px 11px;font-size:12px;color:#1A1A1A;outline:none;margin-bottom:9px"><option>Havells India</option><option>Polycab Wires</option><option>Legrand India</option><option>Anchor Electricals</option></select><button onclick="showToast(\'SKU added to catalog!\')" style="width:100%;background:#E8A020;border:none;border-radius:10px;padding:11px;font-size:13px;font-weight:800;color:#1A1A1A;cursor:pointer">Add to Catalog</button></div></div>';
-}
-function buildWHSet(){
-  return '<div><div class="set-sec">Dispatch Controls</div><div class="set-row"><div class="set-ic" style="background:#E6F5F2">📷</div><div style="flex:1"><div class="sn">Dispatch Photo Required</div></div><button class="tgl on" onclick="togSet(this)"><div class="tglk"></div></button></div><div class="set-row"><div class="set-ic" style="background:#E6F5F2">📦</div><div style="flex:1"><div class="sn">Barcode Scan Required</div></div><button class="tgl off" onclick="togSet(this)"><div class="tglk"></div></button></div><div class="set-row"><div class="set-ic" style="background:#E6F5F2">🔔</div><div style="flex:1"><div class="sn">Auto-Reorder Triggers</div><div class="sd">PO at min threshold</div></div><button class="tgl on" onclick="togSet(this)"><div class="tglk"></div></button></div><div class="set-row"><div class="set-ic" style="background:#FFF3DC">👤</div><div style="flex:1"><div class="sn">Staff Management</div><div class="sd">4 active staff</div></div><span style="color:#8A9890">›</span></div><div style="padding:12px"><button style="width:100%;background:transparent;border:2px solid #EF4444;border-radius:10px;padding:11px;font-size:13px;color:#DC2626;cursor:pointer" onclick="logout()">⏻ Sign Out</button></div></div>';
-}
 
-/* ADMIN */
-var admTabs=[{ic:'📊',lb:'Overview'},{ic:'📦',lb:'Orders'},{ic:'🗺️',lb:'Heatmap'},{ic:'🚛',lb:'Drivers'},{ic:'👥',lb:'Segments'},{ic:'⚠️',lb:'Disputes'},{ic:'↩️',lb:'Refunds'},{ic:'🏷️',lb:'Rate Card'},{ic:'💎',lb:'CLV'},{ic:'🚫',lb:'Blocklist'},{ic:'📋',lb:'Catalog'},{ic:'💹',lb:'Finance'},{ic:'⏱️',lb:'SLA'},{ic:'🧾',lb:'GST'},{ic:'🔮',lb:'Forecast'},{ic:'🎯',lb:'Incentives'},{ic:'📣',lb:'Campaigns'},{ic:'📝',lb:'Audit'},{ic:'⚙️',lb:'Settings'}];
-var curAdm=0;
-function initAdmin(){
-  var side=document.getElementById('admSide');
-  side.innerHTML=admTabs.map(function(t,i){return '<button class="adm-si" id="as'+i+'" onclick="admTab('+i+')"><span class="adm-si-ic">'+t.ic+'</span><span class="adm-si-lb">'+t.lb+'</span></button>';}).join('');
-  admTab(0);
-}
-function admTab(i){
-  curAdm=i;
-  document.querySelectorAll('[id^=as]').forEach(function(t,j){t.className='adm-si'+(j===i?' on':'');});
-  var c=document.getElementById('admContent');
-  if(i===0)c.innerHTML=buildAdmOv();
-  else if(i===1)c.innerHTML=buildAdmOrd();
-  else if(i===2){c.innerHTML=buildAdmHeatHTML();setTimeout(initAdmHeatmap,80);}
-  else if(i===3)c.innerHTML=buildAdmDrv();
-  else if(i===4)c.innerHTML=buildAdmSeg();
-  else if(i===5)c.innerHTML=buildAdmDisp();
-  else if(i===6)c.innerHTML=buildAdmRefunds();
-  else if(i===7)c.innerHTML=buildAdmRateCard();
-  else if(i===8)c.innerHTML=buildAdmCLV();
-  else if(i===9)c.innerHTML=buildAdmBlocklist();
-  else if(i===10)c.innerHTML=buildAdmCat();
-  else if(i===11)c.innerHTML=buildAdmFin();
-  else if(i===12)c.innerHTML=buildAdmSLA();
-  else if(i===13)c.innerHTML=buildAdmGST();
-  else if(i===14)c.innerHTML=buildAdmForecast();
-  else if(i===15)c.innerHTML=buildAdmIncentives();
-  else if(i===16)c.innerHTML=buildAdmCamp();
-  else if(i===17)c.innerHTML=buildAdmAudit();
-  else c.innerHTML=buildAdmSet();
-}
-function buildAdmOv(){
-  var bars=[4.2,6.8,9.4,12,14.8,16.2,18.4,19.8,22,23.8,25.4,28.4];
-  var months=['M','J','J','A','S','O','N','D','J','F','M','A'];
-  var bh=bars.map(function(v,i){return '<div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="border-radius:3px 3px 0 0;width:100%;height:'+(v*2.5)+'px;background:'+(i===11?'#E8A020':i>=9?'#24847A':'#E0EBE7')+'"></div><div style="font-size:7px;color:#8A9890;margin-top:2px">'+months[i]+'</div></div>';}).join('');
-  return '<div class="sta-grid"><div class="sta-c"><div class="sta-l">GMV Today</div><div class="sta-v">₹1,24,840</div><div style="font-size:10px;font-weight:600;margin-top:2px;color:var(--color-text-success,#059669)">↑ 18%</div></div><div class="sta-c"><div class="sta-l">Revenue</div><div class="sta-v">₹12,484</div><div style="font-size:10px;font-weight:600;margin-top:2px;color:#8A9890">10% rate</div></div><div class="sta-c"><div class="sta-l">Active Orders</div><div class="sta-v" style="color:#1A6B5A">47</div></div><div class="sta-c"><div class="sta-l">Disputes</div><div class="sta-v" style="color:#DC2626">8</div></div></div><div style="padding:0 10px 10px"><div class="card" style="margin-top:4px"><div class="sect" style="font-size:11px;margin-bottom:7px">GMV Trend (12 months)</div><div style="display:flex;align-items:flex-end;gap:2px;height:72px;padding-bottom:16px">'+bh+'</div></div><div class="sect" style="margin-top:4px;font-size:11px">Live Orders</div>'+ORDERS.slice(0,3).map(function(o){var p=o.status==='Packing'?'po':o.status==='Dispatched'?'pb':'pg';return '<div class="card" style="display:flex;align-items:center;gap:7px;margin-bottom:7px"><div style="flex:1"><div style="font-size:11px;font-weight:700;color:#1A6B5A">'+o.id+'</div><div style="font-size:10px;color:#8A9890">'+o.cust+' · '+o.area+'</div></div><div style="font-size:11px;font-weight:700;color:#1A1A1A;margin-right:5px">'+o.amount+'</div><span class="pill '+p+'">'+o.status+'</span></div>';}).join('')+'</div>';
-}
-function buildAdmOrd(){
-  return '<div style="padding:10px">'+ORDERS.map(function(o){
-    var p=o.status==='Packing'?'po':o.status==='Dispatched'?'pb':o.status==='Delivered'?'pg':'pr';
-    var items=o.items.map(function(i){return i.n+' ×'+i.q;}).join(' · ');
-    return '<div class="card" style="margin-bottom:9px"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:7px"><div><div style="font-size:12px;font-weight:700;color:#1A6B5A">'+o.id+'</div><div style="font-size:10px;color:#8A9890">'+o.time+'</div></div><span class="pill '+p+'">'+o.status+'</span></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:7px"><div><div style="font-size:9px;font-weight:700;color:#8A9890;text-transform:uppercase;margin-bottom:2px">Customer</div><div style="font-size:12px;font-weight:600;color:#1A1A1A">'+o.cust+'</div><div style="font-size:10px;color:#4A5550">'+o.phone+'</div></div><div><div style="font-size:9px;font-weight:700;color:#8A9890;text-transform:uppercase;margin-bottom:2px">Location</div><div style="font-size:12px;font-weight:600;color:#1A1A1A">'+o.area+'</div><div style="font-size:10px;color:#4A5550">'+o.address+'</div></div></div><div style="background:#F8FAF9;border-radius:8px;padding:7px;margin-bottom:7px"><div style="font-size:9px;font-weight:700;color:#8A9890;text-transform:uppercase;margin-bottom:3px">Items</div><div style="font-size:11px;color:#4A5550">'+items+'</div></div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px"><span style="font-size:10px;padding:3px 8px;border-radius:20px;background:#F0F4F2;color:#4A5550;border:1px solid #D8E4E0;font-weight:600">⚖️ '+o.weight+'</span><span style="font-size:10px;padding:3px 8px;border-radius:20px;background:#F0F4F2;color:#4A5550;border:1px solid #D8E4E0;font-weight:600">💰 '+o.amount+'</span><span style="font-size:10px;padding:3px 8px;border-radius:20px;background:#F0F4F2;color:#4A5550;border:1px solid #D8E4E0;font-weight:600">🧾 '+o.gst+'</span></div><div style="display:flex;gap:6px"><button onclick="showToast(\'Calling...\')" style="flex:1;padding:7px;background:#E6F5F2;border:1.5px solid #1A6B5A;border-radius:7px;font-size:11px;font-weight:600;color:#0D4040;cursor:pointer">📞 Call</button><button onclick="showToast(\'Invoice...\')" style="flex:1;padding:7px;background:#FFF3DC;border:1.5px solid #E8A020;border-radius:7px;font-size:11px;font-weight:600;color:#C07010;cursor:pointer">🧾 Invoice</button></div></div>';
-  }).join('')+'</div>';
-}
-function buildAdmHeatHTML(){
-  return '<div style="padding:10px"><div id="admHeatMap" style="height:280px;border-radius:12px;overflow:hidden;border:1px solid #E0EBE7"><div class="map-loading" style="height:280px">Loading Lucknow map…</div></div><div style="margin-top:10px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:9px"><div style="display:flex;align-items:center;gap:7px;padding:7px;background:#fff;border-radius:9px;border:1px solid #E0EBE7"><div style="width:10px;height:10px;border-radius:3px;background:#EF4444"></div><div style="flex:1;font-size:11px;font-weight:500;color:#1A1A1A">Gomti Nagar</div><div style="font-size:11px;color:#8A9890">348</div></div><div style="display:flex;align-items:center;gap:7px;padding:7px;background:#fff;border-radius:9px;border:1px solid #E0EBE7"><div style="width:10px;height:10px;border-radius:3px;background:#E8A020"></div><div style="flex:1;font-size:11px;font-weight:500;color:#1A1A1A">Nadar Ganj</div><div style="font-size:11px;color:#8A9890">312</div></div><div style="display:flex;align-items:center;gap:7px;padding:7px;background:#fff;border-radius:9px;border:1px solid #E0EBE7"><div style="width:10px;height:10px;border-radius:3px;background:#E8A020"></div><div style="flex:1;font-size:11px;font-weight:500;color:#1A1A1A">Vikas Nagar</div><div style="font-size:11px;color:#8A9890">286</div></div><div style="display:flex;align-items:center;gap:7px;padding:7px;background:#fff;border-radius:9px;border:1px solid #E0EBE7"><div style="width:10px;height:10px;border-radius:3px;background:#F59E0B"></div><div style="flex:1;font-size:11px;font-weight:500;color:#1A1A1A">Aliganj</div><div style="font-size:11px;color:#8A9890">224</div></div></div><div style="background:#E6F5F2;border:1px solid #C0E8E0;border-radius:10px;padding:10px 12px;font-size:11px;font-weight:600;color:#0D4040">💡 Gomti Nagar has highest order density — ideal for Warehouse 2</div></div></div>';
-}
-function buildAdmDrv(){
-  var drvs=[['Ramesh Kumar','Online','4.8','₹842','Silver','7 trips'],['Sunil Verma','Online','4.6','₹1,240','Gold','12 trips'],['Ajay Maurya','Delivering','4.5','₹725','Silver','5 trips'],['Deepak Singh','Offline','4.4','₹0','Bronze','0 trips']];
-  return '<div style="padding:10px"><div style="display:flex;justify-content:space-between;margin-bottom:9px"><div class="sect" style="margin:0">Driver Roster</div><button onclick="showToast(\'Onboarding...\')" style="padding:6px 11px;background:#E8A020;border:none;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;color:#1A1A1A">+ Onboard</button></div>'+
-    drvs.map(function(d){var p=d[1]==='Online'?'pg':d[1]==='Delivering'?'pb':'pgr';var tier=d[4]==='Gold'?'tier-g':d[4]==='Silver'?'tier-s':'tier-b';
-      return '<div class="card" style="margin-bottom:8px"><div style="display:flex;align-items:center;gap:9px;margin-bottom:9px"><div style="width:38px;height:38px;border-radius:50%;background:#E6F5F2;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">👨</div><div style="flex:1"><div style="font-size:12px;font-weight:700;color:#1A1A1A">'+d[0]+'</div><div style="font-size:10px;color:#8A9890">'+d[5]+' · ★'+d[2]+'</div></div><div style="text-align:right"><span class="pill '+p+'" style="display:block;margin-bottom:3px">'+d[1]+'</span><span class="tier-badge '+tier+'">'+d[4]+'</span></div></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px"><div style="background:#F8FAF9;border-radius:8px;padding:6px;text-align:center"><div style="font-size:12px;font-weight:700;color:#1A1A1A">'+d[2]+'★</div><div style="font-size:9px;color:#8A9890">Rating</div></div><div style="background:#F8FAF9;border-radius:8px;padding:6px;text-align:center"><div style="font-size:12px;font-weight:700;color:#059669">'+d[3]+'</div><div style="font-size:9px;color:#8A9890">Earned</div></div><div style="background:#F8FAF9;border-radius:8px;padding:6px;text-align:center"><div style="font-size:12px;font-weight:700;color:#1A6B5A">'+d[5].split(' ')[0]+'</div><div style="font-size:9px;color:#8A9890">Trips</div></div></div></div>';
-    }).join('')+'</div>';
-}
-function buildAdmSeg(){
-  var segs=[{ic:'🏢',name:'B2B Enterprises',col:'#E6F1FB',txt:'#0C447C',cnt:42,avg:'₹28,400',badge:'pb',action:'View & contact'},
-    {ic:'⭐',name:'Top Buyers',col:'#FFF3DC',txt:'#8A4A00',cnt:128,avg:'₹12,200',badge:'po',action:'Send VIP offer'},
-    {ic:'🆕',name:'New Customers',col:'#E6F5F2',txt:'#0A4F3A',cnt:312,avg:'₹3,100',badge:'pg',action:'Onboarding flow'},
-    {ic:'⚠️',name:'At-Risk (Churning)',col:'#FEF2F2',txt:'#7F1F1F',cnt:87,avg:'₹8,400',badge:'pr',action:'Win-back offer'},
-    {ic:'👤',name:'Regular Buyers',col:'#F0F4F2',txt:'#1A6B5A',cnt:1840,avg:'₹6,200',badge:'pgr',action:'Loyalty promo'}];
-  return '<div style="padding:10px"><div class="sect">Customer Segments</div>'+
-    segs.map(function(s){return '<div class="card" style="margin-bottom:8px;background:'+s.col+'"><div style="display:flex;align-items:center;gap:10px;margin-bottom:9px"><div style="font-size:22px">'+s.ic+'</div><div style="flex:1"><div style="font-size:13px;font-weight:700;color:'+s.txt+'">'+s.name+'</div><div style="font-size:11px;color:'+s.txt+';opacity:.7;margin-top:1px">'+s.cnt+' customers · Avg ₹'+s.avg.replace('₹','')+'/order</div></div><span class="pill '+s.badge+'">'+s.cnt+'</span></div><button onclick="showToast(\''+s.action+'...\')" style="width:100%;padding:8px;background:#1A6B5A;color:#fff;border:none;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer">'+s.action+' →</button></div>';}).join('')+'</div>';
-}
-function buildAdmDisp(){
-  var disps=[['TKT-0421','Damaged Goods','pr','MCB units cracked on delivery','Rajesh Sharma','₹1,240','2h ago'],['TKT-0418','Missing Items','po','2 coils wire missing','Anita Singh','₹680','5h ago'],['TKT-0415','Late Delivery','pb','3hr delay','Vikas Yadav','₹200','8h ago']];
-  return '<div style="padding:10px"><div class="sect">Disputes (8 open)</div>'+
-    disps.map(function(d){return '<div class="card" style="margin-bottom:8px"><div style="display:flex;gap:7px;margin-bottom:7px"><span style="font-size:10px;color:#8A9890">'+d[0]+'</span><span class="pill '+d[2]+'">'+d[1]+'</span><span style="font-size:10px;color:#8A9890;margin-left:auto">'+d[6]+'</span></div><div style="font-size:12px;font-weight:600;color:#1A1A1A;margin-bottom:3px">'+d[3]+'</div><div style="font-size:11px;color:#8A9890;margin-bottom:3px">'+d[4]+'</div><div style="font-size:12px;font-weight:700;color:#1A6B5A;margin-bottom:9px">Claim: '+d[5]+'</div><div style="display:flex;gap:6px"><button onclick="showToast(\'Calling...\')" style="flex:1;padding:7px;border-radius:8px;border:1.5px solid #D8E4E0;background:#F0F4F2;font-size:11px;font-weight:600;cursor:pointer">📞 Call</button><button onclick="showToast(\'Closed!\')" style="flex:1;padding:7px;background:#1A6B5A;border:none;border-radius:8px;color:#fff;font-size:11px;font-weight:700;cursor:pointer">Close</button><button onclick="showToast(\'Refund sent!\')" style="flex:1;padding:7px;background:#059669;border:none;border-radius:8px;color:#fff;font-size:11px;font-weight:700;cursor:pointer">Refund</button></div></div>';}).join('')+'</div>';
-}
-function buildAdmCat(){
-  return '<div style="padding:10px"><div style="display:flex;justify-content:space-between;margin-bottom:9px"><div class="sect" style="margin:0">Catalog</div><button onclick="showToast(\'Adding...\')" style="padding:6px 11px;background:#E8A020;border:none;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;color:#1A1A1A">➕ Add</button></div>'+
-    [['🏗️','Equipment / Boom Pumps','3 SKUs'],['⚡','MCB / RCCB / DB','14 SKUs · ⚠️ Low stock'],['🔴','Wires & Cables','18 SKUs · 8 sizes'],['⬜','Conduit Pipes','12 SKUs'],['🔌','Switches','8 SKUs'],['🔋','Sockets','7 SKUs']].map(function(x){return '<div class="card" style="display:flex;align-items:center;gap:11px;margin-bottom:7px"><span style="font-size:20px">'+x[0]+'</span><div style="flex:1"><div style="font-size:13px;font-weight:600;color:#1A1A1A">'+x[1]+'</div><div style="font-size:11px;color:#8A9890">'+x[2]+'</div></div><button onclick="showToast(\'Editing...\')" style="padding:5px 10px;border-radius:7px;border:1.5px solid #D8E4E0;background:#F0F4F2;font-size:11px;font-weight:600;cursor:pointer">Edit</button></div>';}).join('')+'</div>';
-}
-function buildAdmFin(){
-  return '<div style="padding:10px"><div style="background:linear-gradient(145deg,#0D4040,#1A6B5A);border-radius:13px;padding:15px;text-align:center;color:#fff;margin-bottom:10px"><div style="font-size:11px;color:rgba(255,255,255,.7)">Monthly GMV</div><div style="font-size:28px;font-weight:900;color:#E8A020">₹ 38.4L</div><div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:3px">↑ 28% vs last month</div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px"><div class="card"><div class="sta-l">Platform Revenue</div><div style="font-size:18px;font-weight:800;color:#1A1A1A">₹3.84L</div></div><div class="card"><div class="sta-l">Driver Payouts</div><div style="font-size:18px;font-weight:800;color:#1A1A1A">₹1.92L</div></div><div class="card"><div class="sta-l">Avg Order</div><div style="font-size:18px;font-weight:800;color:#1A6B5A">₹6,840</div></div><div class="card"><div class="sta-l">BNPL Outstanding</div><div style="font-size:18px;font-weight:800;color:#DC2626">₹4.2L</div></div></div><div style="display:flex;gap:7px"><button onclick="showToast(\'P&L generating...\')" style="flex:1;padding:10px;background:#E8A020;border:none;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer;color:#1A1A1A">P&L Report</button><button onclick="showToast(\'Payouts running...\')" style="flex:1;padding:10px;background:#1A6B5A;border:none;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer;color:#fff">Run Payouts</button></div></div>';
-}
-function buildAdmSLA(){
-  var stages=[['Order to Packing','Avg: 12 min','Target: 15 min','#059669',80],['Packing to Dispatch','Avg: 28 min','Target: 30 min','#059669',93],['Dispatch to Delivery','Avg: 47 min','Target: 60 min','#059669',78],['Total Order to Door','Avg: 87 min','Target: 105 min','#1A6B5A',83]];
-  return '<div style="padding:10px"><div style="background:linear-gradient(145deg,#0D4040,#1A6B5A);border-radius:13px;padding:15px;text-align:center;color:#fff;margin-bottom:10px"><div style="font-size:11px;color:rgba(255,255,255,.7)">Overall SLA Score</div><div style="font-size:32px;font-weight:900;color:#E8A020">94%</div><div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:3px">Orders delivered on time this month</div></div>'+
-    stages.map(function(s){return '<div class="card" style="margin-bottom:8px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px"><div style="font-size:12px;font-weight:700;color:#1A1A1A">'+s[0]+'</div><div style="text-align:right"><div style="font-size:12px;font-weight:700;color:'+s[2+1]+'">'+s[1]+'</div><div style="font-size:10px;color:#8A9890">'+s[2]+'</div></div></div><div style="height:7px;background:#F0F4F2;border-radius:4px;overflow:hidden"><div style="height:100%;width:'+s[4]+'%;background:'+s[3]+';border-radius:4px"></div></div></div>';}).join('')+
-    '<div class="card"><div class="sect" style="font-size:11px;margin-bottom:8px">Bottleneck Analysis</div><div style="font-size:11px;color:#4A5550;line-height:1.7">⚡ <strong>Packing time</strong> is slowest — consider adding 1 more packer during 11am–2pm peak<br>📍 <strong>Indiranagar</strong> has 18% longer delivery times — traffic on Faizabad Road<br>📦 <strong>Boom Pump orders</strong> average 3.2h — needs dedicated logistics team</div></div></div>';
-}
-function buildAdmGST(){
-  return '<div style="padding:10px"><div style="background:linear-gradient(145deg,#0D4040,#1A6B5A);border-radius:13px;padding:15px;text-align:center;color:#fff;margin-bottom:10px"><div style="font-size:11px;color:rgba(255,255,255,.7)">April 2026 · GST Summary</div><div style="font-size:28px;font-weight:900;color:#E8A020">₹6,91,200</div><div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:3px">Total GST collected</div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px"><div class="card"><div class="sta-l">CGST (9%)</div><div style="font-size:18px;font-weight:800;color:#1A1A1A">₹3,45,600</div></div><div class="card"><div class="sta-l">SGST (9%)</div><div style="font-size:18px;font-weight:800;color:#1A1A1A">₹3,45,600</div></div><div class="card"><div class="sta-l">Input Credit</div><div style="font-size:18px;font-weight:800;color:#059669">₹1,84,200</div></div><div class="card"><div class="sta-l">Net Payable</div><div style="font-size:18px;font-weight:800;color:#DC2626">₹5,07,000</div></div></div><div class="card" style="margin-bottom:9px"><div class="sect" style="font-size:11px;margin-bottom:8px">Filing Status</div><div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid #F0F4F2"><span>GSTR-1 (Sales)</span><span style="font-weight:600;color:#059669">✓ Filed Apr 1</span></div><div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid #F0F4F2"><span>GSTR-3B (Summary)</span><span style="font-weight:600;color:#E8A020">Due May 20</span></div><div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0"><span>E-Way Bills</span><span style="font-weight:600;color:#059669">✓ 312 generated</span></div></div><div style="display:flex;gap:7px"><button onclick="showToast(\'GSTR-1 downloaded...\')" style="flex:1;padding:9px;background:#E8A020;border:none;border-radius:9px;font-size:11px;font-weight:700;cursor:pointer;color:#1A1A1A">GSTR-1 Report</button><button onclick="showToast(\'GSTR-3B downloaded...\')" style="flex:1;padding:9px;background:#1A6B5A;border:none;border-radius:9px;font-size:11px;font-weight:700;cursor:pointer;color:#fff">GSTR-3B Report</button></div></div>';
-}
-function buildAdmCamp(){
-  return '<div style="padding:10px"><div style="display:flex;justify-content:space-between;margin-bottom:9px"><div class="sect" style="margin:0">Campaigns</div><button onclick="showToast(\'Creating...\')" style="padding:6px 11px;background:#E8A020;border:none;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;color:#1A1A1A">+ New</button></div><div class="card" style="margin-bottom:8px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><div><div style="font-size:13px;font-weight:700;color:#1A1A1A">Gomti Nagar Cement Week</div><div style="font-size:11px;color:#8A9890;margin-top:1px">8% off OPC cement</div></div><span class="pill pg">Live</span></div><div style="display:flex;gap:5px"><span style="font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;background:#F0F4F2;color:#4A5550;border:1px solid #D8E4E0">👥 142 reached</span><span style="font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;background:#F0F4F2;color:#4A5550;border:1px solid #D8E4E0">📦 24 orders</span></div></div><div class="card"><div class="sect" style="font-size:11px;margin-bottom:8px">Broadcast Push</div><input type="text" placeholder="Message to customers..." style="width:100%;background:#F8FAF9;border:1.5px solid #D8E4E0;border-radius:9px;padding:9px 11px;font-size:12px;color:#1A1A1A;outline:none;margin-bottom:8px;display:block"><div style="display:flex;gap:7px"><select style="flex:1;background:#F8FAF9;border:1.5px solid #D8E4E0;border-radius:9px;padding:8px 11px;font-size:12px;color:#1A1A1A;outline:none"><option>All of Lucknow</option><option>Gomti Nagar</option><option>Aliganj</option><option>Vikas Nagar</option></select><button onclick="showToast(\'Broadcast sent to 3,240 customers!\')" style="padding:9px 14px;background:#E8A020;border:none;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer;color:#1A1A1A">Send →</button></div></div></div>';
-}
-function buildAdmSet(){
-  return '<div><div class="set-sec">Platform Config</div><div class="set-row" onclick="showToast(\'Geofence...\')"><div class="set-ic" style="background:#E6F5F2">🌍</div><div style="flex:1"><div class="sn">Geofence Settings</div><div class="sd">Lucknow · 45 km</div></div><span style="color:#8A9890">›</span></div><div class="set-row" onclick="showToast(\'Fees...\')"><div class="set-ic" style="background:#FFF3DC">💹</div><div style="flex:1"><div class="sn">Fees & Commission</div><div class="sd">10% take rate · ₹80 base</div></div><span style="color:#8A9890">›</span></div><div class="set-row" onclick="showToast(\'Smart matching...\')"><div class="set-ic" style="background:#E6F5F2">🗺️</div><div style="flex:1"><div class="sn">Smart Driver Matching</div></div><span style="color:#8A9890">›</span></div><div class="set-row" onclick="showToast(\'B2B Portal...\')"><div class="set-ic" style="background:#EFF6FF">🏗️</div><div style="flex:1"><div class="sn">B2B Contractor Portal</div><div class="sd">4 enterprise accounts</div></div><span style="color:#8A9890">›</span></div><div class="set-sec">System</div><div class="set-row"><div class="set-ic" style="background:#E6F5F2">💹</div><div style="flex:1"><div class="sn">Surge Pricing</div></div><button class="tgl on" onclick="togSet(this)"><div class="tglk"></div></button></div><div class="set-row"><div class="set-ic" style="background:#E6F5F2">🛑</div><div style="flex:1"><div class="sn">Maintenance Mode</div></div><button class="tgl off" onclick="togSet(this)"><div class="tglk"></div></button></div><div class="set-row"><div class="set-ic" style="background:#E6F5F2">🔐</div><div style="flex:1"><div class="sn">Admin 2FA</div></div><button class="tgl on" onclick="togSet(this)"><div class="tglk"></div></button></div><div class="set-row" onclick="showToast(\'All Users...\')"><div class="set-ic" style="background:#E6F5F2">👥</div><div style="flex:1"><div class="sn">All Users</div><div class="sd">3,240 customers · 4 enterprise</div></div><span style="color:#8A9890">›</span></div><div style="padding:12px"><button style="width:100%;background:transparent;border:2px solid #EF4444;border-radius:10px;padding:11px;font-size:13px;color:#DC2626;cursor:pointer" onclick="logout()">⏻ Sign Out</button></div></div>';
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* SUPPORT CHAT */
-function sendChatMsg(msg){
-  if(!msg||!msg.trim())return;
-  var box=document.getElementById('chatMsgs');if(!box)return;
-  var inp=document.getElementById('chatInput');if(inp)inp.value='';
-  var bubble=document.createElement('div');
-  bubble.style.cssText='display:flex;justify-content:flex-end;gap:8px;margin-bottom:10px';
-  bubble.innerHTML='<div style="background:#1A6B5A;border-radius:12px 12px 0 12px;padding:9px 12px;max-width:75%"><div style="font-size:12px;color:#fff">'+msg+'</div></div>';
-  box.appendChild(bubble);
-  box.scrollTop=box.scrollHeight;
-  setTimeout(function(){
-    var reply=document.createElement('div');
-    reply.style.cssText='display:flex;gap:8px;margin-bottom:10px';
-    var responses=["I'm looking into that right now, one moment! 🔍","I've flagged your order as priority. Our team will resolve this within 30 minutes.","Your concern has been noted. I'll escalate this to the warehouse manager immediately.","Thank you for letting us know. A replacement will be arranged free of charge."];
-    var r=responses[Math.floor(Math.random()*responses.length)];
-    reply.innerHTML='<div style="width:30px;height:30px;border-radius:50%;background:#1A6B5A;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;color:#fff">B</div><div style="background:#fff;border:1px solid #E0EBE7;border-radius:12px 12px 12px 0;padding:9px 12px;max-width:75%"><div style="font-size:12px;color:#1A1A1A">'+r+'</div></div>';
-    box.appendChild(reply);box.scrollTop=box.scrollHeight;
-  },1200);
-}
+
 
 /* WISHLIST */
 var WISHLIST=[
@@ -2320,6 +2330,34 @@ var WISHLIST=[
   {icon:'🏗️',name:'Boom Pump 37m',sku:'37m',price:'₹10,500/day',note:'Floor 5 casting'},
   {icon:'📦',name:'Concealed Box GI 3x3',sku:'3x3',price:'₹85/pc',note:'Bulk needed'}
 ];
+
+function showProfile(){
+  var m=document.createElement('div');
+  m.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:9998;display:flex;align-items:flex-end';
+  m.innerHTML='<div style="background:#fff;border-radius:20px 20px 0 0;width:100%;max-height:85vh;overflow-y:auto">'
+    +'<div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid #E8EDEB">'
+    +'<div style="font-size:15px;font-weight:700;color:#111">My Profile</div>'
+    +'<button onclick="this.closest(\'\1\').remove()" style="width:30px;height:30px;border-radius:8px;background:#F0F4F2;border:none;font-size:16px;cursor:pointer">&#10005;</button>'
+    +'</div>'
+    +'<div style="padding:16px">'
+    +'<div style="background:linear-gradient(145deg,#0D4040,#1A6B5A);border-radius:14px;padding:16px;text-align:center;color:#fff;margin-bottom:14px">'
+    +'<div style="width:56px;height:56px;border-radius:50%;background:#E8A020;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 9px">&#129527;</div>'
+    +'<div style="font-size:15px;font-weight:800">Rajesh Sharma</div>'
+    +'<div style="font-size:11px;color:rgba(255,255,255,.7);margin-top:3px">Customer &#183; USR-0001 &#183; Lucknow</div>'
+    +'</div>'
+    +'<div style="background:#fff;border:1px solid #E8EDEB;border-radius:12px;overflow:hidden;margin-bottom:12px">'
+    +'<div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid #F0F4F2"><span style="font-size:18px">&#128222;</span><div style="flex:1"><div style="font-size:11px;color:#9AABA5">Mobile</div><div style="font-size:13px;font-weight:600;color:#111">+91 98765 43210</div></div></div>'
+    +'<div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid #F0F4F2"><span style="font-size:18px">&#128205;</span><div style="flex:1"><div style="font-size:11px;color:#9AABA5">Address</div><div style="font-size:13px;font-weight:600;color:#111">Plot 14, Vikas Nagar, Lucknow</div></div></div>'
+    +'<div style="display:flex;align-items:center;gap:12px;padding:12px 14px"><span style="font-size:18px">&#127881;</span><div style="flex:1"><div style="font-size:11px;color:#9AABA5">Member since</div><div style="font-size:13px;font-weight:600;color:#111">January 2024 &#183; 42 orders</div></div></div>'
+    +'</div>'
+    +'<button onclick="showToast(\'\1\')" style="width:100%;padding:12px;background:#0D4040;border:none;border-radius:11px;font-size:13px;font-weight:700;color:#fff;cursor:pointer">Edit Profile</button>'
+    +'</div></div>';
+  document.body.appendChild(m);
+}
+function addC(pid){pAdd(pid);}
+function adjC(pid,d){pAdj(pid,d);}
+function selSku(pid,el){pSku(pid,el);}
+
 renderCalc();
 
 
