@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -199,9 +198,9 @@ body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:#7F0000;over
 .toast{position:absolute;bottom:68px;left:50%;transform:translateX(-50%);background:#7F0000;color:#fff;padding:9px 20px;border-radius:20px;font-size:12px;font-weight:600;opacity:0;transition:opacity .25s;pointer-events:none;white-space:nowrap;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,.3)}
 .toast.on{opacity:1}
 .adm-wrap{display:flex;flex:1;overflow:hidden;min-height:0}
-.adm-side{width:52px;background:#7F0000;display:flex;flex-direction:column;align-items:center;padding:6px 0;gap:3px;flex-shrink:0;overflow-y:auto;scrollbar-width:none}
-.adm-side::-webkit-scrollbar{display:none}
-.adm-si{width:42px;padding:8px 4px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;border-radius:7px;border:none;background:transparent}
+
+
+
 .adm-si:hover{background:rgba(255,255,255,.1)}
 .adm-si.on{background:rgba(232,160,32,.25)}
 .adm-si-ic{font-size:15px}
@@ -223,7 +222,7 @@ body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:#7F0000;over
 .sl{font-size:9px;font-weight:600;margin-top:2px;color:#5D4037}
 .sln{flex:1;height:2px;margin-top:-12px}.sln.done{background:#C62828}.sln.pend{background:#FFCDD2}
 .otpw{display:flex;gap:10px;justify-content:center;margin:12px 0}
-.ob{width:50px;height:54px;border-radius:12px;border:2px solid #FFCDD2;background:#FFF0F0;font-size:22px;font-weight:800;text-align:center;color:#1A1A1A;outline:none}
+
 .ob:focus{border-color:#C62828;background:#fff}.ob.ok{border-color:#C62828;background:#FFEBEE}.ob.err{border-color:#EF4444;background:#FEF2F2}
 .ping-w{margin:9px 12px;border-radius:13px;overflow:hidden;border:2px solid #E8A020;box-shadow:0 4px 16px rgba(232,160,32,.2)}
 .ping-hd{background:linear-gradient(90deg,#E8A020,#F5B030);padding:11px 14px;display:flex;align-items:center;justify-content:space-between}
@@ -235,9 +234,7 @@ body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:#7F0000;over
 .tier-b{background:#FCD34D;color:#92400E}.tier-s{background:#D1D5DB;color:#374151}.tier-g{background:linear-gradient(90deg,#F59E0B,#D97706);color:#fff}
 
 /* OTP inputs */
-.ob{width:44px;height:44px;border-radius:10px;border:2px solid #FFCDD2;background:#F8FAF9;text-align:center;font-size:18px;font-weight:700;color:#1A1A1A;outline:none}
-.ob.ok{border-color:#C62828;background:#FFEBEE}
-.ob.err{border-color:#EF4444;background:#FEF2F2}
+
 /* Express checkout */
 .express-btn{display:flex;align-items:center;gap:7px;width:100%;background:linear-gradient(90deg,#7F0000,#C62828);border:none;border-radius:11px;padding:13px;color:#fff;font-size:14px;font-weight:800;cursor:pointer;margin-bottom:8px}
 /* Autocomplete */
@@ -396,6 +393,7 @@ button:active, [onclick]:active {
   font-size: 12px !important; 
   font-weight: 800 !important;
   line-height: 1.3 !important;
+  color: #1A1A1A !important;
 }
 .spc-brand {
   font-family: Inter, sans-serif !important;
@@ -690,7 +688,7 @@ button:active, [onclick]:active {
 body.dark-mode .sc.on,body.dark-mode .s-screen{background:#0F0A0A!important}
 body.dark-mode .s-hdr{background:#0F0A0A!important;border-bottom-color:rgba(255,255,255,.08)!important}
 body.dark-mode .bk{background:#221818!important;color:#fff!important}
-body.dark-mode .card,[class*="card"]{background:#1A1212!important;border-color:rgba(255,255,255,.07)!important}
+body.dark-mode .card,body.dark-mode [class*="card"]{background:#1A1212!important;border-color:rgba(255,255,255,.07)!important}
 body.dark-mode #homeScroll{background:#0F0A0A!important}
 body.dark-mode #prodGrid>div{background:#1A1212!important;border-color:rgba(255,255,255,.08)!important}
 body.dark-mode .pc{background:#1A1212!important;border-color:rgba(255,255,255,.07)!important}
@@ -698,7 +696,7 @@ body.dark-mode .sci{background:#1A1212!important;border-color:rgba(255,255,255,.
 body.dark-mode input{background:#221818!important;color:#F5F0F0!important;border-color:rgba(255,255,255,.12)!important}
 body.dark-mode [style*="background:#fff"]{background:#1A1212!important}
 body.dark-mode [style*="background:#F5F5F5"]{background:#221818!important}
-body.dark-mode [style*="color:#1A1A1A"],[style*="color:#212121"]{color:#F5F0F0!important}
+body.dark-mode [style*="color:#1A1A1A"],body.dark-mode [style*="color:#212121"]{color:#F5F0F0!important}
 body.dark-mode #homeSearchInput{background:transparent!important;color:#F5F0F0!important}
 
 #chatBubble{position:fixed;bottom:88px;right:18px;width:50px;height:50px;background:linear-gradient(145deg,#1565C0,#1976D2);border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 20px rgba(21,101,192,.45);z-index:9990;animation:chatPulse 2.5s ease infinite}
@@ -788,6 +786,8 @@ var ROUTE = [
 
 // ════════════════════════════════════════════════════════════
 var HOUSIZY_CONFIG = {
+  // TODO: Replace with your real OAuth 2.0 client ID from https://console.cloud.google.com
+  //       Without this, the Google Sign-In button will remain hidden.
   GOOGLE_CLIENT_ID: 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com',
   API_BASE: window.location.hostname === 'localhost' ? 'http://localhost:3001' : '/api',
   STORAGE_PREFIX: 'housizy_v1_'
@@ -1213,10 +1213,10 @@ function fillDemo(){
   if(inp)inp.value=phones[role]||'9876543210';
   var otp='7392';
   for(var i=1;i<=4;i++){
-    var e=document.getElementById('otp'+i);
-    if(e){e.value=otp[i-1];e.style.borderColor='#C62828';e.style.background='#FFEBEE';}
+    var e=document.getElementById('o'+i);
+    if(e){e.value=otp[i-1];e.style.borderColor='#B71C1C';e.style.background='#fff';}
   }
-  showToast('Demo filled - tap Sign In');
+  showToast('Demo filled - tap Verify & Sign In');
 }
 function doSearch(val){
   var msg=document.getElementById('searchMsg');
@@ -1314,7 +1314,7 @@ function addToCart(pid,sku){var k=pid+'|'+sku;cart[k]=(cart[k]||0)+1;updCart();r
 function chgQ(pid,sku,d){var k=pid+'|'+sku;cart[k]=Math.max(0,(cart[k]||0)+d);if(!cart[k])delete cart[k];updCart();renderCatalog();}
 function updCart(){
   var t=Object.values(cart).reduce(function(a,b){return a+b;},0);
-  var b=document.getElementById('cartBadge');if(b){b.textContent=t;b.style.display=t>0?'flex':'none';}
+  document.querySelectorAll('.sbn-badge').forEach(function(b){b.textContent=t;b.style.display=t>0?'flex':'none';});
   var nb=document.getElementById('cartNavBadge');if(nb){nb.textContent=t;nb.style.display=t>0?'flex':'none';}
   var cc=document.getElementById('cartCount');if(cc)cc.textContent=t+' item'+(t!==1?'s':'');
   var el=document.getElementById('cartItems');if(!el)return;
@@ -1335,10 +1335,12 @@ function updCart(){
 
   var _ks=Object.keys(cart);
   var _sub=_ks.reduce(function(a,k){var pid=k.split('|')[0];return a+(PRICES[pid]||0)*(cart[k]||0);},0);
-  var _gst=Math.round(_sub*0.18);
-  var _disc=_sub>=10000?Math.round(_sub*0.07):(_sub>=5000?Math.round(_sub*0.03):0);_sub-=_disc;var _dEl=document.getElementById('cartDiscount');if(_dEl)_dEl.textContent='-₹'+_disc.toLocaleString();var _dRow=document.getElementById('cartDiscountRow');if(_dRow)_dRow.style.display=_disc>0?'flex':'none';
-  var _e1=document.getElementById('cartTotal');if(_e1)_e1.textContent='₹'+(_sub+_gst).toLocaleString();
-  var _e2=document.getElementById('cartSubtotal');if(_e2)_e2.textContent='₹'+_sub.toLocaleString();
+  var _disc=_sub>=10000?Math.round(_sub*0.07):(_sub>=5000?Math.round(_sub*0.03):0);
+  var _discSub=_sub-_disc;
+  var _gst=Math.round(_discSub*0.18);
+  var _dEl=document.getElementById('cartDiscount');if(_dEl)_dEl.textContent='-₹'+_disc.toLocaleString();var _dRow=document.getElementById('cartDiscountRow');if(_dRow)_dRow.style.display=_disc>0?'flex':'none';
+  var _e1=document.getElementById('cartTotal');if(_e1)_e1.textContent='₹'+(_discSub+_gst).toLocaleString();
+  var _e2=document.getElementById('cartSubtotal');if(_e2)_e2.textContent='₹'+_discSub.toLocaleString();
   var _e3=document.getElementById('cartGST');if(_e3)_e3.textContent='₹'+_gst.toLocaleString();
   BZ.save('cart',cart);
 }
@@ -1428,7 +1430,6 @@ function placeOrder(){
     setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},1000);
   })();
   showToast('✓ Order placed! +'+Math.round(sub/100)+' 🪙');
-  confetti();
   // Show full-screen order confirmation
   setTimeout(function(){showOrderConfirmation(_newOrd,sub,gst,disc);},400);
 }
@@ -1709,6 +1710,8 @@ function delOTP(el,e){
   }
 }
 function checkOTP(){var c=['otp1','otp2','otp3','otp4'].map(function(i){var e=document.getElementById(i);return e?e.value:'';}).join('');if(c==='7392')signIn();}
+// NOTE: signIn/checkOTP/onext/ochk/overify below are a secondary OTP flow using id="otp1"-"otp4".
+// The primary login screen uses id="o1"-"o4" with otpNxt/doVerify. Consolidate these into one flow when refactoring login.
 function signIn(){
   var _el2=document.getElementById('loginEmail');var ph=_el2?_el2.value.replace(/[^0-9]/g,''):'';
   var c=['otp1','otp2','otp3','otp4'].map(function(i){var e=document.getElementById(i);return e?e.value:'';}).join('');
@@ -1779,9 +1782,7 @@ function buildTally(){var h='<div style="padding:11px">';h+='<div class="card" s
 var _updCart=updCart;
 updCart=function(){_updCart();chkBulk();};
 
-/* ── OVERRIDE placeOrder FOR CONFETTI ── */
-var _placeOrder=placeOrder;
-placeOrder=function(){_placeOrder();confetti();};
+/* ── placeOrder patched below in BZ init block ── */
 
 /* ── WIRE goS FOR NEW SCREENS ── */
 var _goS=goS;
@@ -2222,7 +2223,7 @@ function showInvoice(){
     +'<div style="display:flex;justify-content:space-between"><span style="font-family:Manrope,sans-serif;font-size:13px;font-weight:800;color:#212121">Total</span><span style="font-family:Manrope,sans-serif;font-size:13px;font-weight:800;color:#B71C1C">₹4,200</span></div>'
     +'</div>'
     +'<div style="display:flex;gap:10px">'
-    +'<button onclick="closeOrderConfirm();goS(&quot;sc-c-track&quot;)" style="flex:1;padding:15px;background:#1A1A1A;color:#fff;border:none;border-radius:16px;font-family:Manrope,sans-serif;font-size:14px;font-weight:800;cursor:pointer">📍 Track Order</button>'
+    +'<button onclick="closeOrderConfirm();goS(&quot;sc-c-track&quot;)" style="flex:1;padding:15px;background:#B71C1C;color:#fff;border:none;border-radius:16px;font-family:Manrope,sans-serif;font-size:14px;font-weight:800;cursor:pointer">📍 Track Order</button>'
     +'<button onclick="closeOrderConfirm();goS(&quot;sc-c-home&quot;)" style="flex:1;padding:15px;background:#F5F5F5;color:#555;border:none;border-radius:16px;font-family:Manrope,sans-serif;font-size:14px;font-weight:700;cursor:pointer">Back Home</button>'
     +'</div>'
     +'</div>';
@@ -2647,10 +2648,11 @@ function loadUserData(){
   // Patch updCart to also save
 
 
-  // Patch placeOrder to save the order
+  // Single placeOrder patch: confetti + order capture
   var _placeOrder=placeOrder;
   placeOrder=function(){
     _placeOrder.apply(this,arguments);
+    confetti();
     // Capture the order just placed
     setTimeout(function(){
       var orderId='HSZ-'+Date.now().toString().slice(-8);
@@ -3467,7 +3469,7 @@ function _pdUpdateCart(pid,sku){
       +'<span style="font-family:Manrope,sans-serif;font-size:18px;font-weight:900;color:#B71C1C">'+qty+'</span>'
       +'<button onclick="pAdj('+pid+',1);_pdUpdateCart('+pid+',selSkus['+pid+']||\''+sku+'\')" style="width:36px;height:36px;border-radius:8px;background:#B71C1C;border:none;color:#fff;font-size:20px;font-weight:700;cursor:pointer">+</button>'
       +'</div>'
-      +'<button onclick="goS(\'sc-c-cart\');document.getElementById(\'prodDetailModal\')&&document.getElementById(\'prodDetailModal\').remove()" style="padding:15px 18px;background:#1A1A1A;color:#fff;border:none;border-radius:14px;font-family:Manrope,sans-serif;font-size:14px;font-weight:800;cursor:pointer">🛒 Cart</button>';
+      +'<button onclick="goS(\'sc-c-cart\');document.getElementById(\'prodDetailModal\')&&document.getElementById(\'prodDetailModal\').remove()" style="padding:15px 18px;background:#374151;color:#fff;border:none;border-radius:14px;font-family:Manrope,sans-serif;font-size:14px;font-weight:800;cursor:pointer">🛒 Cart</button>';
   }
 }
 
@@ -3825,7 +3827,7 @@ function showOrderConfirmation(ord,sub,gst,disc){
     +'</div></div>'
     // Buttons
     +'<div style="display:flex;gap:10px">'
-    +'<button onclick="closeOrderConfirm();goS(\'sc-c-track\')" style="flex:1;padding:15px;background:#1A1A1A;color:#fff;border:none;border-radius:16px;font-family:Manrope,sans-serif;font-size:14px;font-weight:800;cursor:pointer">📍 Track Order</button>'
+    +'<button onclick="closeOrderConfirm();goS(\'sc-c-track\')" style="flex:1;padding:15px;background:#B71C1C;color:#fff;border:none;border-radius:16px;font-family:Manrope,sans-serif;font-size:14px;font-weight:800;cursor:pointer">📍 Track Order</button>'
     +'<button onclick="closeOrderConfirm();goS(\'sc-c-home\')" style="flex:1;padding:15px;background:#F5F5F5;color:#555;border:none;border-radius:16px;font-family:Manrope,sans-serif;font-size:14px;font-weight:700;cursor:pointer">Back Home</button>'
     +'</div>'
     +'</div>';
@@ -4509,7 +4511,7 @@ function _getStarted(){
       <div style="font-size:40px;font-weight:900;margin-bottom:4px">🪙 <span id="coinsBalance">420</span></div>
       <div style="font-size:12px;opacity:.75;margin-bottom:14px">Worth ₹<span id="coinsRupees">42</span> in discounts</div>
       <div style="display:flex;gap:8px;justify-content:center">
-        <button onclick="openRedeemSheet()" style="padding:9px 20px;background:#1A1A1A;color:#E8A020;border:none;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer">Redeem</button>
+        <button onclick="openRedeemSheet()" style="padding:9px 20px;background:#C07010;color:#fff;border:none;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer">Redeem</button>
         <button onclick="document.getElementById('earnGuide').scrollIntoView({behavior:'smooth'})" style="padding:9px 20px;background:rgba(0,0,0,.15);color:#1A1A1A;border:none;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer">How to Earn</button>
       </div>
     </div>
@@ -4571,6 +4573,7 @@ function _getStarted(){
     <div style="display:flex;justify-content:space-between;font-family:Manrope,sans-serif;font-size:15px;font-weight:900;color:#1A1A1A;padding-top:10px;border-top:1px solid #F0F0F0">
       <span>Total</span><span id="cartTotal" style="color:#B71C1C">₹0</span>
     </div>
+    <button onclick="if(Object.keys(cart).length){goS('sc-c-checkout');updateOrderSummary();}else{showToast('Your cart is empty');}" style="margin-top:14px;width:100%;padding:15px;background:#B71C1C;color:#fff;border:none;border-radius:14px;font-family:Manrope,sans-serif;font-size:15px;font-weight:800;cursor:pointer;letter-spacing:.2px;box-shadow:0 4px 16px rgba(183,28,28,.35)">Proceed to Checkout →</button>
   </div>
 
   </div>
